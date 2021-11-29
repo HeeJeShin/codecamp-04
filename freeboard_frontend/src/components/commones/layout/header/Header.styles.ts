@@ -2,12 +2,14 @@ import styled from "@emotion/styled";
 
 export const Header = styled.div`
   height: 152px;
-  background-color:#edceba;
+  /* background-color:#edceba; */
   display: flex;
   /* margin-bottom: 5px; */
   padding-top: 13px;
   padding-left: 500px;
   font-size: 20px;
+  /* margin-left:100px;
+    margin-right:100px; */
 `;
 
 
@@ -25,7 +27,8 @@ export const Login_Button = styled.button`
   width: 92px;
   height: 44px;
   margin-right:10px;
-  background-color: #edceba;
+  /* background-color: #edceba; */
+  background-color: white;
   border-radius: 15px;
   border: none;
   color: gray;
@@ -41,8 +44,8 @@ export const Sign_Button = styled.button`
   margin-left:10px;
   color: gray;
   text-decoration:underline;
-  
-  background-color: #edceba;
+  background-color: white;
+  /* background-color: #edceba; */
   border-radius: 15px;
   border: none;
   :hover {

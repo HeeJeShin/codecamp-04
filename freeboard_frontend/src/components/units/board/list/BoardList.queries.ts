@@ -12,7 +12,7 @@ export const FETCH_BOARDS = gql`
 `;
 
 export const FETCH_BOARD_COUNT = gql`
-    query fetchBoardsCount{
-        fetchBoardsCount
+    query fetchBoardsCount($search: String){
+        fetchBoardsCount(search: $search)
     }
 `;

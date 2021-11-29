@@ -31,8 +31,9 @@ export default function BoardDetail() {
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
     { variables: { boardId: String(router.query.boardId) } }
+    
   );
-
+    console.log(data)
   function onClickMoveToList() {
     // alert("눌리긴 눌렸네요.");
     router.push("/boards");

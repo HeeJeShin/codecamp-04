@@ -1,6 +1,6 @@
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
-import { ChangeEvent, useState } from "react";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
+import { ChangeEvent, useState, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { IboardWriteProps, IMyVariables } from "./BoardWrite.types";
@@ -16,6 +16,10 @@ export default function BoardWrite(props: IboardWriteProps) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+
+  const fileRef = useRef<HTMLInputElement>();
+  const [myImages, setMyImages] = useState<String[]>([]);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [myWriterError, setMyWriterError] = useState("");
   const [myPasswordError, setMyPasswordError] = useState("");
@@ -118,6 +122,23 @@ export default function BoardWrite(props: IboardWriteProps) {
     setIsOpen(false);
   }
 
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+    const myFile = event.target.files?.[0]; //있을때
+    console.log(myFile);
+
+    const result = await uploadFile({
+      variables: {
+        file: myFile,
+      },
+    });
+    console.log(result.data.uploadFile.url);
+    setMyImages([result.data.uploadFile.url]);
+  }
+
+  function onClickMyImage() {
+    fileRef.current?.click(); //파일를 불러오는 버튼을 대신클릭함?
+  }
+
   async function onClickSubmit() {
     if (myWriter) {
       setMyWriterError("작성자를 입력해주세요.");
@@ -145,6 +166,7 @@ export default function BoardWrite(props: IboardWriteProps) {
             title: myTitle,
             contents: myContents,
             youtubeUrl: youtubeUrl,
+            images: myImages,
             boardAddress: {
               zipcode: zipcode,
               address: address,
@@ -202,7 +224,9 @@ export default function BoardWrite(props: IboardWriteProps) {
       onChangeMyTitle={onChangeMyTitle}
       onChangeMyContents={onChangeMyContents}
       onChangeMyYoutubeUrl={onChangeMyYoutubeUrl}
-      onChangeAddressDetail={onChangeAddressDetail}      
+      onChangeAddressDetail={onChangeAddressDetail}
+      onClickMyImage={onClickMyImage}
+      onChangeFile={onChangeFile}
       onClickSubmit={onClickSubmit}
       handleEdit={handleEdit}
       onClickAddressSearch={onClickAddressSearch}
@@ -211,11 +235,10 @@ export default function BoardWrite(props: IboardWriteProps) {
       isEdit={props.isEdit}
       isOpen={isOpen}
       data={props.data}
+      fileRef={fileRef}
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}
-      
-      
     />
   );
 }

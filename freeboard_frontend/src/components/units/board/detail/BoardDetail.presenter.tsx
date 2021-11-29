@@ -15,12 +15,12 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             </S.Info>
           </S.AvatarWrapper>
           <S.IconWrapper>
-            <S.LinkIcon src="/images/board/detail/link.png" />
+            <S.LinkIcon src="/images/link.png" />
             <Tooltip
               placement="topRight"
               title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
             >
-              <S.LocationIcon src="/images/board/detail/location.png" />
+              <S.LocationIcon src="/images/location.png" />
             </Tooltip>
           </S.IconWrapper>
         </S.Header>
@@ -35,6 +35,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               height="240px"
             />              
           )}
+          {props.data?.fetchBoard.images && (
+            <S.Img
+              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
+              // src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
+              // src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
+              width="486px"
+              height="240px"
+            />              
+          )}
+            
           <S.Contents_Icon>
              <S.Wapper_Like>
               <S.Like_Icon id="Like_Icon" onClick={props.onClickLike} />

@@ -1,20 +1,36 @@
-import { ChangeEvent } from "react";
+import { ApolloQueryResult } from "@apollo/client";
+import {Dispatch, MouseEvent, SetStateAction} from "react"
+import { 
+  IQuery, 
 
-export interface IBoardListProps{
-    isEdit: boolean;   
-    data1: any;
-    index:  number
-    
-  }
+  IQueryFetchBoardsArgs, 
+  IQueryFetchBoardsCountArgs 
+} from "../../../../commons/types/generated/types";
 
-  export interface BoardListUIProps {
-    data: any
-    onClickMoveToBoardNew: any
-    onClickMoveToBoardDetail: any
-    onClickNextPage: any
-    onClickPrevPage: any
-    startPage: any
-    onClickPage: any
-    lastPage: any
-  }
+
+export interface IBoardListUIProps {
+  data?: Pick<IQuery, "fetchBoards">;
+  onClickMoveToBoardNew: () => void;
+  onClickMoveToBoardDetail: (event: MouseEvent<HTMLDivElement>) => void;
+  refetch: (
+    variables: Partial<IQueryFetchBoardsArgs>
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards" >>>;
+  refetchBoardsCount: (
+    variables: Partial<IQueryFetchBoardsCountArgs>
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
+  count?: number;
+  startPage: number;
+  setStartPage: Dispatch<SetStateAction<number>>;
+  keyword: string;
+  onChangeKeyword: (value: string) => void;
+  // isMatched: boolean; // 이거나중에 뺴자. 
+  onClickPrevPage: any; // 애니는 페이지 네이션인거같음.. 
+  lastPage: any;
+  onClickPage: any;
+  onClickNextPage: any 
+}
+
+export interface ITextTokenProps {
+  isMatched: boolean;
+}
 

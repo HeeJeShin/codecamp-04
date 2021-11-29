@@ -27,6 +27,8 @@ import {
   ZipcodeWrapper,
   UploadButton,
   Error,
+  UploadChange,
+  UploadClick,
 } from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import DaumPostcode from "react-daum-postcode";
@@ -102,7 +104,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               우편번호 검색
             </SearchButton>
           </ZipcodeWrapper>
-          
+
           <Address
             readOnly
             value={
@@ -110,17 +112,15 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               props.data?.fetchBoard.boardAddress?.address ||
               ""
             }
-          /> 
-           <Address
+          />
+          <Address
             onChange={props.onChangeAddressDetail}
             defaultValue={
               props.data?.fetchBoard.boardAddress?.addressDetail || ""
             }
-          />        
+          />
         </InputWrapper_Zipcode>
-        
 
-            
         <InputWrapper_Youtobe>
           <Label>유튜브</Label>
           <Youtube
@@ -132,17 +132,25 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <ImageWrapper>
           <Label>사진첨부</Label>
           <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
-          <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
-          <UploadButton>
-            <>+</>
-            <>Upload</>
-          </UploadButton>
+            <>
+              <div
+                style={{
+                  width: "50px",
+                  height: "50px",
+                }}
+                onClick={props.onClickMyImage}
+              >
+                이미지선택
+              </div>
+
+              <input
+                style={{ display: "none" }}
+                type="file"
+                ref={props.fileRef}
+                onChange={props.onChangeFile}
+              />
+            </>
+          </UploadButton>    
         </ImageWrapper>
         <OptionWrapper>
           <Label>메인설정</Label>

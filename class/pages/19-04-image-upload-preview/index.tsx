@@ -30,7 +30,8 @@ export default function ImageUploadPage(){
     }   
 
     function onClickMyImage(){
-        fileRef.current?.click();
+        fileRef.current?.click(); //파일를 불러오는 버튼을 대신클릭함?
+    
     }
     return(
         <>
@@ -44,8 +45,7 @@ export default function ImageUploadPage(){
                 style={{display: "none"}} 
                 type="file" 
                 ref={fileRef} 
-                onChange={onChangFile}
-            />
+                onChange={onChangFile}/>
         </>
     );
 }

@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/boards/[boardId]/index.js", "pages/boards/index.js", "pages/boards/new/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/boards/[boardId]/index.js", "pages/boards/index.tsx", "pages/boards/new/index.js"],
   "exclude": ["node_modules"]
 }

@@ -7,7 +7,11 @@ import Navigation from "./navigation/Navigation.container";
 import Banner from "./banner/Banner.container";
 import { useRouter } from "next/router";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding-left:200px;
+  padding-right:200px;
+
+`;
 
 const Body = styled.div``;
 
@@ -26,7 +30,9 @@ const HIDDEN_HEADERS = [
 
 interface ILayoutProps {
   children: ReactChild;
+
 }
+
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();

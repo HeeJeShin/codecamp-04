@@ -1,105 +1,75 @@
-import { gql, useMutation } from "@apollo/client";
-import { ChangeEvent, useState } from "react";
+import {gql, useQuery} from '@apollo/client'
+import { ChangeEvent, MouseEvent, useState } from 'react'; "react"
+import { IQuery, IQueryFetchBoardArgs } from '../../src/commons/types/generated/types';
+import _ from 'lodash';
+import { v4 as uuidv4 } from "uuid";
+import styled from '@emotion/styled';
 
-const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      url
+
+const MyWord = styled.div`
+
+`;
+
+const FETCH_BOARDS = gql`
+query fetchBoards($page: Int, $search: String){
+    fetchBoards(search: $search, page: $page){
+    _id
+    writer
+    title
+    createdAt
     }
   }
 `;
 
-const CREATE_BOARD = gql`
-  mutation createBoard($createBoardInput: CreateBoardInput!) {
-    createBoard(createBoardInput: $createBoardInput) {
-      _id
-      images
-    }
-  }
-`;
+interface IProms{
+    isMatched: boolean;
+}
 
-export default function ImageUploadPage() {
-  const [myWriter, setMyWriter] = useState("");
-  const [myPassword, setMyPassword] = useState("");
-  const [myTitle, setMyTitle] = useState("");
-  const [myContents, setMyContents] = useState("");
-  const [myImages, setMyImages] = useState<string[]>([]);
-  const [uploadFile] = useMutation(UPLOAD_FILE);
-  const [createBoard] = useMutation(CREATE_BOARD);
 
-  function onChangeMyWriter(event: ChangeEvent<HTMLInputElement>) {
-    setMyWriter(event.target.value);
-  }
+export default function SearchKeywordPage(){
+ const [myKeyword, seyMyKeyword] = useState("");
+ const {data ,refetch} =  useQuery<
+    Pick<IQuery, "fetchBoards">,
+    IQueryFetchBoardArgs
+    >(FETCH_BOARDS);
 
-  function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
-    setMyPassword(event.target.value);
-  }
+ const getDebounce = _,debounce((data) => {
+     refetch({ search: data, page: 1});
+     setMykeyword(data);
+ }, 500);
 
-  function onChangeMyTitle(event: ChangeEvent<HTMLInputElement>) {
-    setMyTitle(event.target.value);
-  }
+ function onChangeSearch(event: ChangeEvent<HTMLInputElement>){
+     getDebounce(event?.target.value);
+ }
 
-  function onChangeMyContents(event: ChangeEvent<HTMLInputElement>) {
-    setMyContents(event.target.value);
-  }
+ function onClickPage(event){
+     if (event.target instanceof Element)
+        refetch({search: myKeyword, page: Number(event.target.id)})
+ };
 
-  async function onClickSubmit() {
-    const result = await createBoard({
-      variables: {
-        createBoardInput: {
-          writer: myWriter,
-          password: myPassword,
-          title: myTitle,
-          contents: myContents,
-          images: myImages,
-        },
-      },
-    });
-    console.log(result);
-  }
+    return(
+        <>
+        <h1>검색페이지</h1>
+        검색어입력: <input type="text" onChange={onChangeSearch}/>
+        {data?.fetchBoards.map((el) => (
+        <div key={el._id}>
+            <span>{el.writer}</span>
+            <span>{el.title
+                .replaceAll(myKeyword, `@#$${myKeyword}@#$`)
+                .split("@#$")
+                .map((el) => (
+                    <MyWord key={uuidv4()} isMatched={myKeyword ===el}>
+                        {el}
+                    </MyWord>
+                ))}</span>           
+            <span>{el.createdAt}</span>
+        </div>
+        {new Array(10).fill(1).map((_, index) => (
+            <span key={uuidv4()} onClick={onClickPage} id={String(index + 1)}>
+                {index + 1}
+            </span>
+        ))})}
 
-  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
-    const myFile = event.target.files?.[0];
-    console.log(myFile);
-
-    if (!myFile?.size) {
-      alert("파일이 없습니다!");
-      return;
-    }
-
-    if (myFile.size > 5 * 1024 * 1024) {
-      alert("파일 용량이 너무 큽니다.(제한: 5MB)");
-      return;
-    }
-
-    if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
-      alert("jpeg 또는 png만 업로드 가능합니다!!!");
-      return;
-    }
-
-    const result = await uploadFile({
-      variables: {
-        file: myFile,
-      },
-    });
-    console.log(result.data.uploadFile.url);
-    setMyImages([result.data.uploadFile.url]);
-  }
-
-  return (
-    <>
-      <h1>이미지 업로드!!!</h1>
-      <input type="file" onChange={onChangeFile} />
-      <br />
-      작성자: <input type="text" onChange={onChangeMyWriter} />
-      <br />
-      비밀번호: <input type="password" onChange={onChangeMyPassword} />
-      <br />
-      제목: <input type="text" onChange={onChangeMyTitle} />
-      <br />
-      내용: <input type="text" onChange={onChangeMyContents} />
-      <br />
-      <button onClick={onClickSubmit}>등록하기</button>
-    </>
-  );
+        </>
+    );
 }

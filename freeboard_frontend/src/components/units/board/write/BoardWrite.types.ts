@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler } from "react";
+import { ChangeEvent, ChangeEventHandler, LegacyRef } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IboardWriteProps {
@@ -23,6 +23,7 @@ export interface IEmotionProps{
 }
 
 export interface IBoardWriteUIProps{
+    fileRef: LegacyRef<HTMLButtonElement> | undefined;
     
    
     myWriterError?: string
@@ -37,6 +38,8 @@ export interface IBoardWriteUIProps{
     onChangeAddressDetail: (event: ChangeEvent<HTMLInputElement>) => void;
     onClickAddressSearch: () => void;
     onCompleteAddressSearch: (data: any) => void;
+    onClickMyImage: () => void;
+    onChangeFile: any;
     onClickSubmit:  () => void;
     handleEdit:  () => void;
     isActive: boolean;

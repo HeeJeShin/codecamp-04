@@ -1,8 +1,7 @@
 import React from "react";
 import { getDate } from "../../../../commons/libraries/utils";
 import {
-  Wrapper, 
-  Input_Wrapper,
+  Wrapper,
   Search_Input,
   Search_Yydd,
   TableTop,
@@ -17,25 +16,22 @@ import {
   //PencilIcon,
   MyButton,
   MyPrev,
-  MyNext
-  
+  TextToken,
+  MyNext,
 } from "./BoardList.styles";
-import { BoardListUIProps } from "./BoardList.types";
-import { Card } from 'antd';
+import { IBoardListUIProps } from "./BoardList.types";
+import BoardSearch from "../../../commones/searchbars/boardsearchbar/BoardSearch.container";
+import { v4 as uuidv4 } from "uuid";
 
-export default function BoardListUI(props:BoardListUIProps) {
-
-  
-
+export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <Wrapper>
-       <Input_Wrapper>
-          <Search_Input  type="serach" placeholder="제목을 검색해주세요."> 
-          </Search_Input>
-          <Search_Yydd type="month">
-          </Search_Yydd>
-       </Input_Wrapper>     
-      
+      <BoardSearch
+        refetch={props.refetch}
+        refetchBoardsCount={props.refetchBoardsCount}
+        onChangeKeyword={props.onChangeKeyword}
+      />
+
       <TableTop />
       <Row_TiTle>
         <ColumnHeaderBasic>번호</ColumnHeaderBasic>
@@ -43,32 +39,42 @@ export default function BoardListUI(props:BoardListUIProps) {
         <ColumnHeaderBasic>작성자</ColumnHeaderBasic>
         <ColumnHeaderBasic>날짜</ColumnHeaderBasic>
       </Row_TiTle>
-      
-      {props.data?.fetchBoards.map((el:any, index:number) => (
+
+      {props.data?.fetchBoards.map((el: any, index: number) => (
         <Row key={el._id}>
           <ColumnBasic>{index + 1}</ColumnBasic>
-          <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>{el.title}</ColumnTitle>
+          <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
+            {el.title
+              .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+              .split("@#$%")
+              .map((el: any) => (
+                <TextToken key={uuidv4()} isMatched={props.keyword === el}>
+                  {el}
+                </TextToken>
+              ))}
+          </ColumnTitle>
           <ColumnBasic>{el.writer}</ColumnBasic>
           <ColumnBasic>{getDate(el.createdAt)}</ColumnBasic>
         </Row>
       ))}
       <TableBottom />
       <Footer>
-            <MyPrev onClick={props.onClickPrevPage}>이전페이지</MyPrev>
-            {new Array(10).fill(1).map(
-                (_, index) =>props.startPage + index <= props.lastPage && ( 
-                
-                <span key={props.startPage + index} 
-                onClick={props.onClickPage} 
+        <MyPrev onClick={props.onClickPrevPage}>이전페이지</MyPrev>
+        {new Array(10).fill(1).map(
+          (_, index) =>
+            props.startPage + index <= props.lastPage && (
+              <span
+                key={props.startPage + index}
+                onClick={props.onClickPage}
                 id={String(index)}
                 style={{ margin: "10px", cursor: "pointer" }}
-                > 
+              >
                 {props.startPage + index}
-                </span>
-            )) }
-            <MyNext onClick={props.onClickNextPage}>다음페이지</MyNext>
-        <MyButton  onClick={props.onClickMoveToBoardNew}>
-          
+              </span>
+            )
+        )}
+        <MyNext onClick={props.onClickNextPage}>다음페이지</MyNext>
+        <MyButton onClick={props.onClickMoveToBoardNew}>
           게시물 등록하기
         </MyButton>
       </Footer>

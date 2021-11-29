@@ -1,31 +1,31 @@
 import { gql, useMutation, useQuery }from '@apollo/client'
 import styled from '@emotion/styled'
-const FETCH_BOARDS = gql `
-    query{
-        fetchBoards{
-            number
-            writer
-            title
-            createdAt
+    const FETCH_BOARDS = gql `
+        query{
+            fetchBoards{
+                number
+                writer
+                title
+                createdAt
+            }
         }
-    }
-`
-const DELETE_BOARD = gql`
-    mutation deleteBoard($number: Int){
-        deleteBoard(number: $number){
-            message
+    `;
+    const DELETE_BOARD = gql`
+        mutation deleteBoard($number: Int){
+            deleteBoard(number: $number){
+                message
+            }
         }
-    }
-`
+    `;
 
-const Row = styled.div`
-    display: flex;
-    flex-direction: row; 
-`
+    const Row = styled.div`
+        display: flex;
+        flex-direction: row; 
+    `;
 
-const Column = styled.div`
-    width: 20%
-`
+    const Column = styled.div`
+        width: 20%
+    `;
 
 export default function MapCheakboxPage(){
     const { data } = useQuery(FETCH_BOARDS) // [{number:1, writer: .... },{....},{....}]

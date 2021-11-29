@@ -4,6 +4,8 @@ export const BannerSection = styled.section`
   height: 500px;
   background-color: #edceba;
   overflow: hidden;
+  /* margin-left:100px;
+    margin-right:100px; */
   
 `;
 

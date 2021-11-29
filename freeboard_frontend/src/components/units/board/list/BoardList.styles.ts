@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { ITextTokenProps } from "./BoardList.types";
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 100px;
 `;
 
-export const Input_Wrapper = styled.div`
+export const BoardSearchbar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -60,7 +61,7 @@ export const Row = styled.div`
 `;
 
 export const TextToken = styled.span`
-  color: ${(props) => (props.isMatched ? "red" : "black")};
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;
 
 export const ColumnHeaderBasic = styled.div`
@@ -82,7 +83,9 @@ export const ColumnTitle = styled.div`
   width: 70%;
   text-align: center;
   cursor: pointer;
-
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   :hover {
     color: blue;
   }

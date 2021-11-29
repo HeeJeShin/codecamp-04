@@ -68,6 +68,12 @@ export const Contents = styled.div`
   padding-bottom: 120px;
 `;
 
+export const Img = styled.img`
+  box-sizing:border-box;
+  display: flex;
+  flex-direction: row;
+`;
+
 export const Contents_Icon = styled.div`
   display: flex;
   width: 120px;

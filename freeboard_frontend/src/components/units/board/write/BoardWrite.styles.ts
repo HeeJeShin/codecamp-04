@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { IEmotionProps } from "./BoardWrite.types";
 
-
 export const Wrapper = styled.div`
   box-sizing: border-box;
   width: 1200px;
@@ -30,7 +29,7 @@ export const WriterWrapper = styled.div`
 `;
 
 export const Writer = styled.input`
-  width: 486px; 
+  width: 486px;
   height: 52px;
   box-sizing: border-box;
   padding: 16px;
@@ -38,7 +37,7 @@ export const Writer = styled.input`
 `;
 
 export const Password = styled.input`
-  width: 486px; 
+  width: 486px;
   height: 52px;
   box-sizing: border-box;
   padding: 16px;
@@ -72,7 +71,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const Subject = styled.input`
-  
   width: 100%;
   height: 52px;
   box-sizing: border-box;
@@ -152,6 +150,10 @@ export const UploadButton = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
 `;
 
 export const OptionWrapper = styled.div`
@@ -211,5 +213,3 @@ export const Error = styled.div`
   font-size: 14px;
   color: red;
 `;
-
-
