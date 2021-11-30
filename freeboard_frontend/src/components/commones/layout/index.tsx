@@ -13,13 +13,15 @@ const Wrapper = styled.div`
 
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+  padding: 100px;
+`;
 
 const BodyWrapper = styled.div`
   width: 100%;
+
   display: flex;
-  justify-content: space-between;
-  padding-right: 200px;
+  
 `;
 
 

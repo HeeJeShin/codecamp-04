@@ -11,7 +11,7 @@ export const SidebarWrapper= styled.button`
     justify-content: space-evenly;
     align-items: center;
     border: none;
-    margin-left:100px;
+    /* margin-left:100px; */
 `;
 
 export const Header= styled.div``;

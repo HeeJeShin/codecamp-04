@@ -6,6 +6,6 @@ export default function FooterPageUI(){
     
     
     return(
-        <MyFooter>여기는 푸터영역입니다. </MyFooter>
+        <MyFooter> Made by heeje </MyFooter>
     )
 }
