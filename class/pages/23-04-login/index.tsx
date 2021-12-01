@@ -41,11 +41,14 @@ export default function LoginPage() {
         password: myPassword,
       },
     });
-    
+    localStorage.setItem(
+      "accessToken",
+      result.data?.loginUser.accessToken || ""
+    );
     setAccessToken?.(result.data?.loginUser.accessToken || ""); //여기서 setAccesToken 필요! (글로벌 스테이트에...)
 
     // 로그인 성공된 페이지로 이동시키기!!
-    router.push("/22-02-login-success");
+    router.push("/23-05-login-success");
   }
 
   return (

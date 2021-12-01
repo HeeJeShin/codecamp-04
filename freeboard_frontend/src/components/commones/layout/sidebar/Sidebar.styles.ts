@@ -5,7 +5,7 @@ export const SidebarWrapper= styled.button`
     top: 0;
     width: 300px;
     height: 1200px;
-    background-color: 3edeae3;
+    background-color: #edeae3;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

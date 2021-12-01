@@ -1,4 +1,4 @@
-import router from "next/router";
+import router, { useRouter } from "next/router";
 import SiderbarPageUI from "./Sidebar.presenter"
 interface SidebarPage {
 
@@ -6,7 +6,8 @@ onClickMyDogPage : () => void
 onClickMyBoards : () => void
 }
 export default function SidebarPage(){
-    
+    const router = useRouter();
+
     function onClickMyBoards(){
         router.push("/boards");
     }
@@ -15,10 +16,16 @@ export default function SidebarPage(){
         router.push("/mydog/");
     }
 
+    function onClickMyHOME(){
+        router.push("/");
+    }
+
     return(
         <SiderbarPageUI
+            onClickMyHOME={onClickMyHOME}
             onClickMyBoards={onClickMyBoards}
             onClickMyDogPage={onClickMyDogPage}
+            
         />    
     );
 }

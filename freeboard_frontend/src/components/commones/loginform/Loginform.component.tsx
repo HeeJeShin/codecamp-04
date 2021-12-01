@@ -11,7 +11,7 @@ import { LOGIN_USER } from "./Loginform.queries";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, accessToken } = useContext(GlobalContext);
 
   const [myEmail, setMyEmail] = useState("");
   const [myPassword, setMyPassword] = useState("");
@@ -19,16 +19,28 @@ export default function LoginForm() {
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
   >(LOGIN_USER);
-  
+
   function onChangeMyEmail(event: ChangeEvent<HTMLElement>) {
     setMyEmail(event.target.value);
-    
   }
-  
+
   function onChangeMyPassword(event: ChangeEvent<HTMLElement>) {
     setMyPassword(event.target.value);
   }
-  async function onClickLogin() {
+  // async function onClickLogin() {
+  //   const result = await loginUser({
+  //     variables: {
+  //       email: myEmail,
+  //       password: myPassword,
+  //     },
+  //   });
+  //   setAccessToken?.(result.data?.loginUser.accessToken || "");
+  //   console.log("ggg")
+  //   router.push("/boards");
+
+  // }
+
+  const handleLogin = async () => {
     const result = await loginUser({
       variables: {
         email: myEmail,
@@ -36,21 +48,23 @@ export default function LoginForm() {
       },
     });
     setAccessToken?.(result.data?.loginUser.accessToken || "");
-    router.push("/boards");
-  }
+    router.push("/");
+  };
 
   function onClickSignup() {
     router.push("/signup");
   }
+  // 슬라이더 코드..
+  
 
   return (
-    
-      <LoginFormUI        
-        onChangeMyEmail={onChangeMyEmail}
-        onChangeMyPassword={onChangeMyPassword}
-        onClcikLogin={onClickLogin}
-        onClickSignup={onClickSignup}
-      />
-    
+    <LoginFormUI
+      onChangeMyEmail={onChangeMyEmail}
+      onChangeMyPassword={onChangeMyPassword}
+      // onClcikLogin={onClickLogin}
+      onClickSignup={onClickSignup}
+      handleLogin={handleLogin}
+      
+    />
   );
 }

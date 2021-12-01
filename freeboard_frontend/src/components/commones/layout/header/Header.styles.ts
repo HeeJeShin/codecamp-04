@@ -4,12 +4,11 @@ export const Header = styled.div`
   height: 152px;
   /* background-color:#edceba; */
   display: flex;
-  /* margin-bottom: 5px; */
+  
   padding-top: 13px;
-  padding-left: 500px;
+  
   font-size: 20px;
-  /* margin-left:100px;
-    margin-right:100px; */
+ 
 `;
 
 
@@ -19,8 +18,7 @@ export const Log_Wapper = styled.div`
   height: 100%;
   justify-content: flex-end;
   align-items: flex-end;
-  padding-right: 360px;
-  padding-bottom: 54px;
+  
 `;
 
 export const Login_Button = styled.button`
