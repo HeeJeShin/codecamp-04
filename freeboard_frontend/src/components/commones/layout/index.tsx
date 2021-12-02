@@ -48,9 +48,9 @@ export default function Layout(props: ILayoutProps) {
     <Wrapper>
       {!isHiddenHeader && <Header />}
       <Banner />
-      {/* <Navigation /> */}
+      <Navigation />
       <BodyWrapper>
-        <SidebarPage/>
+        {/* <SidebarPage/> */}
         <Body> {props.children} </Body>
       </BodyWrapper>
       <Footer />

@@ -17,3 +17,29 @@
 // 입출력 예 #2
 // 자연수 2와 5의 최대공약수는 1, 최소공배수는 10이므로 [1, 10]을 리턴해야 합니다.
 
+function solution(n, m) {
+    // 최대공약수 : 두 수의 약수 중에서 제일 큰 수
+    // 최소공배수 : 두 수의 배수 중에서 제일 작은 수
+    let answer = [];
+    
+    // 공통되는 약수를 담아주는 배열
+    const gcdArr = [];
+    // 최대공약수 구하기
+    for( let i = 1; i <= m; i++ ) {
+        if( n % i === 0 && m % i === 0 ) {
+            gcdArr.push(i);
+        }
+    }
+    answer[0] = Math.max( ...gcdArr )
+    
+    // 최소공배수 구하기
+    for( let l = m; l <= n * m; l += m ) {
+        if( l % n === 0 ) {
+            answer[1] = l;
+            break;
+        }
+    }
+    return answer;
+    
+    // return answer;
+}

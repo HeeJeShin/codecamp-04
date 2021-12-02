@@ -32,24 +32,29 @@ export const firebaseApp = initializeApp(firebaseConfig);
 interface IGlobalContext{
   accessToken?: string;
   setAccessToken?: Dispatch<SetStateAction<string>>
+  UserInfo?: {
+    name?: string;
+    email?: string;
+    picture?: string;
+  };
+  setUserInfo?: Dispatch<SetStateAction<{}>>;
 }
 
 export const GlobalContext = createContext<IGlobalContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
   const [myAcessToken, setMyAccessToken] = useState("");
-  const [myuserInfo, setMyUserInfo] = useState({});
+  const [myUserInfo, setMyUserInfo] = useState({});
   const myvalue = {
     accessToken: myAcessToken,
     setAccessToken: setMyAccessToken,
-    // userInfo: myuserInfo,
-    // setUserInfo: setMyUserInfo,
+    userInfo: myUserInfo,
+    setUserInfo: setMyUserInfo,
   };
 
 useEffect(() => {
   const accessToken = localStorage.getItem("accessToken")
   if(accessToken) setMyAccessToken(accessToken)
 }, [])  
-
 
   const uploadLink = createUploadLink({
     uri: "http://backend04.codebootcamp.co.kr/graphql",

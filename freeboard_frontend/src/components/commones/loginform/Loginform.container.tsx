@@ -47,15 +47,18 @@ export default function LoginForm() {
         password: myPassword,
       },
     });
+    localStorage.setItem(
+      "accessToken",
+      result.data?.loginUser.accessToken || ""
+    );
     setAccessToken?.(result.data?.loginUser.accessToken || "");
-    router.push("/");
+    router.push("/loginsucces");
   };
 
   function onClickSignup() {
     router.push("/signup");
   }
   // 슬라이더 코드..
-  
 
   return (
     <LoginFormUI
@@ -64,7 +67,6 @@ export default function LoginForm() {
       // onClcikLogin={onClickLogin}
       onClickSignup={onClickSignup}
       handleLogin={handleLogin}
-      
     />
   );
 }

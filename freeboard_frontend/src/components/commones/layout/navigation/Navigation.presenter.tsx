@@ -1,11 +1,31 @@
+import *as S from "./Navigation.styles"
 
-import { MyNavigation } from "./Navigation.styles"
+interface INavigationPageUIProps{
+    onClickMenu: () => void
+}
 
-
-export default function NavigationPageUI(){
+export default function NavigationPageUI(props: INavigationPageUIProps){
     
     
     return(
-        <MyNavigation>여기는 네비게이션영역입니다. </MyNavigation>
+        <S.MyNavigation>
+            <>|</>
+            <S.MenuItem id="/" onClick={props.onClickMenu}>
+                HOME
+            </S.MenuItem>
+            <>|</> 
+            <S.MenuItem id="/boards" onClick={props.onClickMenu}>
+                BOARDS
+            </S.MenuItem>
+            <>|</>    
+            <S.MenuItem id="/market" onClick={props.onClickMenu}>
+               MARKET
+            </S.MenuItem>
+            <>|</>    
+            <S.MenuItem id="/mydog" onClick={props.onClickMenu}>
+                JOKEPAGE
+            </S.MenuItem>
+            <>|</>
+        </S.MyNavigation>
     )
 }

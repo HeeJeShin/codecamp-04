@@ -34,7 +34,7 @@ export const InputWrapper_Email =styled.div`
 `;
 
 export const MyEmail =styled.input`
-    width: calc(100% - 170px);
+    width: calc(100% - 110px);
     padding-left: 9px;
     font-size: 15px;    
     height: 40px;
@@ -57,7 +57,7 @@ export const MyLabel = styled.label`
 `;
 
 export const MyName =styled.input`
-    width: calc(100% - 170px);
+    width: calc(100% - 110px);
     padding-left: 9px;
     font-size: 15px;    
     height: 40px;
@@ -66,21 +66,17 @@ export const MyName =styled.input`
     border-right: none;
 `;
 
-export const InpuetWrapper_Password =styled.div`
+export const InputWrapper_Password =styled.div`
     display: block;
     width: 100%;
     padding-bottom: 15px;
     font-size: 15px;
 `;
 
-export const MyLaver =styled.label`
-    display: inline-block;
-    width: 120px;
-     padding-right: 10px;
-`;
+
 
 export const MyPassword =styled.input`
-    width: calc(100% - 170px);
+    width: calc(100% - 110px);
     padding-left: 9px;
     font-size: 15px;    
     height: 40px;
@@ -89,12 +85,12 @@ export const MyPassword =styled.input`
     border-right: none;
 `;
 
-export const InpuetWrapper_Password_Check =styled.div`
+export const InputWrapper_Password_Check =styled.div`
 
 `;
 
 export const MyPassword_Check = styled.input`
-    width: calc(100% - 170px);
+    width: calc(100% - 110px);
     padding-left: 9px;
     font-size: 15px;    
     height: 40px;
@@ -104,10 +100,10 @@ export const MyPassword_Check = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-    width: 100px;
-    height: 20px;
+    width: 100%;
+    height: 40px;
     margin-top: 30px;
-    margin-left: 100px;
+    //margin-left: 100px;
     border: none;
     :hover {
     cursor: pointer;
@@ -116,3 +112,8 @@ export const SubmitButton = styled.button`
 `;
 
 
+export const Error = styled.div`
+  padding-top: 10px;
+  font-size: 14px;
+  color: red;
+`;

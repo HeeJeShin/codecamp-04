@@ -45,7 +45,12 @@ export default function LoginPage() {
       "accessToken",
       result.data?.loginUser.accessToken || ""
     );
-    setAccessToken?.(result.data?.loginUser.accessToken || ""); //여기서 setAccesToken 필요! (글로벌 스테이트에...)
+    setAccessToken?.(result.data?.loginUser.accessToken || "");  
+      // 여기서 setAccesToken 필요! (글로벌 스테이트에...)
+
+      // const result = awit axios.get("koreanjson.com/posts/1") d이렇나 방식으로 원하는 곳에서 useQuery 필요!!
+      // const result = fetchUserLoggenIn
+      // setUserInfo(result.data?.fetchUserLoggedIn)
 
     // 로그인 성공된 페이지로 이동시키기!!
     router.push("/23-05-login-success");

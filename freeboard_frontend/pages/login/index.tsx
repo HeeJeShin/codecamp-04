@@ -1,4 +1,4 @@
-import LoginForm from "../../src/components/commones/loginform/Loginform.component"
+import LoginForm from "../../src/components/commones/loginform/Loginform.container"
 
 export default function LoginFormPage(){
 

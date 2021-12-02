@@ -1,31 +1,33 @@
-import {gql, useMutation} from "@apollo/client"
-import { IMutation, IMutationLoginUserArgs } from "../../src/commons/types/generated/types";
+import {useForm, useFormState} from "react-hook-form";
+import *as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import styled from "@emotion/styled"
+import { MyButton } from "../../src/components/units/board/write4/BoardWrite.styles";
 
-const LOGIN_USER = gql`
-    mutation loginUser($email: String! , $password: String!){
-        loginUser(email: $email, password: $password){
-            accessToken
-        }
-    }
-`;
+interface FormValues{
+    myEmail: string;
+    myPassword: string;
+}
 
-export default function LoginPage(){
-    const [loginUser] = useMutation<
-        Pick<IMutation, "loginUser">,
-        IMutationLoginUserArgs
-        >(LOGIN_USER)
+export default function ReactHookFormPage(){
+    const{handleSubmit, register, formState } = useForm({
+        mode: "onChange",
+        resolver: yupResolver(schema),
+    });
 
-    function onClickLogin(){
-        LOGIN_USER({
-
-        })
+    function onClickLogin(data: FormValues){
+        console.log(data);
     }
 
     return(
-        <>
-            이메일: <input type="text" />
-            비밀번호: <input type="password" />
-            <button onClick={onClickLogin}>로그인</button>
-        </>
+        <form onSubmit={handleSubmit(onClickLogin)}>
+            이메일:
+            <input type="text" {...register}/>
+            <div>{formState.errors.myEmail?.message}</div>
+            비밀번호:
+            <input type="password" {...register("myPassword")} />
+            <div>{formState.errors.myPassword?.message}</div>
+            <MyButton> isValid={formState.isValid}</MyButton>
+        </form>
     )
 }

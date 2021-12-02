@@ -8,6 +8,7 @@ export const Header = styled.div`
   padding-top: 13px;
   
   font-size: 20px;
+  font:  src: url('/fonts/NanumGothicCoding-Regular.ttf');
  
 `;
 
