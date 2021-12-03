@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { withAuth } from "../../src/commons/hocs/withAuth";
+import { withAuth } from "../../src/components/hocs/withAuth";
 
 import { GlobalContext } from "../_app";
 

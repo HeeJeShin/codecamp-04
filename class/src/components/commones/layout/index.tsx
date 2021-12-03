@@ -14,13 +14,14 @@ import { useRouter } from "next/router";
 
     const BodyWrapper = styled.div`
         display: flex;
+        padding: 150px;
     `;
 
-    const Sidebar = styled.div`
-        width: 200px;
-        height: 700px;
-        background-color: #f5f5ff;
-    `;
+    // const Sidebar = styled.div`
+    //     width: 200px;
+    //     height: 700px;
+    //     background-color: #f5f5ff;
+    // `;
 
  const HIDDEN_HEADERS = [
      '/12-05-modal-address-state-prev',
@@ -46,7 +47,7 @@ export default function Layout(props:ILayoutProps){
             <Banner/>
             <Navigation/>
             <BodyWrapper>
-                <Sidebar>sidebar</Sidebar>
+                {/* <Sidebar>sidebar</Sidebar> */}
                 <Body> {props.children} </Body>
             </BodyWrapper>
             <Footer/>
