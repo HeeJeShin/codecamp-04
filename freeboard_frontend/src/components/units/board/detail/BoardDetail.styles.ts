@@ -3,8 +3,8 @@ import { LikeOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 100px;
+  width: 1100px;
+  /* margin: 100px; */
 `;
 
 export const CardWrapper = styled.div`
@@ -17,7 +17,7 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border: none;
-  box-shadow: 0px 0px 10px #f3bac0;
+  box-shadow: 0px 0px 10px #b8b8b0;
 `;
 
 export const Header = styled.div`
@@ -67,11 +67,19 @@ export const Contents = styled.div`
   padding-top: 40px;
   padding-bottom: 120px;
 `;
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  
+
+`;
 
 export const Img = styled.img`
   box-sizing:border-box;
   display: flex;
-  flex-direction: row;
+  
+  width: 300px;
 `;
 
 export const Contents_Icon = styled.div`

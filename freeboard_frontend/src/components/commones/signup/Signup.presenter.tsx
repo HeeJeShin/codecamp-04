@@ -11,6 +11,7 @@ export default function SignupUI(props: ISignupUIProps){
                 <S.MyLabel>email</S.MyLabel>
                 <S.MyEmail 
                     type="text"
+                    onChange={props.onChangeMyEmail}
                     placeholder="Please enter a email"
                 />
                 <S.Error>{props.myEmailError}</S.Error>
@@ -20,6 +21,7 @@ export default function SignupUI(props: ISignupUIProps){
                 <S.MyLabel>name</S.MyLabel>
                 <S.MyName 
                     type="text"
+                    onChange={props.onChangeMyname}
                     placeholder="Please enter a name"
                 />
                 <S.Error>{props.myNameError}</S.Error>
@@ -29,6 +31,7 @@ export default function SignupUI(props: ISignupUIProps){
                 <S.MyLabel>password</S.MyLabel>
                 <S.MyPassword 
                     type="password"
+                    onChange={props.onChangeMyPassword}
                     placeholder="Please enter a password"
                 />
                 <S.Error>{props.myPasswordError}</S.Error>

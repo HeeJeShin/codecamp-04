@@ -4,7 +4,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 800px;
-  margin: 0 -30px;
+  /* margin: 0 -30px; */
+  margin-left: 350px;
+  height: 700px;
 `;
 
 export const Login_Wrapper = styled.div`
@@ -14,6 +16,7 @@ export const Login_Wrapper = styled.div`
 
 export const H_Wrapper = styled.div`
   text-align: center;
+  font-weight: bold;
 `;
 
 export const Input_Wrapper = styled.div`

@@ -15,13 +15,14 @@ import {
   Footer,
   //PencilIcon,
   MyButton,
-  MyPrev,
+  // MyPrev,
   TextToken,
-  MyNext,
+  // MyNext,
 } from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
 import BoardSearch from "../../../commones/searchbars/boardsearchbar/BoardSearch.container";
 import { v4 as uuidv4 } from "uuid";
+import Paginations01 from "../../../commones/paginations/01/Paginations01.container";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
@@ -59,7 +60,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
       ))}
       <TableBottom />
       <Footer>
-        <MyPrev onClick={props.onClickPrevPage}>이전페이지</MyPrev>
+        {/* <MyPrev onClick={props.onClickPrevPage}>이전페이지</MyPrev>
         {new Array(10).fill(1).map(
           (_, index) =>
             props.startPage + index <= props.lastPage && (
@@ -73,7 +74,13 @@ export default function BoardListUI(props: IBoardListUIProps) {
               </span>
             )
         )}
-        <MyNext onClick={props.onClickNextPage}>다음페이지</MyNext>
+        <MyNext onClick={props.onClickNextPage}>다음페이지</MyNext> */}
+      <Paginations01
+          refetch={props.refetch}
+          count={props.count}
+          startPage={props.startPage}
+          setStartPage={props.setStartPage}
+        />
         <MyButton onClick={props.onClickMoveToBoardNew}>
           게시물 등록하기
         </MyButton>

@@ -18,7 +18,8 @@ export default function BoardWrite(props: IboardWriteProps) {
   const [addressDetail, setAddressDetail] = useState("");
 
   const fileRef = useRef<HTMLInputElement>();
-  const [myImages, setMyImages] = useState<String[]>([]);
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [myWriterError, setMyWriterError] = useState("");
@@ -122,22 +123,20 @@ export default function BoardWrite(props: IboardWriteProps) {
     setIsOpen(false);
   }
 
-  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
-    const myFile = event.target.files?.[0]; //있을때
-    console.log(myFile);
+  // async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+  //   const myFile = event.target.files?.[0]; //있을때
+  //   console.log(myFile);
 
-    const result = await uploadFile({
-      variables: {
-        file: myFile,
-      },
-    });
-    console.log(result.data.uploadFile.url);
-    setMyImages([result.data.uploadFile.url]);
-  }
+  //   const result = await uploadFile({
+  //     variables: {
+  //       file: myFile,
+  //     },
+  //   });
+  //   console.log(result.data.uploadFile.url);
+  //   setMyImages([result.data.uploadFile.url]);
+  // }
 
-  function onClickMyImage() {
-    fileRef.current?.click(); //파일를 불러오는 버튼을 대신클릭함?
-  }
+
 
   async function onClickSubmit() {
     if (myWriter) {
@@ -166,7 +165,7 @@ export default function BoardWrite(props: IboardWriteProps) {
             title: myTitle,
             contents: myContents,
             youtubeUrl: youtubeUrl,
-            images: myImages,
+            images: fileUrls,
             boardAddress: {
               zipcode: zipcode,
               address: address,
@@ -189,7 +188,7 @@ export default function BoardWrite(props: IboardWriteProps) {
       password: myPassword,
       boardId: String(router.query.boardId),
     };
-
+    //const myUpdateboardInput: IMyUpdateBoardInput = { images: fileUrls };
     if (myTitle !== "") myVariables.updateBoardInput.title = myTitle;
     if (myContents !== "") myVariables.updateBoardInput.contents = myContents;
     if (youtubeUrl !== "") myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
@@ -213,6 +212,11 @@ export default function BoardWrite(props: IboardWriteProps) {
     // })
   }
 
+  function onChangeFileUrls(fileUrl: string, index: number) {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  }
   return (
     <BoardWriteUI
       myWriterError={myWriterError}
@@ -225,8 +229,8 @@ export default function BoardWrite(props: IboardWriteProps) {
       onChangeMyContents={onChangeMyContents}
       onChangeMyYoutubeUrl={onChangeMyYoutubeUrl}
       onChangeAddressDetail={onChangeAddressDetail}
-      onClickMyImage={onClickMyImage}
-      onChangeFile={onChangeFile}
+      
+      // onChangeFile={onChangeFile}
       onClickSubmit={onClickSubmit}
       handleEdit={handleEdit}
       onClickAddressSearch={onClickAddressSearch}
@@ -239,6 +243,8 @@ export default function BoardWrite(props: IboardWriteProps) {
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}
+      fileUrls={fileUrls}
+      onChangeFileUrls={onChangeFileUrls}
     />
   );
 }

@@ -19,7 +19,7 @@ export const MenuItem = styled.div`
     cursor: pointer;
 
     :hover{
-        color: orange;
+        color: #f3bac0 ;
     }
 
 `;

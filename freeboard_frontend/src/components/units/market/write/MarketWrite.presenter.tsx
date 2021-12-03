@@ -44,7 +44,7 @@ const MarketWriteUI = () => {
                 <S.MyLabel>태그입력</S.MyLabel>
                 <S.MyTag 
                     type = "text"
-                    placeholder = ""
+                    placeholder = "#태그 #태그 # 태그"
                 />    
             </S.Wrapper_MyTags>
 

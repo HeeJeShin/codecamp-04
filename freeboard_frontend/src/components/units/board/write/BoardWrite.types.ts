@@ -4,6 +4,7 @@ import { IQuery } from "../../../../commons/types/generated/types";
 export interface IboardWriteProps {
     data: any;
     isEdit?: boolean
+    fileRef: string[];
 }
 
 export interface IMyVariables {
@@ -23,7 +24,7 @@ export interface IEmotionProps{
 }
 
 export interface IBoardWriteUIProps{
-    fileRef: LegacyRef<HTMLButtonElement> | undefined;
+    fileRef: string[];
     
    
     myWriterError?: string

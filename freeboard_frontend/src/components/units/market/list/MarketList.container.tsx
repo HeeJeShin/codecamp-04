@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import MarketWriteUI from "../write/MarketWrite.presenter"
+import MarketListUI from "../../market/list/MarketList.presenter"
 
 
 const MarketList = () => {
@@ -10,7 +10,7 @@ const MarketList = () => {
   }
 
  return<
-     MarketWriteUI
+   MarketListUI
         onClickWrite={onClickWrite}
      />   
 }

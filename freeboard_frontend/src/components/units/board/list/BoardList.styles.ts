@@ -57,7 +57,7 @@ export const Row = styled.div`
   font-size: 13px;
 
   :hover {
-    color: blue;
+    color: #f3bac0 ;
   }
 `;
 
@@ -113,28 +113,7 @@ export const MyButton = styled.button`
   font-size: 16px;
 
   :hover {
-    background-color: #f5f2fc;
+    background-color: #edeae3 ;
   }
 `;
 
-export const MyPrev = styled.button`
-  border-radius: 15px;
-  border: none;
-  background-color: white;
-  font-size: 16px;
-  :hover {
-    background-color: #f5f2fc;
-  }
-`;
-
-export const MyNext = styled.button`
-  box-sizing: border-box;
-  margin-right: 150px;
-  border-radius: 15px;
-  border: none;
-  background-color: white;
-  font-size: 16px;
-  :hover {
-    background-color: #f5f2fc;
-  }
-`;

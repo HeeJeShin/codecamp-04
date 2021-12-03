@@ -35,16 +35,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               height="240px"
             />              
           )}
-          {props.data?.fetchBoard.images && (
-            <S.Img
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
-              // src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
-              // src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
-              width="486px"
-              height="240px"
-            />              
-          )}
-            
+          <S.ImageWrapper>
+            {props.data?.fetchBoard.images
+              ?.filter((el: string) => el)
+              .map((el: string) => (
+                <S.Img
+                  key={el}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              ))}
+          </S.ImageWrapper>
           <S.Contents_Icon>
              <S.Wapper_Like>
               <S.Like_Icon id="Like_Icon" onClick={props.onClickLike} />

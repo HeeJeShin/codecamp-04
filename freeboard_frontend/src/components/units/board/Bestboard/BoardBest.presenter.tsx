@@ -3,7 +3,7 @@ import { Card } from "antd";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { useQuery } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
-import { Wrapper, Best_Title, BestCard } from "../Bestboard/BoardBest.styles";
+import { Best_Wrapper, Wrapper, Best_Title, BestCard } from "../Bestboard/BoardBest.styles";
 
 const FETCH_BOARDS_OF_THEBEST = gql`
   query {
@@ -32,22 +32,13 @@ export default function BoardBest() {
 
   return (
     <>
+    <Best_Wrapper>
       <Best_Title>
         {" "}
         <h1>BEST BOARD</h1>
       </Best_Title>
       <Wrapper>
-        {/* <BestCard
-          hoverable
-          cover={
-            <img
-              alt="example"
-              src="./images/펭수카톡.jpg"
-            />
-          }
-        >
-          <Meta title={title} description={getDate(createdAt)} />
-        </BestCard> */}
+        
 
         {data?.fetchBoardsOfTheBest.map((el, index) => (
           <BestCard
@@ -73,6 +64,7 @@ export default function BoardBest() {
           </BestCard>
         ))}
       </Wrapper>
+    </Best_Wrapper>
     </>
   );
 }

@@ -23,11 +23,8 @@ export interface IBoardListUIProps {
   setStartPage: Dispatch<SetStateAction<number>>;
   keyword: string;
   onChangeKeyword: (value: string) => void;
-  // isMatched: boolean; // 이거나중에 뺴자. 
-  onClickPrevPage: any; // 애니는 페이지 네이션인거같음.. 
-  lastPage: any;
-  onClickPage: any;
-  onClickNextPage: any 
+
+
 }
 
 export interface ITextTokenProps {

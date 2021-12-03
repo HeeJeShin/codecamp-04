@@ -2,11 +2,23 @@ import styled from "@emotion/styled"
 
 
 export const Wrapper =styled.div`
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     width: 700px;
     padding: 0 30px;
+    margin: 100px; */
+
+  /* width: 1200px; */
+  width: 700px;
+  border: 1px solid black;
+  margin-left: 350px;
+  padding: 80px 102px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+ 
 `;
 
 export const Title =styled.h1`

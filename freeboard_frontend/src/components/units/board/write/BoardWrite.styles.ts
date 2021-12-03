@@ -3,16 +3,16 @@ import { IEmotionProps } from "./BoardWrite.types";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
-  width: 1200px;
+  width: 100%;
   /* height: 1847px; */
   border: 1px solid black;
-  margin: 100px;
-  padding: 80px 102px;
+  /* margin: 100px; */
+  padding: 80px 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
-  box-shadow: 0px 0px 10px gray;
+  box-shadow: 0px 0px 10px #b8b8b0;
 `;
 
 export const Title = styled.div`
@@ -110,9 +110,10 @@ export const SearchButton = styled.button`
   width: 124px;
   height: 52px;
   margin-left: 16px;
-  background-color: black;
+  background-color: #b7c5c8;
   cursor: pointer;
   color: white;
+  border: none;
 `;
 
 export const InputWrapper_Youtobe = styled.div`
@@ -163,6 +164,7 @@ export const OptionWrapper = styled.div`
 
 export const RadioButton = styled.input`
   cursor: pointer;
+  
 `;
 
 export const RadioLabel = styled.label`
@@ -200,7 +202,7 @@ export const SubmitButton = styled.button`
   margin-left: 12px;
   margin-right: 12px;
   background-color: ${(props: IEmotionProps) =>
-    props.isActive === true ? "#FFD600" : "none"};
+    props.isActive === true ? "#b7c5c8" : "#edeae3"};
 
   :hover {
     cursor: ${(props: IEmotionProps) =>

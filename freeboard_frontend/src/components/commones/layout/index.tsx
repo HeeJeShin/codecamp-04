@@ -8,9 +8,8 @@ import Banner from "./banner/Banner.container";
 import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
-  padding-left:200px;
-  padding-right:200px;
-
+  padding-right: 50px;
+  padding-left: 50px;
 `;
 
 const Body = styled.div`
@@ -45,6 +44,7 @@ export default function Layout(props: ILayoutProps) {
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
   console.log(SidebarPage)
   return (
+    <>
     <Wrapper>
       {!isHiddenHeader && <Header />}
       <Banner />
@@ -53,8 +53,10 @@ export default function Layout(props: ILayoutProps) {
         {/* <SidebarPage/> */}
         <Body> {props.children} </Body>
       </BodyWrapper>
-      <Footer />
+      
     </Wrapper>
+      <Footer />
+    </>
    
   );
 }
