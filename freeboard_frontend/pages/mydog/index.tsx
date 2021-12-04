@@ -3,10 +3,18 @@ import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 300px;
+
+    box-sizing: border-box;
+  width: 100%;
+  /* height: 1847px; */
+  border: 1px solid black;
+  margin: 100px;
+  padding: 80px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  box-shadow: 0px 0px 10px #b8b8b0;
 `;
 
 const Title = styled.div`

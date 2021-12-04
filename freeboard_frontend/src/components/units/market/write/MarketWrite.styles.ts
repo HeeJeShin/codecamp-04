@@ -92,3 +92,7 @@ export const MyTag = styled.input`
   padding: 16px;
   border: 1px solid #bdbdbd;
 `;
+
+export const Wrapper_Mybutton = styled.div``;
+
+export const Mybutton = styled.div``;

@@ -1,6 +1,6 @@
 import *as S  from "./MarketWrite.styles"
-
-const MarketWriteUI = () => {
+//import Button01 from "../../../../commons/button/Button01"
+const MarketWriteUI = (props) => {
 
 
     return(
@@ -11,8 +11,8 @@ const MarketWriteUI = () => {
                 <S.MyUseditem 
                     type="text"
                     placeholder="상품명을 작성해주세요"
-                    //onChange={onChangeMyUseditem}
-                    //defaultValue={props.isEdit ? props.data?.fetchBoard.writer : ""}
+                    onChange={props.myInputs}
+                    defaultValue={props.data?.fetchUseditem?.name}
                 />
                 {/* <Error>{props.myWriterError}</Error> */}
             </S.Wrapper_MyUseditem>
@@ -21,6 +21,8 @@ const MarketWriteUI = () => {
                 <S.MyRemarks 
                     type="text"
                     placeholder="상품명을 작성해주세요"
+                    onChange={props.myInputs}
+                    defaultValue={props.data?.fetchUseditem?.remarks}
                 />
             </S.Wrapper_MyRemarks>
 
@@ -29,14 +31,18 @@ const MarketWriteUI = () => {
                 <S.MyContents
                     type="text"
                     placeholder="상품을 설명해주세요"
+                    onChange={props.myInputs}
+                    defaultValue={props.data?.fetchUseditem?.contents}
                 />
             </S.Wrapper_MyContents>
 
             <S.Wrapper_MyPrice>
                 <S.MyLabel>판매 가격</S.MyLabel>
                 <S.MyPrice 
-                    type = "text"
+                    type = "number"
                     placeholder = "판매 가격을 입력해주세요"
+                    onChange={props.myInputsPrice}
+                    defaultValue={Number(props.data?.fetchUseditem?.price)}
                 />
             </S.Wrapper_MyPrice>
 
@@ -47,6 +53,10 @@ const MarketWriteUI = () => {
                     placeholder = "#태그 #태그 # 태그"
                 />    
             </S.Wrapper_MyTags>
+            <S.Wrapper_Mybutton>
+                 {props.isEdit && <S.Mybutton onClick={props.itemUpdate}>수정하기</S.Mybutton>}
+                {!props.isEdit && <S.Mybutton onClick={props.itemUpload}>등록하기</S.Mybutton>}
+            </S.Wrapper_Mybutton>
 
         </S.Wrapper>
     )
