@@ -5,11 +5,12 @@ import {  MouseEvent, MouseEventHandler } from "react";
   
 export interface   IMarketListProps  {
   onClickMove?: (event: MouseEvent<HTMLDivElement>)
-   
+  onLoadMore: () => void; 
     
 }
 
 export interface IMarketListUIProps{
   onClick?: MouseEventHandler<HTMLButtonElement> 
   onClickMove?: (event: MouseEvent<HTMLDivElement>)
+  
 }

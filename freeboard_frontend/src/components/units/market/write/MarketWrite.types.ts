@@ -4,13 +4,16 @@ export interface IMarketWriteProps {
     onChangeMyInputs: any;
     onChangeMyInputsPrice: any;
     onClickItemUpload: any;
-    onClickItemUpdate: any;
+ 
+    
 }
 
 export interface IMarketWriteUIProps {
     isEdit: boolean;
     myInputs: any;
-    data? : any
+    data? : any;
+    
+
     
     myInputsPrice: any;
     itemUpdate: any;

@@ -1,32 +1,53 @@
 import { useRouter } from "next/router";
 import MarketListUI from "../../market/list/MarketList.presenter";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { FETCH_USED_ITEM } from "./MarketList.queries";
+import { FETCH_USED_ITEMS } from "./MarketList.queries";
 import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 
-const MarketList = () => {
+export default function MarketList() {
   const router = useRouter();
-  const { data, refetch } = useQuery<
-    Pick<IQuery, "fetchUseditem">,
+
+  //const [startPage] = useState(1);
+  const { data, fetchMore } = useQuery<
+    Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEM);
+  >(FETCH_USED_ITEMS);
+
+
 
   const onClickMove = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element) router.push(event.target.id);
   };
 
-  
+  function onLoadMore() {
+    if (!data) return;
 
-  return(
-    <MarketListUI 
-      onClickMove={onClickMove} 
+
+
+    fetchMore({
+      variables: {page: Math.ceil(data?.fetchUseditems.length / 5) + 1},
+      updateQuery: (prev, {fetchMoreResult}) => {
+        if (!fetchMoreResult?.fetchUseditems)
+        return {fetchUseditems: [...prev.fetchUseditems]} 
+        return {
+          fetchUseditems: [...prev.fetchUseditems, ...fetchMoreResult?.fetchUseditems],
+        }
+      }
+    })
+  }
+
+  return (
+    <MarketListUI
+      onClickMove={onClickMove}
       data={data}
+      loadMore={onLoadMore}
+      // fetchMore={fetchMore}
     />
-  ) 
-};
-
-export default MarketList;
+  );
+  }
+// export default MarketList;
+//IQueryFetchUseditemsArgs

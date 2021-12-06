@@ -15,17 +15,15 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-
 interface ExpandMoreProps extends IconButtonProps {
+  el: any;
   expand: boolean;
   title: string;
   subheader: Date;
-  Myseller: any; 
-  Myname: string;
-  MyContents: string;
-
-
-
+  seller: any;
+  name: string;
+  Contents: string;
+  createdAt: any;
 }
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
@@ -51,7 +49,7 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {props.Myseller} 
+            {props.el.seller}
           </Avatar>
         }
         action={
@@ -59,31 +57,35 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.Myname} //상품명
-        subheader={props.MycreatedAt} //날짜
+        title={props.el.name} //상품명
+        subheader={props.el.createdAt} //날짜
       />
       <CardMedia
         component="img"
         height="194"
-        image={props.img}
-        alt={props.alt}
+        image={`https://storage.googleapis.com/${props.el.images?.[0]}`}
+        alt={props.el.alt}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {props.MyRemarks} //한줄소개가격
-          {props.MyPrice}
+          {props.el.remarks} 
+          
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+           
+          {props.el.price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon  sx={{ color: red[500] }}/>
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
         <ExpandMore
           expand={expanded}
-          onClick={handleExpandClick}
+          onClick={handleExpandClick} //펼치는기능
           aria-expanded={expanded}
           aria-label="show more"
         >
@@ -93,7 +95,7 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>상품소개:</Typography>
-          <Typography paragraph>{props.MyContents}</Typography>
+          <Typography paragraph>{props.el.contents}</Typography>
           {/* <Typography paragraph>
             {props.hanjol}
           </Typography>

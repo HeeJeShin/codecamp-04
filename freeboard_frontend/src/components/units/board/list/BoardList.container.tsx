@@ -40,6 +40,7 @@ export default function BoardList() {
   function onChangeKeyword(value: string) {
     setKeyword(value);
   }
+  
 
   return (
     <BoardListUI
@@ -54,6 +55,7 @@ export default function BoardList() {
       setStartPage={setStartPage}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
+      
 
     />
   );

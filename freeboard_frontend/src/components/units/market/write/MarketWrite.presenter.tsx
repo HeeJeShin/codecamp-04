@@ -39,7 +39,7 @@ const MarketWriteUI = (props: IMarketWriteUIProps) => {
       <S.Wrapper_MyPrice>
         <S.MyLabel>판매 가격</S.MyLabel>
         <S.MyPrice
-          type="text"
+          type="number"
           placeholder="판매 가격을 입력해주세요"
           onChange={props.myInputsPrice}
           defaultValue={Number(props.data?.fetchUseditem?.price)}

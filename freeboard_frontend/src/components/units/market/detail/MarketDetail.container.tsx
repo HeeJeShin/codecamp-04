@@ -1,3 +1,5 @@
+import MarketDetailUI from "./MarketDetail.presenter";
+
 const MarketDetail = () => {
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {

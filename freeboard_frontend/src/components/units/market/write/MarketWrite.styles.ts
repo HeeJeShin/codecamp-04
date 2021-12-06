@@ -61,20 +61,20 @@ export const Wrapper_MyContents = styled.div`
 
 export const MyContents = styled.input`
   width: 100%;
-  height: 52px;
+  height: 320px;
   box-sizing: border-box;
   padding: 16px;
   border: 1px solid #bdbdbd;
 `;
 
-export const Wrapper_MyPrice = styled.input`
+export const Wrapper_MyPrice = styled.div`
   width: 100%;
   padding-top: 40px; ;
 `;
 
-export const MyPrice = styled.textarea`
+export const MyPrice = styled.input`
   width: 100%;
-  height: 320px;
+  height: 52px;
   box-sizing: border-box;
   padding: 16px;
   border: 1px solid #bdbdbd;
@@ -96,8 +96,7 @@ export const MyTag = styled.input`
 export const Wrapper_Mybutton = styled.div``;
 
 export const Mybutton = styled.div`
-  :hover{
+  :hover {
     cursor: pointer;
   }
-
 `;
