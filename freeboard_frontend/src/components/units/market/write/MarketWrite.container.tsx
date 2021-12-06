@@ -8,7 +8,7 @@ import {
   UPDATE_USEDITEM,
 } from "./MarketWrite.queries";
 
-const MarketWrite = () => {
+  const MarketWrite = (props: any) => {
   const router = useRouter();
   const [myInputs, setMyInputs] = useState({
     name: "",
@@ -30,7 +30,7 @@ const MarketWrite = () => {
       price: myInputs.price,
       [event.target.name]: event.target.value,
     });
-
+  }
     const onChangeMyInputsPrice = (event) => {
         setMyInputs({
           name: myInputs.name,
@@ -87,7 +87,8 @@ const MarketWrite = () => {
         myInputs={onChangeMyInputs}
         myInputsPrice={onChangeMyInputsPrice}
         itemUpdate={onClickItemUpdate}
-    />;
+    />
   )
-};
-export default MarketWrite;
+  
+}
+export default MarketWrite

@@ -67,7 +67,7 @@ export const MyContents = styled.input`
   border: 1px solid #bdbdbd;
 `;
 
-export const Wrapper_MyPrice = styled.div`
+export const Wrapper_MyPrice = styled.input`
   width: 100%;
   padding-top: 40px; ;
 `;
@@ -95,4 +95,9 @@ export const MyTag = styled.input`
 
 export const Wrapper_Mybutton = styled.div``;
 
-export const Mybutton = styled.div``;
+export const Mybutton = styled.div`
+  :hover{
+    cursor: pointer;
+  }
+
+`;
