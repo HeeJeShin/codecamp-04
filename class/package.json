@@ -37,6 +37,7 @@
     "@graphql-codegen/cli": "^2.2.2",
     "@graphql-codegen/typescript": "^2.3.1",
     "@types/apollo-upload-client": "^14.1.0",
+    "@types/dompurify": "^2.3.1",
     "@types/lodash": "^4.14.177",
     "@types/react-infinite-scroller": "^1.2.2",
     "@types/uuid": "^8.3.3",

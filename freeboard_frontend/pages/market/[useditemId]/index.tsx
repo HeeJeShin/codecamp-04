@@ -4,3 +4,4 @@ import MarketDetail from "../../../src/components/units/market/detail/MarketDeta
 const MarketDetailPage = () => {
     return<MarketDetail />
 }
+export default MarketDetailPage

@@ -41,4 +41,4 @@ export default function Basket(){
       
 
     return<BasketUI onClickBasket={onClickBasket} data={data} onClickLogin={onClickLogin}/>
-}
+}``

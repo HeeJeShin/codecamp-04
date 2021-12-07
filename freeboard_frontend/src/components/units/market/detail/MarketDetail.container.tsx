@@ -1,20 +1,23 @@
+import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import MarketDetailUI from "./MarketDetail.presenter";
+import { FETCH_USED_ITEM } from "./MarketDetail.queries";
 
 const MarketDetail = () => {
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: {
-      useditemId: router.query.myId,
+      useditemId: router.query.marketId,
     },
   });
 
   console.log("asdf", data?.fetchUseditem);
 
   const onClickUpdate = () => {
-    router.push(`/items/${router.query.myId}/edit`);
+    router.push(`/market/${router.query.marketId}/edit`);
   };
   const onClickList = () => {
-    router.push(`/items/list`);
+    router.push(`/market`);
   };
 
   return (

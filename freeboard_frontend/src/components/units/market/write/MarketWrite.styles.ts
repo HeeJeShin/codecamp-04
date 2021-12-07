@@ -93,10 +93,32 @@ export const MyTag = styled.input`
   border: 1px solid #bdbdbd;
 `;
 
+export const Wrapper_MyImage = styled.div``;
+
+export const MyImage = styled.input``;
+
+export const Wrapper_MyOption = styled.div``;
+
+export const MyRadio_Buttoon = styled.input``;
+
+export const MyYoutube = styled.label``;
+
+
+// export const MyRadio = styled.option``;
+
 export const Wrapper_Mybutton = styled.div``;
 
-export const Mybutton = styled.div`
+export const Mybutton = styled.button`
+  width: 50px;
   :hover {
     cursor: pointer;
   }
 `;
+
+// <OptionWrapper>
+// <Label>메인설정</Label>
+// <RadioButton type="radio" id="youtube" name="radio-button" />
+// <RadioLabel htmlFor="youtube">유튜브</RadioLabel>
+// <RadioButton type="radio" id="image" name="radio-button" />
+// <RadioLabel htmlFor="image">사진</RadioLabel>
+// </OptionWrapper>

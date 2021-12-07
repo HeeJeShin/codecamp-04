@@ -5,4 +5,4 @@ const MarketNewPage = () => {
     return<MarketWrite />
 
 }
-export default MarketNewPage
+export default  withAuth(MarketNewPage)

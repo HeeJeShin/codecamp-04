@@ -1,22 +1,19 @@
-import { IQuery } from "../../../../commons/types/generated/types";
+
+import { ChangeEvent } from "react";
 
 export interface IMarketWriteProps {
-    onChangeMyInputs: any;
-    onChangeMyInputsPrice: any;
-    onClickItemUpload: any;
+    isEdit: boolean;
  
     
 }
 
 export interface IMarketWriteUIProps {
+    data: any;
     isEdit: boolean;
-    myInputs: any;
-    data? : any;
-    
-
-    
-    myInputsPrice: any;
-    itemUpdate: any;
-    itemUpload: any;
-
+    itemUpload: () => void;
+    myInputs: (event: ChangeEvent<HTMLInputElement>) => void;
+    myInputsPrice: (event: ChangeEvent<HTMLInputElement>) => void;
+    itemUpdate: () => void;
+    //uploadImage: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChangeUploadImage: any;
 }

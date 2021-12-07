@@ -1,94 +1,167 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import MarketWriteUI from "./MarketWrite.presenter";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
-  CREATE_USED_ITEM,
-  FETCH_USED_ITEM,
-  UPDATE_USEDITEM,
-} from "./MarketWrite.queries";
+  IMutation,
+  IMutationCreateUseditemArgs,
+} from "../../../../commons/types/generated/types";
+import { UPDATE_USEDITEM } from "../list/MarketList.queries";
+import MarketWriteUI from "./MarketWrite.presenter";
+import { CREATE_USED_ITEM } from "./MarketWrite.queries";
 
-  const MarketWrite = (props: any) => {
+const MarketWrite = (props: any) => {
   const router = useRouter();
-  const [myInputs, setMyInputs] = useState({
-    name: "",
-    remarks: "",
-    contents: "",
-    price: 0,
-  });
-  const [createUseditem] = useMutation(CREATE_USED_ITEM);
-  const [updateItem] = useMutation(UPDATE_USEDITEM);
-  const { data } = useQuery(FETCH_USED_ITEM, {
-    variables: { useditemId: router.query.myId },
-  });
 
-  const onChangeMyInputs = (event) => {
-    setMyInputs({
-      name: myInputs.name,
-      remarks: myInputs.remarks,
-      contents: myInputs.contents,
-      price: myInputs.price,
-      [event.target.name]: event.target.value,
-    });
+  const [myName, setMyName] = useState("");
+  const [myRemarks, setMyRemarks] = useState("");
+  const [myContents, setMyContents] = useState("");
+  const [myPrice, setMyPrice] = useState("");
+
+  const [isActive, setIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [images, setImages] = useState([""]);
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+
+  const [updateUseditem] = useMutation(UPDATE_USEDITEM);
+  const [createUseditem] = useMutation<
+    Pick<IMutation, "createUseditem">,
+    IMutationCreateUseditemArgs
+  >(CREATE_USED_ITEM);
+  // const [updateItem] = useMutation(UPDATE_USEDITEM);
+  // const [uploadFile] = useMutation(UPLOAD_FILE);
+  // const { data } = useQuery(FETCH_USED_ITEM, {
+  //   variables: { useditemId: router.query.marketId },
+  // });
+
+  function onChangeMyName(event:ChangeEvent<HTMLInputElement>) {
+    setMyName(event.target.value);
+
+    if (
+      event?.target.value !== "" &&
+      myName !== "" &&
+      myRemarks !== "" &&
+      myContents !== "" &&
+      myPrice !== ""
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   }
-    const onChangeMyInputsPrice = (event) => {
-        setMyInputs({
-          name: myInputs.name,
-          remarks: myInputs.remarks,
-          contents: myInputs.contents,
-          price: Number(event.target.value),
-        });
-      };
-    
-      const onClickItemUpload = async () => {
-        console.log(myInputs);
-        try {
-          const result = await createUseditem({
-            variables: {
-              createUseditemInput: { ...myInputs },
-            },
-          });
-          console.log(result.data);
-          router.push(`/items/${result.data.createUseditem._id}`);
-        } catch (error) {
-          if (error instanceof Error) console.log(error.message);
-        }
-      };
-    
-      const onClickItemUpdate = async () => {
-        try {
-          const updateTemp = {
-            updateUseditemInput: {},
-            useditemId: router.query.myId,
-          };
-          if (myInputs.name !== "")
-            updateTemp.updateUseditemInput.name = myInputs.name;
-          if (myInputs.remarks !== "")
-            updateTemp.updateUseditemInput.remarks = myInputs.remarks;
-          if (myInputs.contents !== "")
-            updateTemp.updateUseditemInput.contents = myInputs.contents;
-          if (myInputs.price !== 0)
-            updateTemp.updateUseditemInput.price = myInputs.price;
-    
-          const result = await updateItem({
-            variables: updateTemp,
-          });
-          router.push(`/items/${router.query.myId}`);
-        } catch (error) {
-          if (error instanceof Error) alert(error.message);
-        }
-      };
-      console.log("data!!", data?.fetchUseditem);
+
+  function onChangeMyRemarks(event: ChangeEvent<HTMLInputElement>) {
+    setMyRemarks(event.target.value);
+
+    if (
+      event.target.value !== "" &&
+      myName !== "" &&
+      myRemarks !== "" &&
+      myContents !== "" &&
+      myPrice !== ""
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }
+
+  function onChangeMyContents(event: ChangeEvent<HTMLInputElement>) {
+    setMyContents(event.target.value);
+
+    if (
+      event.target.value !== "" &&
+      myName !== "" &&
+      myRemarks !== "" &&
+      myContents !== "" &&
+      myPrice !== ""
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }
+
+  function onChangeMyPrice(event: ChangeEvent<HTMLInputElement>) {
+    setMyPrice(event.target.value);
+
+    if (
+      event.target.value !== "" &&
+      myName !== "" &&
+      myRemarks !== "" &&
+      myContents !== "" &&
+      myPrice !== ""
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }
+
+  function onChangeFileUrls(fileUrl: string, index: number) {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  }
+
+  useEffect(() => {
+    if (props.data?.fetchUseditem.images?.length) {
+      setFileUrls([...props.data?.fetchUseditem.images]);
+    }
+  }, [props.data]);
+
+  async function onClickSubmit(){
+    alert('test')
+    const result = await createUseditem({
+      variables:{
+        createUseditemInput:{
+          name:myName,
+          remarks: myRemarks,
+          contents: myContents,
+          price: Number(myPrice),
+          images: fileUrls,
+        },
+      },
+    });
+    router.push(`/market/${result.data?.createUseditem._id}`)
+    console.log(result.data?.name)
+  }
+
+  async function onClickUpdate() {
+    const myUpdateUseditemInput = {
+      name: myName,
+      remarks: myRemarks,
+      contents: myContents,
+      price: Number(myPrice),
+      images: fileUrls,
+    };
+
+    try {
+      await updateUseditem({
+        variables: {
+          useditemId: router.query.useditemId,
+
+          updateUseditemInput: myUpdateUseditemInput,
+        },
+      });
+      router.push(`/market/${router.query.useditemId}`);
+    } catch (error) {
+      alert("찬미야!!!!!");
+  }
+  }
   return (
-    <MarketWriteUI 
-        data={data}
-        isEdit={props.isEdit}
-        itemUpload={onClickItemUpload}
-        myInputs={onChangeMyInputs}
-        myInputsPrice={onChangeMyInputsPrice}
-        itemUpdate={onClickItemUpdate}
+    <MarketWriteUI
+    onChangeMyName={onChangeMyName}
+    onChangeMyRemarks={onChangeMyRemarks}
+    onChangeMyContents={onChangeMyContents}
+    onChangeMyPrice={onChangeMyPrice}
+    onChangeFileUrls={onChangeFileUrls}
+    fileUrls={fileUrls}
+    onClickSubmit={onClickSubmit}
+    data={props.data}
+    isEdit={props.isEdit}
+    isOpen={isOpen}
+    onClickUpdate={onClickUpdate}
     />
-  )
-  
-}
+  );
+};
 export default MarketWrite
