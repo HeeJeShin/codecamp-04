@@ -14,7 +14,7 @@ export default function BasketUI(props: any){
             <button onClick={props.onClickBasket(el)}>장바구니 담기</button>
             </div>
         ))}
-        {/* <button onClick={onClickLogin}>로그인하기</button> */}
+        <button onClick={props.onClickLogin}>로그인하기</button>
         </> 
     )
 }
