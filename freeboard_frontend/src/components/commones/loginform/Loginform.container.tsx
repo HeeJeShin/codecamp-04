@@ -27,18 +27,7 @@ export default function LoginForm() {
   function onChangeMyPassword(event: ChangeEvent<HTMLElement>) {
     setMyPassword(event.target.value);
   }
-  // async function onClickLogin() {
-  //   const result = await loginUser({
-  //     variables: {
-  //       email: myEmail,
-  //       password: myPassword,
-  //     },
-  //   });
-  //   setAccessToken?.(result.data?.loginUser.accessToken || "");
-  //   console.log("ggg")
-  //   router.push("/boards");
 
-  // }
 
   const handleLogin = async () => {
     const result = await loginUser({

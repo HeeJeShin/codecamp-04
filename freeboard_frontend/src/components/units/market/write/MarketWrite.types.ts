@@ -11,9 +11,20 @@ export interface IMarketWriteUIProps {
     data: any;
     isEdit: boolean;
     itemUpload: () => void;
-    myInputs: (event: ChangeEvent<HTMLInputElement>) => void;
-    myInputsPrice: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChangeMyName: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChangeMyRemarks: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChangeMyContents: (event: ChangeEvent<HTMLInputElement>) => void;
+   
+    onChangeMyPrice: (event: ChangeEvent<HTMLInputElement>) => void;
     itemUpdate: () => void;
     //uploadImage: (event: ChangeEvent<HTMLInputElement>) => void;
     onChangeUploadImage: any;
+    onChangeFileUrls: any;
+    fileUrls: any;
+
+    onClickSubmit: any;
+    isOpen: any;
+    onClickUpdate: any;
+    handleChange: any;
+
 }

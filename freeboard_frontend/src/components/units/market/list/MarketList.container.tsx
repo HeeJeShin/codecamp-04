@@ -26,6 +26,7 @@ export default function MarketList() {
   function onLoadMore() {
     if (!data) return;
 
+ 
 
 
     fetchMore({
@@ -40,11 +41,16 @@ export default function MarketList() {
     })
   }
 
+  function onClickMoveToMarketDetail(event: MouseEvent<HTMLDivElement>){
+    event.target instanceof Element &&
+      router.push(`/market/$(event.currentarget.id)`);
+  }  
   return (
     <MarketListUI
       onClickMove={onClickMove}
       data={data}
       loadMore={onLoadMore}
+      //onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       // fetchMore={fetchMore}
     />
   );

@@ -33,7 +33,7 @@ const MarketWrite = (props: any) => {
   //   variables: { useditemId: router.query.marketId },
   // });
 
-  function onChangeMyName(event:ChangeEvent<HTMLInputElement>) {
+  function onChangeMyName(event: ChangeEvent<HTMLInputElement>) {
     setMyName(event.target.value);
 
     if (
@@ -109,12 +109,12 @@ const MarketWrite = (props: any) => {
     }
   }, [props.data]);
 
-  async function onClickSubmit(){
-    alert('test')
+  async function onClickSubmit() {
+    alert("test");
     const result = await createUseditem({
-      variables:{
-        createUseditemInput:{
-          name:myName,
+      variables: {
+        createUseditemInput: {
+          name: myName,
           remarks: myRemarks,
           contents: myContents,
           price: Number(myPrice),
@@ -122,8 +122,8 @@ const MarketWrite = (props: any) => {
         },
       },
     });
-    router.push(`/market/${result.data?.createUseditem._id}`)
-    console.log(result.data?.name)
+    router.push(`/market/${result.data?.createUseditem._id}`);
+    console.log(result.data?.name);
   }
 
   async function onClickUpdate() {
@@ -145,23 +145,24 @@ const MarketWrite = (props: any) => {
       });
       router.push(`/market/${router.query.useditemId}`);
     } catch (error) {
-      alert("찬미야!!!!!");
+      alert("error!!!!!");
+    }
   }
-  }
+
   return (
     <MarketWriteUI
-    onChangeMyName={onChangeMyName}
-    onChangeMyRemarks={onChangeMyRemarks}
-    onChangeMyContents={onChangeMyContents}
-    onChangeMyPrice={onChangeMyPrice}
-    onChangeFileUrls={onChangeFileUrls}
-    fileUrls={fileUrls}
-    onClickSubmit={onClickSubmit}
-    data={props.data}
-    isEdit={props.isEdit}
-    isOpen={isOpen}
-    onClickUpdate={onClickUpdate}
+      onChangeMyName={onChangeMyName}
+      onChangeMyRemarks={onChangeMyRemarks}
+      onChangeMyContents={onChangeMyContents}
+      onChangeMyPrice={onChangeMyPrice}
+      onChangeFileUrls={onChangeFileUrls}
+      fileUrls={fileUrls}
+      onClickSubmit={onClickSubmit}
+      data={props.data}
+      isEdit={props.isEdit}
+      isOpen={isOpen}
+      onClickUpdate={onClickUpdate}
     />
   );
 };
-export default MarketWrite
+export default MarketWrite;

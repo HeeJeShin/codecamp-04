@@ -14,7 +14,7 @@ export default function PaymentPage() {
         buyer_tel: "010-4242-4242",
         buyer_addr: "서울특별시 강남구 신사동",
         buyer_postcode: "01181"
-        m_redirect_url: "", //모바일 결제후 리다이렉트될 주소!!
+        m_redrect_url: "", //모바일 결제후 리다이렉트될 주소!!
       }, 
       (rsp) => { // callback
        if(rsp.success){

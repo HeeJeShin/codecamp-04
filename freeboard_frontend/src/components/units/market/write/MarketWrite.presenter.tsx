@@ -3,8 +3,25 @@ import { IMarketWriteUIProps } from "./MarketWrite.types";
 //import Button01 from "../../../../commons/button/Button01"
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commones/uploads/01/Uploads01.container";
+import "react-quill/dist/quill.snow.css";
+import dynamic from 'next/dynamic'
+import { triggerFocus } from "antd/lib/input/Input";
+import { useForm } from "react-hook-form";
+
+const ReactQuill = dynamic(() => import("react-quill"), {ssr: false})
 
 const MarketWriteUI = (props: IMarketWriteUIProps) => {
+  const{handelSubmit, register, setValue} = useForm({
+    mode: "onChange"
+  })
+
+  function handleChange(value: string) {
+    console.log(value);
+    setValue("contents", value === "<p><br></p>" ? "" : value)
+
+    triggerFocus("contents")
+
+  }
   return (
     <S.Wrapper>
       <S.Title>상품{props.isEdit ? "수정하기" : "등록하기"}</S.Title>
@@ -32,13 +49,16 @@ const MarketWriteUI = (props: IMarketWriteUIProps) => {
 
       <S.Wrapper_MyContents>
         <S.MyLabel>상품설명</S.MyLabel>
-        <S.MyContents
+        {process.browser && <ReactQuill  onChange={handleChange} />} 
+        {/* {process.browser && <S.MyContents  onChange={handleChange} />}  */}
+
+        {/* <S.MyContents
           type="text"
           placeholder="상품을 설명해주세요"
           onChange={props.onChangeMyContents}
           defaultValue={props.data?.fetchUseditem?.contents}
           
-        />
+        /> */}
       </S.Wrapper_MyContents>
 
       <S.Wrapper_MyPrice>

@@ -60,21 +60,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
       ))}
       <TableBottom />
       <Footer>
-        {/* <MyPrev onClick={props.onClickPrevPage}>이전페이지</MyPrev>
-        {new Array(10).fill(1).map(
-          (_, index) =>
-            props.startPage + index <= props.lastPage && (
-              <span
-                key={props.startPage + index}
-                onClick={props.onClickPage}
-                id={String(index)}
-                style={{ margin: "10px", cursor: "pointer" }}
-              >
-                {props.startPage + index}
-              </span>
-            )
-        )}
-        <MyNext onClick={props.onClickNextPage}>다음페이지</MyNext> */}
+       
       <Paginations01
           refetch={props.refetch}
           count={props.count}

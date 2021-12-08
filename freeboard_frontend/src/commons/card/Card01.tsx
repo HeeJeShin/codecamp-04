@@ -14,6 +14,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { MouseEvent } from "react";
+import router, { useRouter } from "next/router";
+import DOMPurify from "dompurify";
 
 interface ExpandMoreProps extends IconButtonProps {
   el: any;
@@ -24,9 +27,11 @@ interface ExpandMoreProps extends IconButtonProps {
   name: string;
   Contents: string;
   createdAt: any;
+  onClickMoveToMarketDetail: MouseEvent<HTMLDivElement>;
 }
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
+  const router = useRouter();
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -68,17 +73,15 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {props.el.remarks} 
-          
+          {props.el.remarks}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-           
           {props.el.price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon  sx={{ color: red[500] }}/>
+          <FavoriteIcon sx={{ color: red[500] }} />
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
@@ -93,8 +96,25 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent
+          style={{ height: "100px", overflow: "scroll", overflowX: "hidden" }}
+        >
           <Typography paragraph>상품소개:</Typography>
+
+          {/* {process.browser ? (
+            <Typography
+              paragraph
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(String(data?.fetchBoard.contents)),
+              }}
+            >
+              {" "}
+              {props.el.contents}
+            </Typography>
+          ) : (
+            <Typography paragraph />
+          )} */}
+
           <Typography paragraph>{props.el.contents}</Typography>
           {/* <Typography paragraph>
             {props.hanjol}

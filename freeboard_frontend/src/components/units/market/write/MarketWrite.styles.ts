@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -59,13 +61,13 @@ export const Wrapper_MyContents = styled.div`
   padding-top: 40px; ;
 `;
 
-export const MyContents = styled.input`
-  width: 100%;
-  height: 320px;
-  box-sizing: border-box;
-  padding: 16px;
-  border: 1px solid #bdbdbd;
-`;
+// export const MyContents = styled(ReactQuill)`
+//   width: 100%;
+//   height: 320px;
+//   box-sizing: border-box;
+//   padding: 16px;
+//   border: 1px solid #bdbdbd;
+// `;
 
 export const Wrapper_MyPrice = styled.div`
   width: 100%;
