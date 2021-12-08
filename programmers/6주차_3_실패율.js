@@ -47,3 +47,36 @@
 
 // [4,1,2,3]
 
+function solution(N, stages) {
+    stages.sort( (a, b) => a - b );
+    
+    const clearArr = [];
+    for( let i = 1; i <= N; i++ ) {
+        clearArr.push({ 
+            'stage' : i, // 현재 스테이지의 번호
+            'clear' : 0, // 클리어 하지 못한 유저의 수 
+            'fail' : 0, // 총 실패율을 저장
+        })
+    }
+    
+    let users = stages.length;
+    for( let i = 0; i < stages.length; i++ ) {
+        if( clearArr[ stages[i] - 1 ] ) {
+            clearArr[ stages[i] - 1 ].clear += 1;
+            
+            // 현재 스테이지와 다음 스테이지의 번호가 동일하지 않을 때
+            if( stages[i] !== stages[i + 1] ) {
+                const fail = clearArr[ stages[i] - 1 ].clear / users;
+                users = users - clearArr[ stages[i] - 1 ].clear;
+                
+                clearArr[ stages[i] - 1 ].fail = fail;
+            }
+        }
+    }
+    
+    const answer = clearArr.sort( (a, b) => {
+        return b.fail - a.fail
+    }).map( el => el.stage )
+    
+    return answer;
+}
