@@ -27,11 +27,13 @@ const MarketWrite = (props: any) => {
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
   >(CREATE_USED_ITEM);
-  // const [updateItem] = useMutation(UPDATE_USEDITEM);
-  // const [uploadFile] = useMutation(UPLOAD_FILE);
-  // const { data } = useQuery(FETCH_USED_ITEM, {
-  //   variables: { useditemId: router.query.marketId },
-  // });
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
+  );
+
+  const { data } = useQuery(FETCH_USED_ITEM, {
+    variables: { useditemId: router.query.marketId },
+  });
 
   function onChangeMyName(event: ChangeEvent<HTMLInputElement>) {
     setMyName(event.target.value);
@@ -149,6 +151,22 @@ const MarketWrite = (props: any) => {
     }
   }
 
+  async function onClickMoveBuy() {
+    try {
+      const result = await createPointTransactionOfBuyingAndSelling({
+        variables: {
+          useritemId: router.query.useditemId,
+        },
+      });
+    } catch (error) {
+      alert("구매가 완료되었습니다.");
+      console.log(result)
+    } catch(error){
+      alert(error.message)
+    }
+  }
+  console.log(data)
+
   return (
     <MarketWriteUI
       onChangeMyName={onChangeMyName}
@@ -162,6 +180,7 @@ const MarketWrite = (props: any) => {
       isEdit={props.isEdit}
       isOpen={isOpen}
       onClickUpdate={onClickUpdate}
+      onClickMoveBuy={onClickMoveBuy}
     />
   );
 };

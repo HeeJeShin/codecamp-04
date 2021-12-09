@@ -11,3 +11,11 @@ export const FETCH_USED_ITEM = gql`
     }
   }
 `;
+
+export const CREATE_POINT_TRANSACTIONS_OF_BUYING_ANND_SELLING = gql`
+  query createPointTransactionOfBuyingAndSelling(useritemId: ID!){
+    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId){
+      _id
+    }
+  }
+`;

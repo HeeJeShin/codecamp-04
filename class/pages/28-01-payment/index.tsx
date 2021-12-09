@@ -1,5 +1,10 @@
 import Head from "next/head";
 
+declare const window: typeof globalThis & {
+  IMP: any;
+}
+
+
 export default function PaymentPage() {
   function onClickPayment() {
     const IMP = window.IMP; // 생략 가능
@@ -13,7 +18,7 @@ export default function PaymentPage() {
         buyer_name: "홍길동",
         buyer_tel: "010-4242-4242",
         buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181"
+        buyer_postcode: "01181",
         m_redrect_url: "", //모바일 결제후 리다이렉트될 주소!!
       }, 
       (rsp) => { // callback

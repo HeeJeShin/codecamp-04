@@ -17,8 +17,6 @@ export default function MarketList() {
     IQueryFetchUseditemsArgs
   >(FETCH_USED_ITEMS);
 
-
-
   const onClickMove = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element) router.push(event.target.id);
   };
@@ -26,34 +24,33 @@ export default function MarketList() {
   function onLoadMore() {
     if (!data) return;
 
- 
-
-
     fetchMore({
-      variables: {page: Math.ceil(data?.fetchUseditems.length / 5) + 1},
-      updateQuery: (prev, {fetchMoreResult}) => {
+      variables: { page: Math.ceil(data?.fetchUseditems.length / 5) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditems)
-        return {fetchUseditems: [...prev.fetchUseditems]} 
+          return { fetchUseditems: [...prev.fetchUseditems] };
         return {
-          fetchUseditems: [...prev.fetchUseditems, ...fetchMoreResult?.fetchUseditems],
-        }
-      }
-    })
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult?.fetchUseditems,
+          ],
+        };
+      },
+    });
   }
 
-  function onClickMoveToMarketDetail(event: MouseEvent<HTMLDivElement>){
+  function onClickMoveToMarketDetail(event: MouseEvent<HTMLDivElement>) {
+    alert(event.target.id)
     event.target instanceof Element &&
-      router.push(`/market/$(event.currentarget.id)`);
-  }  
+      router.push(`/market/${event.target.id}`);
+  }
   return (
     <MarketListUI
       onClickMove={onClickMove}
       data={data}
       loadMore={onLoadMore}
-      //onClickMoveToMarketDetail={onClickMoveToMarketDetail}
+      onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       // fetchMore={fetchMore}
     />
   );
-  }
-// export default MarketList;
-//IQueryFetchUseditemsArgs
+}

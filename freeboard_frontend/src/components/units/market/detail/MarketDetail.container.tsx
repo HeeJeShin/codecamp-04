@@ -7,14 +7,14 @@ const MarketDetail = () => {
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: {
-      useditemId: router.query.marketId,
+      useditemId: router.query.useditemId,
     },
   });
 
   console.log("asdf", data?.fetchUseditem);
 
   const onClickUpdate = () => {
-    router.push(`/market/${router.query.marketId}/edit`);
+    router.push(`/market/${router.query.useditemId}`);
   };
   const onClickList = () => {
     router.push(`/market`);

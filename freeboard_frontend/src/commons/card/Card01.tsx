@@ -50,7 +50,7 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 500 }} >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -59,24 +59,29 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
         }
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            <MoreVertIcon onClick={props.onClick} />
           </IconButton>
         }
-        title={props.el.name} //상품명
+        title={props.el.seller} 
         subheader={props.el.createdAt} //날짜
       />
       <CardMedia
         component="img"
         height="194"
+        
         image={`https://storage.googleapis.com/${props.el.images?.[0]}`}
         alt={props.el.alt}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {props.el.remarks}
+      <Typography variant="body2" color="text.secondary">
+          {props.el.name}   
+          {/* //상품명 */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.el.price}
+          _________________________________
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {props.el.remarks}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -92,6 +97,7 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
           aria-expanded={expanded}
           aria-label="show more"
         >
+          {props.el.price}
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>

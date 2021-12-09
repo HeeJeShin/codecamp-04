@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+// import KakaoMapPage from "../../../../commons/map/KakaoMap";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -61,13 +62,13 @@ export const Wrapper_MyContents = styled.div`
   padding-top: 40px; ;
 `;
 
-// export const MyContents = styled(ReactQuill)`
-//   width: 100%;
-//   height: 320px;
-//   box-sizing: border-box;
-//   padding: 16px;
-//   border: 1px solid #bdbdbd;
-// `;
+export const MyContents = styled(ReactQuill)`
+  /* width: 100%;
+  height: 320px;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #bdbdbd; */
+`;
 
 export const Wrapper_MyPrice = styled.div`
   width: 100%;
@@ -81,6 +82,18 @@ export const MyPrice = styled.input`
   padding: 16px;
   border: 1px solid #bdbdbd;
 `;
+
+export const Wrapper_MyLocation = styled.div``;
+
+export const Wrapper_MyMap = styled.div``;
+
+// export const MyMap =styled(KakaoMapPage)`
+
+// `;
+
+export const Wrapper_MyAddress = styled.div``;
+
+export const MyAddress = styled.div``;
 
 export const Wrapper_MyTags = styled.div`
   width: 100%;
@@ -104,7 +117,6 @@ export const Wrapper_MyOption = styled.div``;
 export const MyRadio_Buttoon = styled.input``;
 
 export const MyYoutube = styled.label``;
-
 
 // export const MyRadio = styled.option``;
 

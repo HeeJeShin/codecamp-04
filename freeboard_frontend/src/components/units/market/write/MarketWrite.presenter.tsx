@@ -4,23 +4,23 @@ import { IMarketWriteUIProps } from "./MarketWrite.types";
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commones/uploads/01/Uploads01.container";
 import "react-quill/dist/quill.snow.css";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import { triggerFocus } from "antd/lib/input/Input";
 import { useForm } from "react-hook-form";
+import KakaoMapPage from "../../../../commons/map/KakaoMap";
 
-const ReactQuill = dynamic(() => import("react-quill"), {ssr: false})
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const MarketWriteUI = (props: IMarketWriteUIProps) => {
-  const{handelSubmit, register, setValue} = useForm({
-    mode: "onChange"
-  })
+const MarketWriteUI = (props) => {
+  const { handelSubmit, register, setValue, trigger } = useForm({
+    mode: "onChange",
+  });
 
   function handleChange(value: string) {
     console.log(value);
-    setValue("contents", value === "<p><br></p>" ? "" : value)
+    setValue("contents", value === "<p><br></p>" ? "" : value);
 
-    triggerFocus("contents")
-
+    trigger("contents");
   }
   return (
     <S.Wrapper>
@@ -32,7 +32,6 @@ const MarketWriteUI = (props: IMarketWriteUIProps) => {
           placeholder="상품명을 작성해주세요"
           onChange={props.onChangeMyName}
           defaultValue={props.data?.fetchUseditem?.name}
-          
         />
         {/* <Error>{props.myWriterError}</Error> */}
       </S.Wrapper_MyUseditem>
@@ -42,23 +41,23 @@ const MarketWriteUI = (props: IMarketWriteUIProps) => {
           type="text"
           placeholder="상품을 간략하게 설명해주세요"
           onChange={props.onChangeMyRemarks}
-            defaultValue={props.data?.fetchUseditem?.remarks}
-          
+          defaultValue={props.data?.fetchUseditem?.remarks}
         />
       </S.Wrapper_MyRemarks>
 
       <S.Wrapper_MyContents>
         <S.MyLabel>상품설명</S.MyLabel>
-        {process.browser && <ReactQuill  onChange={handleChange} />} 
+        {process.browser && (
+          <S.MyContents onChange={handleChange} value="aaa" />
+        )}
+        {/* {process.browser && <ReactQuill onChange={handleChange} />} */}
         {/* {process.browser && <S.MyContents  onChange={handleChange} />}  */}
 
-        {/* <S.MyContents
-          type="text"
+        {/* <textarea
           placeholder="상품을 설명해주세요"
           onChange={props.onChangeMyContents}
           defaultValue={props.data?.fetchUseditem?.contents}
-          
-        /> */}
+        ></textarea> */}
       </S.Wrapper_MyContents>
 
       <S.Wrapper_MyPrice>
@@ -81,17 +80,31 @@ const MarketWriteUI = (props: IMarketWriteUIProps) => {
           
         />
       </S.Wrapper_MyTags> */}
+
+      <S.Wrapper_MyLocation>
+        <S.Wrapper_MyMap>
+          {/* <S.MyMap id="map">
+
+            </S.MyMap> */}
+          <KakaoMapPage />
+        </S.Wrapper_MyMap>
+
+        <S.Wrapper_MyAddress>
+          <S.MyAddress></S.MyAddress>
+        </S.Wrapper_MyAddress>
+      </S.Wrapper_MyLocation>
+
       <S.Wrapper_MyImage>
         <S.MyLabel>사진</S.MyLabel>
         {props.fileUrls.map((el, index) => (
-            <Uploads01
-              key={uuidv4()}
-              index={index}
-              fileUrl={el}
-              defaultFileUrl={props.data?.fetchUseditem.images?.[index]}
-              onChangeFileUrls={props.onChangeFileUrls}
-            />
-          ))}
+          <Uploads01
+            key={uuidv4()}
+            index={index}
+            fileUrl={el}
+            defaultFileUrl={props.data?.fetchUseditem.images?.[index]}
+            onChangeFileUrls={props.onChangeFileUrls}
+          />
+        ))}
       </S.Wrapper_MyImage>
 
       <S.Wrapper_MyOption>

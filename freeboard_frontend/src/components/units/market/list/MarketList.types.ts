@@ -9,12 +9,18 @@ export interface   IMarketListProps  {
     
 }
 
-export interface IMarketListUIProps{
-  onClick?: MouseEventHandler<HTMLButtonElement> 
-  onClickMove?: (event: MouseEvent<HTMLDivElement>)
-  onClickMoveToMarketDetail: (event: MouseEvent<HTMLDivElement>)
-
-  
-  
+export interface ExpandMoreProps {
+  //onClickMoveToMarkDetail: MouseEventHandler<HTMLDivElement> | undefined;
+  data: any;
+  onClickMove: any;
+  loadMore: () => void;
+  el: any;
+  expand: boolean;
+  title: string;
+  subheader: Date;
+  seller: any;
+  name: string;
+  Contents: string;
+  createdAt: any;
+  onClickMoveToMarketDetail: any;
 }
-

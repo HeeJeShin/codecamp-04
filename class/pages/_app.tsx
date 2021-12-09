@@ -10,10 +10,17 @@ import { AppProps } from "next/dist/shared/lib/router/router";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import Layout from "../src/components/commones/layout";
 import { createUploadLink } from "apollo-upload-client";
+// import Head from "next/head";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,9 +36,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
-interface IGlobalContext{
+interface IGlobalContext {
   accessToken?: string;
-  setAccessToken?: Dispatch<SetStateAction<string>>
+  setAccessToken?: Dispatch<SetStateAction<string>>;
   UserInfo?: {
     name?: string;
     email?: string;
@@ -51,15 +58,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     setUserInfo: setMyUserInfo,
   };
 
-useEffect(() => {
-  const accessToken = localStorage.getItem("accessToken")
-  if(accessToken) setMyAccessToken(accessToken)
-}, [])  
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) setMyAccessToken(accessToken);
+  }, []);
 
   const uploadLink = createUploadLink({
     uri: "http://backend04.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${myAcessToken}` },
-  }); 
+  });
 
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
@@ -67,14 +74,22 @@ useEffect(() => {
   });
 
   return (
-    <GlobalContext.Provider value={myvalue}>
-      <ApolloProvider client={client}>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
-    </GlobalContext.Provider>
+    <>
+      {/* <Head>  모든페이지에서 카카오맵을 다운로드 받으므로 비효율적임
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=932db78e814fb177f5ae855f570cb798"
+        ></script>
+      </Head> */}
+      <GlobalContext.Provider value={myvalue}>
+        <ApolloProvider client={client}>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </GlobalContext.Provider>
+    </>
   );
 }
 
