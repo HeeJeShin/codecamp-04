@@ -4,6 +4,7 @@ import {
   InMemoryCache,
   ApolloLink,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import { Global } from "@emotion/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
 import "antd/dist/antd.css";
@@ -13,7 +14,14 @@ import { createUploadLink } from "apollo-upload-client";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
+import { 
+    createContext, 
+    Dispatch,
+    SetStateAction, 
+    useEffect, 
+    useState 
+  } from "react";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,27 +40,59 @@ export const firebaseApp = initializeApp(firebaseConfig);
 interface IGlobalContext {
   accessToken?: string;
   setAccessToken?: Dispatch<SetStateAction<string>>;
+  UserInfo?: {
+    name?: string;
+    email?: string;
+    picture?: string;
+  };
+  setUserInfo?: Dispatch<SetStateAction<{}>>;
 }
 
 export const GlobalContext = createContext<IGlobalContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
   const [myAcessToken, setMyAccessToken] = useState("");
-  const [myuserInfo, setMyUserInfo] = useState({});
+  const [myUserInfo, setMyUserInfo] = useState({});
   const myvalue = {
     accessToken: myAcessToken,
     setAccessToken: setMyAccessToken,
-    // userInfo: myuserInfo,
-    // setUserInfo: setMyUserInfo,
+    userInfo: myUserInfo,
+    setUserInfo: setMyUserInfo,
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken")
-    if(accessToken) setMyAccessToken(accessToken)
-  }, [])  
+
+    // const accessToken = localStorage.getItem("accessToken")
+    if(localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
+  }, []);
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        // 1. 토큰만료 에러를 캐치
+        if (err.extensions?.code === "UNAUTHENTICATED") {
+          getAccessToken(setMyAccessToken);
+          // 3. 기존에 실패한 요청 다시 재요청하기
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              //
+              //
+              //
+
+              authorization: `Bearer ${getAccessToken(setMyAccessToken)}`, // 2. refreshToken으로 accessToken 재발급받기 => restoreAccessToken
+            },
+          });
+
+          return forward(operation);
+        }
+      }
+    }
+  });
 
   const uploadLink = createUploadLink({
-    uri: "http://backend04.codebootcamp.co.kr/graphql",
+    uri: "https://backend04.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${myAcessToken}` },
+    credentials: "include",
   });
 
   const client = new ApolloClient({
@@ -61,14 +101,22 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <GlobalContext.Provider value={myvalue}>
-      <ApolloProvider client={client}>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
-    </GlobalContext.Provider>
+    <>
+      {/* <Head>  모든페이지에서 카카오맵을 다운로드 받으므로 비효율적임
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=932db78e814fb177f5ae855f570cb798"
+        ></script>
+      </Head> */}
+      <GlobalContext.Provider value={myvalue}>
+        <ApolloProvider client={client}>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </GlobalContext.Provider>
+    </>
   );
 }
 

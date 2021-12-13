@@ -50,7 +50,7 @@ export default function RecipeReviewCard(props: ExpandMoreProps) {
   };
 
   return (
-    <Card sx={{ maxWidth: 500 }} >
+    <Card sx={{ maxWidth: 500  }} >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

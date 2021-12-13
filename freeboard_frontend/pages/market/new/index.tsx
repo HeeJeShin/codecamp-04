@@ -7,4 +7,4 @@ const MarketNewPage = () => {
 
 }
 export default MarketNewPage
-//export default  withAuth(MarketNewPage)
+// export default  withAuth(MarketNewPage)
