@@ -11,7 +11,9 @@ const MarketDetailUI = (props) => {
       <KakaoMapPage/>
       <button onClick={props.update}>수정</button>
       <button onClick={props.list}>목록</button>
+      <button onClick={props.onClickBasket}>장바구니담기</button>
       <button onClick={props.onClickMoveBuy}>구매</button>
+      
     </>
   );
 };

@@ -1,20 +1,20 @@
-import *as S from "./MarketBasket.styles"
+import * as S from "./MarketBasket.styles";
 
-export default function BasketUI(props: any){
-
-    return(
-        <>
-        {props.data?.fetchUseditems.map((el, index) => (
-            <div key={el._id}>
-            <span>{index + 1}</span>
-            <span>{el.name}</span>
-            <span>{el.price}</span>
-            <span>{el.contents}</span>
-            /
-            <button onClick={props.onClickBasket(el)}>장바구니 담기</button>
-            </div>
-        ))}
-        <button onClick={props.onClickLogin}>로그인하기</button>
-        </> 
-    )
+export default function BasketUI(props: any) {
+  return (
+    <S.Wrapper>
+      <S.Title>장바구니</S.Title>
+      {props.basketItems.map((el, index) => (
+        <S.Wrapper_Inner>
+          <S.Index>{index + 1}</S.Index>
+          <S.Image src={`https://storage.googleapis.com/${el.images[0]}`} />
+          <S.Name>{el.name}</S.Name>
+          <S.Price>{el.price}</S.Price>
+          <S.SubmitButton onClick={props.onClickDelete(el._id)}>
+            DELETE
+          </S.SubmitButton>
+        </S.Wrapper_Inner>
+      ))}
+    </S.Wrapper>
+  );
 }

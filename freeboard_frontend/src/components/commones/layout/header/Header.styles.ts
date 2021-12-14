@@ -22,6 +22,22 @@ export const Log_Wapper = styled.div`
   
 `;
 
+export const User_Button =styled.button`
+  width: 92px;
+  height: 44px;
+  margin-right:10px;
+  /* background-color: #edceba; */
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+  color: gray;
+  :hover {
+       /* background-color: #b7c5c8; */
+       cursor: pointer;
+  }    
+
+`;
+  
 export const Login_Button = styled.button`
   width: 92px;
   height: 44px;
@@ -43,6 +59,22 @@ export const Sign_Button = styled.button`
   margin-left:10px;
   color: gray;
   text-decoration:underline;
+  background-color: white;
+  /* background-color: #edceba; */
+  border-radius: 15px;
+  border: none;
+  :hover {
+       /* background-color: #b7c5c8; */
+       cursor: pointer;
+       
+  }    
+`;
+
+export const Basket_Button = styled.button`
+  width: 92px;
+  height: 44px;
+  margin-left:10px;
+  color: gray;
   background-color: white;
   /* background-color: #edceba; */
   border-radius: 15px;
