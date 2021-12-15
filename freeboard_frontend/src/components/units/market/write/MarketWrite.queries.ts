@@ -9,10 +9,14 @@ export const CREATE_USED_ITEM = gql`
       contents
       price
       images
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
     }
   }
 `;
-
 
 export const UPDATE_USED_ITEM = gql`
   mutation updateUseditem(
@@ -29,6 +33,11 @@ export const UPDATE_USED_ITEM = gql`
       contents
       price
       images
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
     }
   }
 `;
@@ -50,6 +59,9 @@ export const FETCH_USED_ITEM = gql`
       useditemAddress {
         lat
         lng
+        zipcode
+        address
+        addressDetail
       }
       images
     }

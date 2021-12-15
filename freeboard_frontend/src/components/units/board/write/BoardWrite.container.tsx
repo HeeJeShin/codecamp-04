@@ -123,18 +123,7 @@ export default function BoardWrite(props: IboardWriteProps) {
     setIsOpen(false);
   }
 
-  // async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
-  //   const myFile = event.target.files?.[0]; //있을때
-  //   console.log(myFile);
 
-  //   const result = await uploadFile({
-  //     variables: {
-  //       file: myFile,
-  //     },
-  //   });
-  //   console.log(result.data.uploadFile.url);
-  //   setMyImages([result.data.uploadFile.url]);
-  // }
 
 
 

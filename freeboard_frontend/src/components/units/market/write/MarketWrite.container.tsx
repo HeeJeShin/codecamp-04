@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
   IMutation,
@@ -16,11 +16,17 @@ const MarketWrite = (props: any) => {
   const [myRemarks, setMyRemarks] = useState("");
   const [myContents, setMyContents] = useState("");
   const [myPrice, setMyPrice] = useState("");
+  const [useditemAddress, setuseditemAddress] = useState("");
 
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState([""]);
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
+  //다음 주소 모달코드
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [zipcode, setZipcode] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [address, setAddress] = useState("");
 
   const [updateUseditem] = useMutation(UPDATE_USEDITEM);
   const [createUseditem] = useMutation<
@@ -121,11 +127,16 @@ const MarketWrite = (props: any) => {
           contents: myContents,
           price: Number(myPrice),
           images: fileUrls,
+          useditemAddress: {
+            zipcode: zipcode,
+            address: address,
+            addressDetail: addressDetail,
+          },
         },
       },
     });
     router.push(`/market/${result.data?.createUseditem._id}`);
-    console.log(result.data?.name);
+    console.log(data);
   }
 
   async function onClickUpdate() {
@@ -143,6 +154,11 @@ const MarketWrite = (props: any) => {
           useditemId: router.query.useditemId,
 
           updateUseditemInput: myUpdateUseditemInput,
+          useditemAddress: {
+            zipcode: zipcode,
+            address: address,
+            addressDetail: addressDetail,
+          },
         },
       });
       router.push(`/market/${router.query.useditemId}`);
@@ -151,7 +167,12 @@ const MarketWrite = (props: any) => {
     }
   }
 
- 
+  function onCompleteAddressSearch(data: any) {
+    setAddressDetail(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen(false);
+    setIsModalVisible(false);
+  }
 
   return (
     <MarketWriteUI
@@ -165,8 +186,13 @@ const MarketWrite = (props: any) => {
       data={props.data}
       isEdit={props.isEdit}
       isOpen={isOpen}
+      onCompleteAddressSearch={onCompleteAddressSearch}
       onClickUpdate={onClickUpdate}
-      
+      setIsModalVisible={setIsModalVisible}
+      zipcode={zipcode}
+      address={address}
+      isModalVisible={isModalVisible}
+      useditemAddress={useditemAddress}
     />
   );
 };

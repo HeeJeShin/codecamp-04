@@ -8,11 +8,15 @@ export const FETCH_USED_ITEM = gql`
       remarks
       contents
       price
+      images
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
     }
   }
 `;
-
-
 
 export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
   mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {

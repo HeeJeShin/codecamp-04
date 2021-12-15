@@ -45,7 +45,14 @@ const MarketListUI = (props: ExpandMoreProps) => {
                   onClick={props.onClickMoveToMarketDetail}
                   key={el._id}
                 >
-                  버튼
+                  상세
+                </button>
+                <button
+                  id={el._id}
+                  onClick={props.onClickBasket(el)}
+                  key={el._id}
+                >
+                  장바구니
                 </button>
                 {/* //onClick={props.onClickMoveToMarketDetail} */}
                 {/* id={`market/${el._id}`} */}

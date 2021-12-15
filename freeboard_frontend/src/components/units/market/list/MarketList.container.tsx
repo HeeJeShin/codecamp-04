@@ -6,6 +6,7 @@ import { FETCH_USED_ITEMS } from "./MarketList.queries";
 import {
   IQuery,
   IQueryFetchUseditemsArgs,
+  IUseditem,
 } from "../../../../commons/types/generated/types";
 
 export default function MarketList() {
@@ -40,16 +41,33 @@ export default function MarketList() {
   }
 
   function onClickMoveToMarketDetail(event: MouseEvent<HTMLDivElement>) {
-    alert(event.target.id)
+    alert(event.target.id);
     event.target instanceof Element &&
       router.push(`/market/${event.target.id}`);
   }
+
+  const onClickBasket = (el: IUseditem) => () => {
+    const baskets = JSON.parse(localStorage.getItem("basket") || "[]");
+    let isExists = false;
+    baskets.forEach((basketEl: IUseditem) => {
+      if (el._id === basketEl._id) isExists = true;
+    });
+    if (isExists) {
+      alert("이미 담겨져 있습니다.");
+      return;
+    }
+    const { __typename, ...newEl } = el;
+    baskets.push(newEl);
+    localStorage.setItem("basket", JSON.stringify(baskets));
+    alert("장바구니에 담았습니다.");
+  };
   return (
     <MarketListUI
       onClickMove={onClickMove}
       data={data}
       loadMore={onLoadMore}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
+      onClickBasket={onClickBasket}
       // fetchMore={fetchMore}
     />
   );

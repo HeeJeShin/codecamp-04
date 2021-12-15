@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import { Modal } from "antd";
 // import KakaoMapPage from "../../../../commons/map/KakaoMap";
+
+export const MyModal = styled(Modal)``;
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
@@ -62,14 +63,6 @@ export const Wrapper_MyContents = styled.div`
   padding-top: 40px; ;
 `;
 
-export const MyContents = styled(ReactQuill)`
-  /* width: 100%;
-  height: 320px;
-  box-sizing: border-box;
-  padding: 16px;
-  border: 1px solid #bdbdbd; */
-`;
-
 export const Wrapper_MyPrice = styled.div`
   width: 100%;
   padding-top: 40px; ;
@@ -83,6 +76,23 @@ export const MyPrice = styled.input`
   border: 1px solid #bdbdbd;
 `;
 
+export const Wrapper_MyZipcode = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MyZipcode = styled.input`
+  height: 52px;
+  width: 150px;
+  margin-bottom: 5px;
+`;
+
+export const MyZipcodeAddress = styled.input`
+  height: 52px;
+`;
+
+export const SearchButton = styled.button``;
+
 export const Wrapper_MyLocation = styled.div``;
 
 export const Wrapper_MyMap = styled.div``;
@@ -91,9 +101,7 @@ export const Wrapper_MyMap = styled.div``;
 
 // `;
 
-export const Wrapper_MyAddress = styled.div``;
-
-export const MyAddress = styled.div``;
+export const Wrapper_MyPlace = styled.div``;
 
 export const Wrapper_MyTags = styled.div`
   width: 100%;
@@ -136,3 +144,11 @@ export const Mybutton = styled.button`
 // <RadioButton type="radio" id="image" name="radio-button" />
 // <RadioLabel htmlFor="image">사진</RadioLabel>
 // </OptionWrapper>
+
+export const MyAddress = styled.input`
+  width: 996px;
+  height: 52px;
+  margin-top: 16px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
+`;
