@@ -26,7 +26,7 @@ export default function MarketList() {
     if (!data) return;
 
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchUseditems.length / 5) + 1 },
+      variables: { page: Math.ceil(data?.fetchUseditems.length/10) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditems)
           return { fetchUseditems: [...prev.fetchUseditems] };

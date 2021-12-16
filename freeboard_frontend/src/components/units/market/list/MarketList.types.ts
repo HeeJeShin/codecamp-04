@@ -9,7 +9,7 @@ export interface   IMarketListProps  {
     
 }
 
-export interface ExpandMoreProps {
+export interface IMarketListUIProps {
   //onClickMoveToMarkDetail: MouseEventHandler<HTMLDivElement> | undefined;
   data: any;
   onClickMove: any;

@@ -25,17 +25,15 @@ export default function MarketWriteUI(props) {
   // }
   return (
     <>
-      <div>
-        {props.isModalVisible && (
-          <Modal
-            visible={true}
-            onOk={props.handleOk}
-            onCancel={props.handleCancel}
-          >
-            <DaumPostcode onComplete={props.onCompleteAddressSearch} />
-          </Modal>
-        )}
-      </div>
+      {props.isModalVisible && (
+        <Modal
+          visible={true}
+          onOk={props.handleOk}
+          onCancel={props.handleCancel}
+        >
+          <DaumPostcode onComplete={props.onCompleteAddressSearch} />
+        </Modal>
+      )}
       <S.Wrapper>
         <S.Title>상품{props.isEdit ? "수정하기" : "등록하기"}</S.Title>
         <S.Wrapper_MyUseditem>

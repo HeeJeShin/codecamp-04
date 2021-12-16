@@ -1,8 +1,9 @@
-import { IconButtonProps } from "@material-ui/core";
+// import { IconButtonProps } from "@material-ui/core";
 import * as S from "./MarketList.styles";
-import { ExpandMoreProps } from "./MarketList.types";
-import RecipeReviewCard from "../../../../commons/card/Card01";
+import { IMarketListUIProps } from "./MarketList.types";
+
 import InfinitieScroll from "react-infinite-scroller";
+import MediaCard from "../../../../commons/card/Card02";
 
 // interface ExpandMoreProps {
 //   //onClickMoveToMarkDetail: MouseEventHandler<HTMLDivElement> | undefined;
@@ -20,7 +21,7 @@ import InfinitieScroll from "react-infinite-scroller";
 //   onClickMoveToMarketDetail: any;
 // }
 
-const MarketListUI = (props: ExpandMoreProps) => {
+const MarketListUI = (props: IMarketListUIProps) => {
   return (
     <S.Wrapper>
       <S.Wrapper_Mybutton>
@@ -34,12 +35,11 @@ const MarketListUI = (props: ExpandMoreProps) => {
           pageStart={0}
           loadMore={props.loadMore}
           hasMore={true}
-          useWindow={false}
         >
           <S.testing>
             {props.data?.fetchUseditems.map((el: any, index: any) => (
               <S.Wrapper_Card>
-                <RecipeReviewCard el={el} />
+                <MediaCard el={el} />
                 <button
                   id={el._id}
                   onClick={props.onClickMoveToMarketDetail}

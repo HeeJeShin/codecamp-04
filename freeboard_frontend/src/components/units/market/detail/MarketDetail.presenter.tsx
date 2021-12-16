@@ -3,7 +3,7 @@ import * as S from "./MarketDetail.styles";
 
 const MarketDetailUI = (props) => {
   return (
-    <>
+    <S.Wrapper>
       <div>상품명: {props.name}</div>
       <div>한줄: {props.remarks}</div>
       <div>내용: {props.contents}</div>
@@ -21,7 +21,7 @@ const MarketDetailUI = (props) => {
       {/* <button onClick={props.onClickBasket}>장바구니담기</button> */}
       <button onClick={props.onClickMoveBuy}>구매</button>
       
-    </>
+    </S.Wrapper>
   );
 };
 

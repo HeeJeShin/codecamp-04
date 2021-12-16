@@ -111,6 +111,10 @@ const MarketWrite = (props: any) => {
     setFileUrls(newFileUrls);
   }
 
+  function onChangeAddressDetail(event: ChangeEvent<HTMLInputElement>) {
+    setAddressDetail(event.target.value);
+  }
+
   useEffect(() => {
     if (props.data?.fetchUseditem.images?.length) {
       setFileUrls([...props.data?.fetchUseditem.images]);
@@ -168,6 +172,7 @@ const MarketWrite = (props: any) => {
   }
 
   function onCompleteAddressSearch(data: any) {
+    setAddress(data.address)
     setAddressDetail(data.address);
     setZipcode(data.zonecode);
     setIsOpen(false);
@@ -181,6 +186,7 @@ const MarketWrite = (props: any) => {
       onChangeMyContents={onChangeMyContents}
       onChangeMyPrice={onChangeMyPrice}
       onChangeFileUrls={onChangeFileUrls}
+      onChangeAddressDetail={onChangeAddressDetail}
       fileUrls={fileUrls}
       onClickSubmit={onClickSubmit}
       data={props.data}
@@ -193,6 +199,7 @@ const MarketWrite = (props: any) => {
       address={address}
       isModalVisible={isModalVisible}
       useditemAddress={useditemAddress}
+
     />
   );
 };
