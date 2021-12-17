@@ -23,7 +23,7 @@ const MyPageUI = (props) => {
         ></script>
       </Head>
         <div>
-            닉네임
+            닉네임:{props.el.seller}
         </div>
         <label>충전금액:</label>
       <div>포인트:{props.data?.fetchUserLoggedIn.userPoint.amount}</div>
