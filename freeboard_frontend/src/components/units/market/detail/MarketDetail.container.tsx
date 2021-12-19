@@ -1,9 +1,18 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import MarketDetailUI from "./MarketDetail.presenter";
-import { CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING, FETCH_USED_ITEM } from "./MarketDetail.queries";
+import {
+  CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
+  DELETE_USED_ITEM,
+  FETCH_USED_ITEM,
+  TOGGLE_USED_ITEM_PICK,
+} from "./MarketDetail.queries";
 import { useEffect } from "react";
-
+import {
+  IMutation,
+  IMutationDeleteUseditemArgs,
+  IMutationToggleUseditemPickArgs,
+} from "../../../../commons/types/generated/types";
 
 declare const window: typeof globalThis & {
   kakao: any;
@@ -11,37 +20,57 @@ declare const window: typeof globalThis & {
 
 const MarketDetail = () => {
   const router = useRouter();
-  const [createPointTransactionOfBuyingAndSelling] = useMutation(CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING)
+  const [toggleUseditemPick] = useMutation<
+    Pick<IMutation, "toggleUseditemPick">,
+    IMutationToggleUseditemPickArgs
+  >(TOGGLE_USED_ITEM_PICK);
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
+  );
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: {
-      useditemId: String(router.query.useditemId)
+      useditemId: String(router.query.useditemId),
     },
   });
 
-  console.log("asdf", data?.fetchUseditem);
+  const [deleteUseditem] = useMutation<
+    Pick<IMutation, "deleteUseditem">,
+    IMutationDeleteUseditemArgs
+  >(DELETE_USED_ITEM);
+  
+  async function onClickDelete(){
+    confirm("삭제합니다?")
+     try{
+       await deleteUseditem({
+         variables: {useditemId: String(router.query.useditemId)}
+       })
+       alert("삭제완료")
+       router.push("/market");
+     } catch(error){
+       if(error instanceof Error) alert(error.message);
+     }
+  }
 
   const onClickUpdate = () => {
-    router.push(`/market/${router.query.useditemId}`);
+    router.push(`/market/${router.query.useditemId}/edit`);
   };
+  
+  
   const onClickList = () => {
     router.push(`/market`);
   };
-
-  // const onClickBasket = (el:any) => () =>{
-  //   console.log(el);
-  //   const baskets = JSON.parse(localStorage.getItem("basket") || "[]");
-
-  //   let isExit = false;
-  //   baskets.forEach((basketEl:any)=>{
-  //     if(el._id === basketEl._id) isExit =true;
-  //   })
-  //   if(isExit){
-  //     alert("장바구니에 담긴 상품입니다.")
-  //     return;
-  //   }
-  // }
-
- 
+  
+  async function onClickWishList() {
+    try {
+      const result = await toggleUseditemPick({
+        variables: { useditemId: String(router.query.useditemId) },
+      });
+      alert("찜♡");
+      console.log(result);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   async function onClickMoveBuy() {
     try {
@@ -56,7 +85,7 @@ const MarketDetail = () => {
       alert(error.message);
     }
   }
-//주소옮기기
+  //주소옮기기
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -127,6 +156,9 @@ const MarketDetail = () => {
         // onClickBasket={onClickBasket}
         onClickMoveBuy={onClickMoveBuy}
         data={data}
+        onClickDelete={onClickDelete}
+        onClickWishList={onClickWishList}
+
       />
     </>
   );

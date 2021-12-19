@@ -19,8 +19,8 @@ export default function HeaderUI(props: IHeaderProps) {
       </div>
 
       <Log_Wapper>
-        <User_Button id="/mypage">
-           Hi {props.data?.fetchUserLoggedIn.name}
+        <User_Button id="/mypage" onClick={props.onClickMove}>
+        "Hi" { props.data?.fetchUserLoggedIn.name}
         </User_Button>
         <Login_Button id="/login" onClick={props.onClickMove}>log-in</Login_Button>
         <Sign_Button id="/signup" onClick={props.onClickMove}>signup</Sign_Button>

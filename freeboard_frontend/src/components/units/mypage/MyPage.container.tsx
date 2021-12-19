@@ -1,23 +1,35 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
   IQuery,
+  IQueryFetchUseditemsIBoughtArgs,
 } from "../../../commons/types/generated/types";
 import MyPageUI from "./MyPage.presenter";
-import { CREATE_POINT_TRANSACTION_OF_LOADING, FETCH_USED_ITEMS_BOUGHT, FETCH_USER_LOGGED_IN } from "./MyPage.queries";
+import {
+  CREATE_POINT_TRANSACTION_OF_LOADING,
+  FETCH_USED_ITEMS_BOUGHT,
+  FETCH_USER_LOGGED_IN,
+} from "./MyPage.queries";
 
 const MyPage = () => {
-  const { data: buyData } = useQuery(FETCH_USED_ITEMS_BOUGHT);
   const router = useRouter();
+  const [startPage, setStartPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
+  const { data: buyData } = useQuery<
+    Pick<IQuery, "fetchUseditemsIBought">,
+    IQueryFetchUseditemsIBoughtArgs
+  >(FETCH_USED_ITEMS_BOUGHT,{variables: {page: startPage}});
+  
   const [createPointTrancationOfLoading] = useMutation<
     Pick<IMutation, "createPointTransactionOfLoading">,
     IMutationCreatePointTransactionOfLoadingArgs
   >(CREATE_POINT_TRANSACTION_OF_LOADING);
 
-  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN)
-
+  const { data: loginData } = useQuery(FETCH_USER_LOGGED_IN);
+  console.log(loginData);
   function onClickPayment() {
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp49910675"); // Example: imp00000000
@@ -41,14 +53,14 @@ const MyPage = () => {
           //    결제 성공시
           console.log(rsp);
           try {
-            const result = createPointTransactionOfLoading({
+            const result = createPointTrancationOfLoading({
               variables: {
                 impUid: rsp.imp_uid,
               },
               refetchQueries: [{ query: CREATE_POINT_TRANSACTION_OF_LOADING }],
             });
           } catch (error) {
-            alert(error.message);
+            console.log(error.message);
           }
 
           //    createPointTransactionsOfLoading 뮤테이션 실행하기!!(impUid 인자로 넘기기!!!)
@@ -58,12 +70,20 @@ const MyPage = () => {
       }
     );
   }
+  function onChangeKeyword(value: string) {
+    setKeyword(value);
+  }
 
-  return <MyPageUI 
-          onClickPayment={onClickPayment}
-           data={data} 
-           data={buyData}
-           />;
+  return (
+    <MyPageUI
+      onClickPayment={onClickPayment}
+      data={loginData}
+      buyData={buyData}      
+      startPage={startPage}
+      setStartPage={setStartPage}
+      onChangeKeyword={onChangeKeyword}
+    />
+  );
 };
 
 export default MyPage;

@@ -1,27 +1,32 @@
-import {gql} from "@apollo/client"
-
+import { gql } from "@apollo/client";
 
 export const FETCH_USER_LOGGED_IN = gql`
-    query fetchUserLoggendIn {
-        fetchUserLoggendIn {
-            _id
-            email
-            userPoint {
-                amount
-            }
-        }
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+      picture
+      _id
+      userPoint {
+        amount
+        createdAt
+        updatedAt
+      }
     }
-`
+  }
+`;
 
 export const FETCH_USED_ITEMS_BOUGHT = gql`
-    query fetchUseditemsIBought{
-        fetchUseditemsIBought{
-            _id
-            name
-            price
-        }
+  query fetchUseditemsIBought($page: Int, $search: String) {
+    fetchUseditemsIBought(page: $page, search: $search) {
+      _id
+      name
+      price
+      contents
+      createdAt
     }
-`
+  }
+`;
 
 export const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   mutation createPointTransactionOfLoading($impUid: ID!) {
@@ -29,10 +34,7 @@ export const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
       _id
       impUid
       amount
-      balance
-      statusDetail
-      createdAt
-      updatedAt
+      
     }
   }
 `;

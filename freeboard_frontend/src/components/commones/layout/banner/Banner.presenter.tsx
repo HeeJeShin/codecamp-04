@@ -19,32 +19,32 @@ export default function BannerUI() {
         <div>
           <Wrapper>
             <MyImage src="/images/벽돌인테리어.PNG" />
-            {/* <MyImage src='/images/크리스마스펭수.jpg ' /> */}
+           
           </Wrapper>
         </div>
 
         <div>
           <Wrapper>
             <MyImage src="/images/어둡고따뜻한.jpg " />
-            {/* <MyImage src='/images/펭수안경.jpg ' /> */}
+          
           </Wrapper>
         </div>
         <div>
           <Wrapper>
             <MyImage src="/images/원목티비.jpg " />
-            {/* <MyImage src='/images/펭수왜여.jpg ' />    */}
+          
           </Wrapper>
         </div>
         <div>
           <Wrapper>
             <MyImage src="/images/큰햇살.jpg " />
-            {/* <MyImage src='/images/펭수진핀.jpeg ' /> */}
+           
           </Wrapper>
         </div>
         <div>
           <Wrapper>
             <MyImage src="/images/호수.jpg " />
-            {/* <MyImage src='/images/펭수핀.png ' /> */}
+         
           </Wrapper>
         </div>
       </Slider>

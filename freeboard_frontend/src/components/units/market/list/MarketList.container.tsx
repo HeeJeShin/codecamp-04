@@ -26,7 +26,7 @@ export default function MarketList() {
     if (!data) return;
 
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchUseditems.length/10) + 1 },
+      variables: { page: Math.ceil(data?.fetchUseditems.length / 10) + 1 },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditems)
           return { fetchUseditems: [...prev.fetchUseditems] };
@@ -40,11 +40,12 @@ export default function MarketList() {
     });
   }
 
-  function onClickMoveToMarketDetail(event: MouseEvent<HTMLDivElement>) {
-    alert(event.target.id);
-    event.target instanceof Element &&
-      router.push(`/market/${event.target.id}`);
+  const onClickMoveToMarketDetail = (event) => {
+    console.log(event.target.id)
+    router.push(`/market/${event.target.id}`)
   }
+
+  
 
   const onClickBasket = (el: IUseditem) => () => {
     const baskets = JSON.parse(localStorage.getItem("basket") || "[]");

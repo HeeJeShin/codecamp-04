@@ -13,6 +13,7 @@ const LoginSuccess = () => {
     alert("onClick");
     router.push("/market/new");
   }
+  console.log(data)
 
   return <LoginSuccessUI data={data} onClickWriter={onClickWriter} />;
 };

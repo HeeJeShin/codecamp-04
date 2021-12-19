@@ -31,32 +31,25 @@ const MarketListUI = (props: IMarketListUIProps) => {
       </S.Wrapper_Mybutton>
 
       <S.Wrapper_Infini>
-        <InfinitieScroll
-          pageStart={0}
-          loadMore={props.loadMore}
-          hasMore={true}
-        >
+        <InfinitieScroll pageStart={0} loadMore={props.loadMore} hasMore={true}>
           <S.testing>
             {props.data?.fetchUseditems.map((el: any, index: any) => (
               <S.Wrapper_Card>
-                <MediaCard el={el} />
-                <button
+                <MediaCard
+                  el={el}
+                  onBasket={props.onClickBasket(el)}
+                  onDetail={props.onClickMoveToMarketDetail}
+                  id={el._id}
+                />
+                {/* <button
                   id={el._id}
                   onClick={props.onClickMoveToMarketDetail}
                   key={el._id}
                 >
                   상세
-                </button>
-                <button
-                  id={el._id}
-                  onClick={props.onClickBasket(el)}
-                  key={el._id}
-                >
-                  장바구니
-                </button>
-                {/* //onClick={props.onClickMoveToMarketDetail} */}
-                {/* id={`market/${el._id}`} */}
-                {/* id="market/${id}" */}
+                </button> */}
+
+              
               </S.Wrapper_Card>
             ))}
           </S.testing>
@@ -66,3 +59,4 @@ const MarketListUI = (props: IMarketListUIProps) => {
   );
 };
 export default MarketListUI;
+

@@ -35,10 +35,10 @@ export default function BoardListUI(props: IBoardListUIProps) {
 
       <TableTop />
       <Row_TiTle>
-        <ColumnHeaderBasic>번호</ColumnHeaderBasic>
+        <>번호</>
         <ColumnHeaderTitle>제목</ColumnHeaderTitle>
-        <ColumnHeaderBasic>작성자</ColumnHeaderBasic>
-        <ColumnHeaderBasic>날짜</ColumnHeaderBasic>
+        <ColumnHeaderBasic>가격</ColumnHeaderBasic>
+        <ColumnHeaderTitle>날짜</ColumnHeaderTitle>
       </Row_TiTle>
 
       {props.data?.fetchBoards.map((el: any, index: number) => (
