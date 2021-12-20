@@ -1,12 +1,21 @@
 import KakaoMapPage from "../../../../commons/map/KakaoMap";
 import * as S from "./MarketDetail.styles";
 import { Button } from 'antd';
+import Dompurify from "dompurify";
+
 const MarketDetailUI = (props) => {
   return (
     <S.Wrapper>
       <div>상품명: {props.name}</div>
       <div>한줄: {props.remarks}</div>
-      <div>내용: {props.contents}</div>
+      {/* <div>내용: {props.contents}</div> */}
+     내용: {process.browser && (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: Dompurify.sanitize(String(props.data?.fetchUseditem?.contents)),
+        }}
+      />
+    )}
       <div>가격: {props.price}</div>
       <div>이미지: 
       {props.data?.fetchUseditem.images

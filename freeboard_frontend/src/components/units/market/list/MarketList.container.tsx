@@ -35,7 +35,7 @@ export default function MarketList() {
             ...prev.fetchUseditems,
             ...fetchMoreResult?.fetchUseditems,
           ],
-        };
+        };  
       },
     });
   }

@@ -4,7 +4,7 @@ import {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../src/commons/types/generated/types";
-import DOMPurify from "dompurify";
+import Dompurify from "dompurify";
 
 const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!) {
@@ -35,7 +35,7 @@ export default function WebEditorDetailPage() {
       {process.browser ? (
         <div
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(String(data?.fetchBoard.contents)),
+            __html: Dompurify.sanitize(String(data?.fetchBoard.contents)),
           }}
         />
       ) : (

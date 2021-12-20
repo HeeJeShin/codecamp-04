@@ -23,4 +23,5 @@ export interface IMarketListUIProps {
   Contents: string;
   createdAt: any;
   onClickMoveToMarketDetail: any;
+  onClickBasket: any;
 }
