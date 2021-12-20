@@ -4,8 +4,10 @@ import * as S from "./MyPage.styles";
 import BoardSearch from "../../commones/searchbars/boardsearchbar/BoardSearch.container";
 import Paginations01 from "../../commones/paginations/01/Paginations01.container";
 import { v4 as uuidv4 } from "uuid";
+import MypageSearch from "../../commones/searchbars/mypagesearchbar/MypageSearch.container";
+import { IMypageUIProps } from "./MyPage.types";
 
-const MyPageUI = (props) => {
+const MyPageUI = (props: IMypageUIProps) => {
   return (
     <S.Wrapper>
       <Head>
@@ -27,11 +29,11 @@ const MyPageUI = (props) => {
         {props.data?.fetchUserLoggedIn?.userPoint?.amount}원<br />
         {"   "}
       </div>
-      <BoardSearch
+      {/* <MypageSearch
         refetch={props.refetch}
-        refetchBoardsCount={props.refetchBoardsCount}
+        // refetchBoardsCount={props.refetchBoardsCount}
         onChangeKeyword={props.onChangeKeyword}
-      />
+      /> */}
 
       <S.TableTop />
       <S.Row_TiTle>
@@ -49,7 +51,7 @@ const MyPageUI = (props) => {
       ))}
       <button onClick={props.onClickPayment}>1000원 충전하기</button> */}
 
-      {props.buyData?.fetchUseditemsIBought?.map((el: any, index) => (
+      {props.buyData?.fetchUseditemsIBought?.map((el: any, index: number) => (
         <S.Row key={el._id}>
           <S.ColumnBasic>{index + 1}</S.ColumnBasic>
           <S.ColumnTitle id={el._id}>

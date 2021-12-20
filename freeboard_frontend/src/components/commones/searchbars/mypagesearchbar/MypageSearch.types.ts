@@ -1,22 +1,17 @@
-import {ApolloQueryResult} from "@apollo/client"
-import { ChangeEvent } from "react"
+import { ApolloQueryResult } from "@apollo/client";
+import { ChangeEvent } from "react";
 import {
-    IQuery,
-    IQueryFetchBoardsArgs,
-    IQueryFetchBoardsCountArgs,
-} from "../../../../commons/types/generated/types"
+  IQuery,
+  IQueryFetchUseditemsIBoughtArgs,
+} from "../../../../commons/types/generated/types";
 
-export interface IBoardSearchProps{
-    refetch: (
-        variables: Partial<IQueryFetchBoardsArgs>
-    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
-    refetchBoardsCount: (
-        variables: Partial<IQueryFetchBoardsCountArgs>
-    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
-    onChangeKeyword: (value: string) => void;
-}
-
-export interface IBoardSearchUIProps{
-    
-    onChangeSearchbar: (event: ChangeEvent<HTMLInputElement>) => void;
+export interface IMypageSearchUIProps {
+  refetch: (
+    variables: Partial<IQueryFetchUseditemsIBoughtArgs>
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditemsIBought">>>;
+  // refetchBoardsCount: (
+  //     variables: Partial<IQueryFetchBoardsCountArgs>
+  // ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
+  onChangeKeyword: (value: string) => void;
+  onChangeSearchbar: (event: ChangeEvent<HTMLInputElement>) => void;
 }

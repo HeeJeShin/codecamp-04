@@ -1,8 +1,8 @@
 
 import * as S from "./MypageSearch.styles";
-import { IBoardSearchUIProps } from "./MypageSearch.types";
+import { IMypageSearchUIProps } from "./MypageSearch.types";
 
-export default function BoardSearchUI(props: IBoardSearchUIProps){
+export default function MypageSearchUI(props: IMypageSearchUIProps){
 
     return(
         <S.Searchbar>

@@ -35,7 +35,7 @@ export default function BoardDetail() {
   );
     console.log(data)
   function onClickMoveToList() {
-    // alert("눌리긴 눌렸네요.");
+    // alert(" 이동합니다.");
     router.push("/boards");
   }
 

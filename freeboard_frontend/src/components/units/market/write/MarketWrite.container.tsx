@@ -5,9 +5,8 @@ import {
   IMutation,
   IMutationCreateUseditemArgs,
 } from "../../../../commons/types/generated/types";
-import { UPDATE_USEDITEM } from "../list/MarketList.queries";
 import MarketWriteUI from "./MarketWrite.presenter";
-import { CREATE_USED_ITEM, FETCH_USED_ITEM } from "./MarketWrite.queries";
+import { CREATE_USED_ITEM, FETCH_USED_ITEM, UPDATE_USED_ITEM } from "./MarketWrite.queries";
 
 const MarketWrite = (props: any) => {
   const router = useRouter();
@@ -28,7 +27,7 @@ const MarketWrite = (props: any) => {
   const [addressDetail, setAddressDetail] = useState("");
   const [address, setAddress] = useState("");
 
-  const [updateUseditem] = useMutation(UPDATE_USEDITEM);
+  const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const [createUseditem] = useMutation<
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
@@ -37,9 +36,10 @@ const MarketWrite = (props: any) => {
   //   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   // );
 
-  const { data } = useQuery(FETCH_USED_ITEM, {
-    variables: { useditemId: router.query.marketId },
+  const { data: dataFetchItem } = useQuery(FETCH_USED_ITEM, {
+    variables: { useditemId: router.query.useditemId },
   });
+  console.log(dataFetchItem);
 
   function onChangeMyName(event: ChangeEvent<HTMLInputElement>) {
     setMyName(event.target.value);
@@ -140,39 +140,67 @@ const MarketWrite = (props: any) => {
       },
     });
     router.push(`/market/${result.data?.createUseditem._id}`);
-    console.log(data);
   }
 
-  async function onClickUpdate() {
-    const myUpdateUseditemInput = {
-      name: myName,
-      remarks: myRemarks,
-      contents: myContents,
-      price: Number(myPrice),
-      images: fileUrls,
-    };
+  // const myUpdateUseditemInput = {
+  //   name: myName,
+  //   remarks: myRemarks,
+  //   contents: myContents,
+  //   price: Number(myPrice),
+  //   images: fileUrls,
+  // };
 
-    try {
-      await updateUseditem({
-        variables: {
-          useditemId: router.query.useditemId,
+  // async function onClickUpdate() {
+  //   try {
+  //     const result = await updateUseditem({
+  //       variables: {
+  //         updateUseditemInput: {
+  //           myUpdateUseditemInput,
+  //           useditemAddress: {
+  //             zipcode: zipcode,
+  //             address: address,
+  //             addressDetail: addressDetail,
+  //           },
+  //         },
+  //         useditemId: {
+  //           useditemId: router.query.useditemId,
+  //         },
+  //       },
+  //     });
+  //     router.push(`/market/${router.query.useditemId}`);
+  //     console.log(result);
+  //   } catch (error) {
+  //     alert("error!!!!!");
+  //   }
+  // }
 
-          updateUseditemInput: myUpdateUseditemInput,
-          useditemAddress: {
-            zipcode: zipcode,
-            address: address,
-            addressDetail: addressDetail,
-          },
-        },
-      });
-      router.push(`/market/${router.query.useditemId}`);
-    } catch (error) {
-      alert("error!!!!!");
-    }
+
+  const onClickUpdate = async () => {
+    const result = await updateUseditem({
+      variables: {
+        useditemId: router.query.useditemId,
+        updateUseditemInput:{
+          name: myName,
+          remarks: myRemarks,
+          contents: myContents,
+          price: Number(myPrice),
+          images: fileUrls,
+          useditemAddress:{
+            zipcode,
+            address,
+            addressDetail
+          }
+        }
+      }
+    })
+    router.push(`/market/${router.query.useditemId}`);
+    console.log(result);
   }
+
+
 
   function onCompleteAddressSearch(data: any) {
-    setAddress(data.address)
+    setAddress(data.address);
     setAddressDetail(data.address);
     setZipcode(data.zonecode);
     setIsOpen(false);
@@ -190,6 +218,7 @@ const MarketWrite = (props: any) => {
       fileUrls={fileUrls}
       onClickSubmit={onClickSubmit}
       data={props.data}
+      dataFetchItem={dataFetchItem}
       isEdit={props.isEdit}
       isOpen={isOpen}
       onCompleteAddressSearch={onCompleteAddressSearch}
@@ -199,7 +228,6 @@ const MarketWrite = (props: any) => {
       address={address}
       isModalVisible={isModalVisible}
       useditemAddress={useditemAddress}
-
     />
   );
 };

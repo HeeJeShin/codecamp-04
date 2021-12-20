@@ -1,12 +1,12 @@
 import { ChangeEvent } from "react";
-import BoardSearchUI from "./MypageSearch.presenter";
-import { IBoardSearchProps } from "./MypageSearch.types";
+import MypageSearchUI from "./MypageSearch.presenter";
+// import { IMypageSearchUIProps } from "./MypageSearch.types";
 import _ from "lodash"
 
-export default function BoardSearch(props: IBoardSearchProps){
+export default function MypageSearch(){
     const getDebounce = _.debounce((data) => {
         props.refetch({search: data});
-        props.refetchBoardsCount({search: data});
+        // props.refetchBoardsCount({search: data});
         props.onChangeKeyword(data);
     }, 200)
 
@@ -14,6 +14,6 @@ export default function BoardSearch(props: IBoardSearchProps){
         getDebounce(event.target.value);
     }
 
-    return <BoardSearchUI onChangeSearchbar={onChangeSearchbar}/>;
+    return <MypageSearchUI onChangeSearchbar={onChangeSearchbar}/>;
     
 }

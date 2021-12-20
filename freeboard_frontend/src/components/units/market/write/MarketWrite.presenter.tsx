@@ -42,7 +42,7 @@ export default function MarketWriteUI(props) {
             type="text"
             placeholder="상품명을 작성해주세요"
             onChange={props.onChangeMyName}
-            defaultValue={props.data?.fetchUseditem?.name}
+            defaultValue={props.dataFetchItem?.fetchUseditem.name}
           />
           {/* <Error>{props.myWriterError}</Error> */}
         </S.Wrapper_MyUseditem>
@@ -52,7 +52,7 @@ export default function MarketWriteUI(props) {
             type="text"
             placeholder="상품을 간략하게 설명해주세요"
             onChange={props.onChangeMyRemarks}
-            defaultValue={props.data?.fetchUseditem?.remarks}
+            defaultValue={props.dataFetchItem?.fetchUseditem.remarks}
           />
         </S.Wrapper_MyRemarks>
 
@@ -76,7 +76,7 @@ export default function MarketWriteUI(props) {
             placeholder="판매가격을 입력해주세요."
             name="price"
             onChange={props.onChangeMyPrice}
-            defaultValue={Number(props.data?.fetchUseditem?.price)}
+            defaultValue={Number(props.dataFetchItem?.fetchUseditem.price)}
           />
         </S.Wrapper_MyPrice>
 
@@ -106,7 +106,7 @@ export default function MarketWriteUI(props) {
                 readOnly
                 value={
                   props.zipcode ||
-                  props.data?.fetchUseditem.useditemAddress?.zipcode ||
+                  props.dataFetchItem?.fetchUseditem.useditemAddress.zipcode ||
                   ""
                 }
               />
@@ -121,14 +121,14 @@ export default function MarketWriteUI(props) {
                 readOnly
                 value={
                   props.address ||
-                  props.data?.fetchUseditem?.useditemAddress?.address ||
+                  props.dataFetchItem?.fetchUseditem?.useditemAddress?.address ||
                   ""
                 }
               />
               <S.MyAddress
                 onChange={props.onChangeAddressDetail}
                 defaultValue={
-                  props.data?.fetchUseditem?.useditemAddress?.addressDetail ||
+                  props.dataFetchItem?.fetchUseditem?.useditemAddress?.addressDetail ||
                   ""
                 }
               />

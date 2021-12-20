@@ -11,23 +11,19 @@ import { LOGIN_USER } from "./Loginform.queries";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { setAccessToken, accessToken } = useContext(GlobalContext);
-
+  const { setAccessToken } = useContext(GlobalContext);
   const [myEmail, setMyEmail] = useState("");
   const [myPassword, setMyPassword] = useState("");
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
   >(LOGIN_USER);
-
   function onChangeMyEmail(event: ChangeEvent<HTMLElement>) {
     setMyEmail(event.target.value);
   }
-
   function onChangeMyPassword(event: ChangeEvent<HTMLElement>) {
     setMyPassword(event.target.value);
   }
-
 
   const handleLogin = async () => {
     const result = await loginUser({
@@ -36,12 +32,14 @@ export default function LoginForm() {
         password: myPassword,
       },
     });
-    localStorage.setItem(
-      "accessToken",
+    localStorage.setItem("accessToken",
       result.data?.loginUser.accessToken || ""
     );
     setAccessToken?.(result.data?.loginUser.accessToken || "");
     router.push("/loginsucces");
+    // localStorage.setItem("refreshToken", "true");
+    // setAccessToken?.(result.data?.loginUser.accessToken || "");
+    // router.push("/loginsucces")
   };
 
   function onClickSignup() {

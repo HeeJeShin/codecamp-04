@@ -6,8 +6,8 @@ import Dompurify from "dompurify";
 const MarketDetailUI = (props) => {
   return (
     <S.Wrapper>
-      <div>상품명: {props.name}</div>
-      <div>한줄: {props.remarks}</div>
+      <div>상품명: {props.data?.fetchUseditem.name}</div>
+      <div>한줄: {props.data?.fetchUseditem.remarks}</div>
       {/* <div>내용: {props.contents}</div> */}
      내용: {process.browser && (
       <div
@@ -16,7 +16,7 @@ const MarketDetailUI = (props) => {
         }}
       />
     )}
-      <div>가격: {props.price}</div>
+      <div>가격: {props.data?.fetchUseditem.price}</div>
       <div>이미지: 
       {props.data?.fetchUseditem.images
           ?.filter((el: string) => el)

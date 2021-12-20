@@ -137,13 +137,7 @@ export const Mybutton = styled.button`
   }
 `;
 
-// <OptionWrapper>
-// <Label>메인설정</Label>
-// <RadioButton type="radio" id="youtube" name="radio-button" />
-// <RadioLabel htmlFor="youtube">유튜브</RadioLabel>
-// <RadioButton type="radio" id="image" name="radio-button" />
-// <RadioLabel htmlFor="image">사진</RadioLabel>
-// </OptionWrapper>
+
 
 export const MyAddress = styled.input`
   width: 996px;

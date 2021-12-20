@@ -82,11 +82,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           operation.setContext({
             headers: {
               ...operation.getContext().headers,
-              //
-              //
-              //
-
-              authorization: `Bearer ${getAccessToken(setMyAccessToken)}`, // 2. refreshToken으로 accessToken 재발급받기 => restoreAccessToken
+              authorization: `Bearer ${getAccessToken(setMyAccessToken)}`, // 2. refreshToken으로 accessToken 재발급 받기 => restoreAccessToken
             },
           });
 

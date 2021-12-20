@@ -25,10 +25,7 @@ import {
   Youtube,
   Zipcode,
   ZipcodeWrapper,
- 
   Error,
-
-
 } from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import DaumPostcode from "react-daum-postcode";
@@ -142,7 +139,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               onChangeFileUrls={props.onChangeFileUrls}
             />
           ))}
-            {/* <>
+          {/* <>
               <div
                 style={{
                   width: "50px",
@@ -160,7 +157,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
                 onChange={props.onChangeFile}
               />
             </> */}
-          
         </ImageWrapper>
         <OptionWrapper>
           <Label>메인설정</Label>
