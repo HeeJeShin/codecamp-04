@@ -31,7 +31,7 @@ const FETCH_USEDITEM = gql`
   }
 `;
 
-export  async const getSeverSideProps = (context) => {
+export const getSeverSideProps = async (context) => {
   const result = await request(
     "https://bakend4.codebootcamp.co.kr/graphql",
     FETCH_USEDITEM,
