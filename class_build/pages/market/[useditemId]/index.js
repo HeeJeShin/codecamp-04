@@ -5,7 +5,7 @@ export default function BoardsPage(props) {
   return (
     <>
       <Head>
-        <meta property="og:title" content="나만의 사이트 게시판!!!" />
+        <meta property="og:title" content={props.fetchUseditem.name} />
         {/* <meta property="og:url" content="http://heeje.site" /> */}
         <meta property="og:image" content={props.fetchUseditem.images[0]} />
         <meta property="og:description" content={props.fetchUseditem.remarks} />
