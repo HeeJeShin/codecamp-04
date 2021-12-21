@@ -2,6 +2,9 @@ import { getDate } from "../../../../commons/libraries/utils"
 import * as S from "./Bestitem.styles"
 import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
+import { IBestItemUIProps } from "./Bestitem.typers";
+import { IUseditem } from "../../../../commons/types/generated/types";
+
 
 //card 이미지 받아온느법.
 // const BestImg = {
@@ -11,13 +14,13 @@ import Meta from "antd/lib/card/Meta";
 //     3: "/images/책위조명.jpg",
 //   };
 
-const BestItemUI = (props) => {
+const BestItemUI = (props: IBestItemUIProps) => {
 
     return(
         <S.Wrapper>
             <S.Title>BEST ITEM</S.Title>
             <S.Wrapper_Card >
-                {props.data?.fetchUseditemsOfTheBest.map((el) => (
+                {props.data?.fetchUseditemsOfTheBest.map((el: IUseditem) => (
                     <S.BestCard hoverable
                     cover={
                       // <img
@@ -29,7 +32,7 @@ const BestItemUI = (props) => {
                         alt="example"
                         src={`https://storage.googleapis.com/${el.images}`}
                         onError={props.onError}
-                        // onClick={props.onClickMoveToMarketDetail}
+                        onClick={props.onClickMoveToMarketDetail}
                       />
                     }
                     
@@ -39,8 +42,9 @@ const BestItemUI = (props) => {
                       description={
                         <div>
                          
-                          <span>{el.seller.name}<br /><br /></span>
+                          <span>{el.seller?.name}<br /><br /></span>
                           {/* <span>{el.contents}</span> */}
+                          <span>{getDate(el.createdAt)}<br /><br /></span>
                           <span>{el.price}원</span>
                         </div>
                       }

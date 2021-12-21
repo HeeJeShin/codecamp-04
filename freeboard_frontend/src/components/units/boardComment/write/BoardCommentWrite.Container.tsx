@@ -69,7 +69,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
         ],
       });
       console.log(result);
-      location.reload() //선우님이 알려주신 코드
+      location.reload() //클릭후 새로고침을 자동으로 해주는기능
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

@@ -7,7 +7,7 @@ const MarketPage = () =>{
 
     return(
         <>
-            <BestItem/>
+            {/* <BestItem/> */}
              <MarketList/>
         </>
     )

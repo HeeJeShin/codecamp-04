@@ -29,7 +29,7 @@ export default function MediaCard(props: IBoardListUIProps) {
           {props.el.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.el.contetns}
+          {/* {props.el.seller.name} */}
         </Typography>
       </CardContent>
       <CardActions>

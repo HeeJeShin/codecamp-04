@@ -1,30 +1,8 @@
+import { CommentOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { CommentOutlined  } from "@ant-design/icons";
-import { Rate } from 'antd';
+import { Rate } from "antd";
 
-export const Wrapper = styled.div`
-  box-sizing: border-box;
-  width: 1200px;
-  /* height: 1847px; */
-
-  margin: 100px;
-  padding: 1px 102px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: none;
-  
-`;
-
-export const FooterWarpper = styled.div`
-  border-top: 1px solid #bdbdbd;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  box-sizing: border-box;
-  width: 1200px;
-  margin: 100px;
-`;
+export const Wrapper = styled.div``;
 
 export const Star = styled(Rate)` 
  box-sizing: border-box;
@@ -39,48 +17,12 @@ export const MyIcon = styled(CommentOutlined )`
   color: #FFD600;
 `;
 
-
 export const Comment_Header = styled.div`
   box-sizing: border-box;
   padding-top: 40px;
   font-style: normal;
   font-size: 18px;
 `;
-
-export const Comment_WriterWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding-top: 40px;
-`;
-
-export const Comment_InputWrapper_Writer = styled.div``;
-
-export const Comment_Writer = styled.input`
-  width: 180px;
-  height: 52px;
-  box-sizing: border-box;
-  padding-left: 16px;
-
-  border: 1px solid #bdbdbd;
-`;
-
-export const Comment_InputWrapper_Password = styled.div`
-  box-sizing: border-box;
-  padding-left: 16px;
-`;
-
-export const Comment_Password = styled.input`
-  width: 180px;
-  height: 52px;
-  box-sizing: border-box;
-  padding-left: 16px;
-  border: 1px solid #bdbdbd;
-`;
-
-// export const Rate = styled.div`
-
-// `
 
 export const Comment_InputWrapper_Contents = styled.div`
   width: 100%;
@@ -129,4 +71,3 @@ export const Comment_Contents_Button = styled.div`
       background-color : #b8b8b0;
    }
 `;
-

@@ -9,6 +9,7 @@ export const FETCH_USED_ITEMS_OF_THEBEST =gql`
             contents
             images
             price
+            createdAt
             buyer{
                 email
                 name

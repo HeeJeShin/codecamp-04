@@ -48,7 +48,7 @@ const MarketDetailUI = (props) => {
     <Button type="dashed" block onClick={props.update}>
       수정
     </Button>
-    <Button type="dasprimaryhed" block onClick={props.onClickDelete}>
+    <Button type="dashed" block onClick={props.onClickDelete}>
       삭제하기
     </Button>
     </S.Wrapper>
