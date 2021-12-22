@@ -35,17 +35,15 @@ export default function MarketList() {
             ...prev.fetchUseditems,
             ...fetchMoreResult?.fetchUseditems,
           ],
-        };  
+        };
       },
     });
   }
 
   const onClickMoveToMarketDetail = (event) => {
-    console.log(event.target.id)
-    router.push(`/market/${event.target.id}`)
-  }
-
-  
+    console.log(event.target.id);
+    router.push(`/market/${event.target.id}`);
+  };
 
   const onClickBasket = (el: IUseditem) => () => {
     const baskets = JSON.parse(localStorage.getItem("basket") || "[]");

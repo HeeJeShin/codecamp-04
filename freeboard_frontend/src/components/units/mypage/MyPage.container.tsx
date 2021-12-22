@@ -39,7 +39,7 @@ const MyPage = () => {
         pg: "html5_inicis",
         pay_method: "card",
         name: "hiheeje point",
-        amount: 100,
+        amount: 1000,
         buyer_email: "gildong@gmail.com",
         buyer_name: "홍길동",
         buyer_tel: "010-4242-4242",
@@ -59,8 +59,8 @@ const MyPage = () => {
               },
               refetchQueries: [{ query: CREATE_POINT_TRANSACTION_OF_LOADING }],
             });
-          } catch (error) {
-            console.log(error.message);
+          } catch (error: unknown) {
+            if(error instanceof Error) console.log(error.message);
           }
 
           //    createPointTransactionsOfLoading 뮤테이션 실행하기!!(impUid 인자로 넘기기!!!)

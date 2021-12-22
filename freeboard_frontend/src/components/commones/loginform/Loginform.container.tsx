@@ -32,14 +32,9 @@ export default function LoginForm() {
         password: myPassword,
       },
     });
-    localStorage.setItem("accessToken",
-      result.data?.loginUser.accessToken || ""
-    );
+    localStorage.setItem("refreshToken", "true");
     setAccessToken?.(result.data?.loginUser.accessToken || "");
-    router.push("/loginsucces");
-    // localStorage.setItem("refreshToken", "true");
-    // setAccessToken?.(result.data?.loginUser.accessToken || "");
-    // router.push("/loginsucces")
+    router.push("/loginsucces")
   };
 
   function onClickSignup() {

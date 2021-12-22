@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { ITextTokenProps } from "../board/list/BoardList.types";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 1000px;
   /* margin: 100px; */
   padding-top : 100px;
 `;

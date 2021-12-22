@@ -15,7 +15,7 @@ export default function BoardCommentList() {
   >(FETCH_BOARD_COMMENTS, {
     variables: { boardId: router.query.boardId, page: 1 },
   });
-  console.log("bbb")
+  console.log("check")
 
   function onLoadMore() {
     if (!data) return;

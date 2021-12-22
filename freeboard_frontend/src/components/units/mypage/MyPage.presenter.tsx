@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getDate } from "../../../commons/libraries/utils";
 import * as S from "./MyPage.styles";
-import BoardSearch from "../../commones/searchbars/boardsearchbar/BoardSearch.container";
+
 import Paginations01 from "../../commones/paginations/01/Paginations01.container";
 import { v4 as uuidv4 } from "uuid";
 import MypageSearch from "../../commones/searchbars/mypagesearchbar/MypageSearch.container";
@@ -34,7 +34,16 @@ const MyPageUI = (props: IMypageUIProps) => {
         // refetchBoardsCount={props.refetchBoardsCount}
         onChangeKeyword={props.onChangeKeyword}
       /> */}
+      <button onClick={props.onClickPayment}>1000원 충전하기</button>
+      <div>구입한것</div>
+      <S.TableTop />
+      {props.buyData?.fetchUseditemsIBought?.map((el: any) => (
+         <S.Row_TiTle>
+          <div>{el.name}</div>
+          <div>{el.price}</div>
+          </S.Row_TiTle>
 
+      ))}
       <S.TableTop />
       <S.Row_TiTle>
         <S.ColumnHeaderBasic>번호</S.ColumnHeaderBasic>
@@ -42,14 +51,6 @@ const MyPageUI = (props: IMypageUIProps) => {
         <S.ColumnHeaderBasic>작성자</S.ColumnHeaderBasic>
         <S.ColumnHeaderBasic>날짜</S.ColumnHeaderBasic>
       </S.Row_TiTle>
-      {/* <div>구입한것</div>
-      {props.buyData?.fetchUseditemsIBought?.map((el: any) => (
-        <div>
-          <div>{el.name}</div>
-          <div>{el.price}</div>
-        </div>
-      ))}
-      <button onClick={props.onClickPayment}>1000원 충전하기</button> */}
 
       {props.buyData?.fetchUseditemsIBought?.map((el: any, index: number) => (
         <S.Row key={el._id}>

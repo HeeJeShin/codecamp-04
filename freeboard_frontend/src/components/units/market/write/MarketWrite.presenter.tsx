@@ -59,7 +59,7 @@ export default function MarketWriteUI(props) {
         <S.Wrapper_MyContents>
           <S.MyLabel>상품설명</S.MyLabel>
        
-          {process.browser && <ReactQuill />}
+          {process.browser && <ReactQuill onChange={props.handleChange}/>}
           {/* {process.browser && <S.MyContents  onChange={handleChange} />}  */}
 
           {/* <textarea

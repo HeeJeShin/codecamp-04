@@ -23,14 +23,14 @@ export const Log_Wapper = styled.div`
 `;
 
 export const User_Button =styled.button`
-  width: 92px;
-  height: 44px;
+  width: 152px;
+  height: 50px;
   margin-right:10px;
   /* background-color: #edceba; */
   background-color: white;
   border-radius: 15px;
   border: none;
-  color: gray;
+  color: orange;
   :hover {
        /* background-color: #b7c5c8; */
        cursor: pointer;

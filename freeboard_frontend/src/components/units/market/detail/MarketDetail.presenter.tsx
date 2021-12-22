@@ -17,13 +17,13 @@ const MarketDetailUI = (props) => {
       />
     )}
       <div>가격: {props.data?.fetchUseditem.price}</div>
-      <div>이미지: 
+      <S.Image>이미지: 
       {props.data?.fetchUseditem.images
           ?.filter((el: string) => el)
           .map((el: string) => (
             <img key={el} src={`https://storage.googleapis.com/${el}`} />
           ))}
-      </div>
+      </S.Image>
 
       {/* 주소옮기기 */}
       <div id="map" style={{ width: "500px", height: "400px" }}></div>

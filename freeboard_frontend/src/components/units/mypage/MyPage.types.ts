@@ -13,4 +13,5 @@ export interface IMypageUIProps {
     data: any;
     onClickPayment: any;
     startPage: any;
+    setStartPage: any;
 }

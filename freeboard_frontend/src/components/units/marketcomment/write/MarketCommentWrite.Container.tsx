@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from "react";
 import { IMutation, IMutationCreateUseditemQuestionAnswerArgs, IMutationCreateUseditemQuestionArgs } from "../../../../commons/types/generated/types";
 import { FETCH_USED_ITEM_QUESTIONS } from "../list/MarketCommentList.queries";
 import MarketCommentWriteUI from "./MarketCommentWrite.Presenter"
-import { CREATE_USEDITEM_QUESTION, UPDATE_USEDITEM_QUESTION } from "./MarketCommentWrite.Queries";
+import { CREATE_USED_ITEM_QUESTION, UPDATE_USED_ITEM_QUESTION } from "./MarketCommentWrite.Queries";
 import { IMarketCommentWriteProps } from "./MarketCommentWrite.Types";
 
 
@@ -12,8 +12,8 @@ const MarketCommentWrite = (props: IMarketCommentWriteProps) =>{
     const router = useRouter();
     
     const [value, setValue] = useState(3);
-    const [createUseditemQuestion] = useMutation<Pick<IMutation,"createUseditemQuestion">,IMutationCreateUseditemQuestionArgs>(CREATE_USEDITEM_QUESTION)
-    const [updateUseditemQuestion] = useMutation<Pick<IMutation, "updateUseditemQuestion">>(UPDATE_USEDITEM_QUESTION)
+    const [createUseditemQuestion] = useMutation<Pick<IMutation,"createUseditemQuestion">,IMutationCreateUseditemQuestionArgs>(CREATE_USED_ITEM_QUESTION)
+    const [updateUseditemQuestion] = useMutation<Pick<IMutation, "updateUseditemQuestion">>(UPDATE_USED_ITEM_QUESTION)
    
     const [Contents, setContents] = useState("");
   

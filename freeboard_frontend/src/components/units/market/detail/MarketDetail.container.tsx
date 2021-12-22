@@ -37,29 +37,25 @@ const MarketDetail = () => {
     Pick<IMutation, "deleteUseditem">,
     IMutationDeleteUseditemArgs
   >(DELETE_USED_ITEM);
-  
-  async function onClickDelete(){
-    confirm("삭제합니다?")
-     try{
-       await deleteUseditem({
-         variables: {useditemId: String(router.query.useditemId)}
-       })
-       alert("삭제완료")
-       router.push("/market");
-     } catch(error){
-       if(error instanceof Error) alert(error.message);
-     }
+
+  async function onClickDelete() {
+    confirm("삭제합니다?");
+    try {
+      await deleteUseditem({
+        variables: { useditemId: String(router.query.useditemId) },
+      });
+      alert("삭제완료");
+      router.push("/market");
+    } catch (error : unknown) {
+      if (error instanceof Error) alert(error.message);
+    }
   }
 
-  const onClickUpdate = () => {
+  const onClickUpdate = () =>
     router.push(`/market/${router.query.useditemId}/edit`);
-  };
-  
-  
-  const onClickList = () => {
-    router.push(`/market`);
-  };
-  
+
+  const onClickList = () => router.push(`/market`);
+
   async function onClickWishList() {
     try {
       const result = await toggleUseditemPick({
@@ -67,8 +63,8 @@ const MarketDetail = () => {
       });
       alert("찜♡");
       console.log(result);
-    } catch (error) {
-      alert(error.message);
+    } catch (error : unknown) {
+      if(error instanceof Error) alert(error.message)
     }
   }
 
@@ -81,8 +77,8 @@ const MarketDetail = () => {
       });
       alert("구매완료");
       console.log(result);
-    } catch (error) {
-      alert(error.message);
+    } catch (error : unknown) {
+      if(error instanceof Error) alert(error.message)
     }
   }
   //주소옮기기
@@ -112,7 +108,7 @@ const MarketDetail = () => {
         // // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
           `${data?.fetchUseditem?.useditemAddress?.address}`,
-          function (result, status) {
+          function (result: { x: any, y:any}[], status: any) {
             console.log("aa", result);
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
@@ -139,7 +135,7 @@ const MarketDetail = () => {
             }
           }
         );
-      });
+      })
     };
   }, [data?.fetchUseditem?.useditemAddress?.address]);
   console.log(data);
@@ -158,7 +154,6 @@ const MarketDetail = () => {
         data={data}
         onClickDelete={onClickDelete}
         onClickWishList={onClickWishList}
-
       />
     </>
   );

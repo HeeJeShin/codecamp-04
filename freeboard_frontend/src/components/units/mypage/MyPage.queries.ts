@@ -34,7 +34,15 @@ export const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
       _id
       impUid
       amount
-      
+      balance
+      status
+      statusDetail
+      useditem{
+       name
+       price
+       remarks
+       contents
+      }
     }
   }
 `;

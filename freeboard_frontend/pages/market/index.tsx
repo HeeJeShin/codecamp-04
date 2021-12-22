@@ -1,14 +1,15 @@
 import { withAuth } from "../../src/commons/hocs/withAuth"
 import BestItem from "../../src/components/units/market/Bestitem/BestItem.container"
 import MarketList from "../../src/components/units/market/list/MarketList.container"
-
+import MarketCommentWrite from "../../src/components/units/marketcomment/write/MarketCommentWrite.Container"
 
 const MarketPage = () =>{
 
     return(
         <>
-            {/* <BestItem/> */}
+            <BestItem/>
              <MarketList/>
+             <MarketCommentWrite />
         </>
     )
 }
