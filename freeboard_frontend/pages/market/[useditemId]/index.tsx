@@ -1,13 +1,13 @@
 import MarketDetail from "../../../src/components/units/market/detail/MarketDetail.container";
-import MarketCommentWrite from "../../../src/components/units/marketcomment/write/MarketCommentWrite.Container";
-import MarketCommentList from "../../../src/components/units/marketcomment/list/MarketCommentList.container";
+import QuestionsWrite from "../../../src/components/units/marketcomment/questions/write/QuestionsWrite.Container";
+import QuestionsList from "../../../src/components/units/marketcomment/questions/list/QuestionsList.container"
 
 const MarketDetailPage = () => {
   return (
     <>
       <MarketDetail />
-      <MarketCommentWrite />
-      <MarketCommentList />
+      <QuestionsWrite />
+      <QuestionsList />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { CloseOutlined, EditOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { Rate } from "antd";
+
 
 export const Wrapper = styled.div``;
 
@@ -41,10 +41,6 @@ export const Username = styled.div`
   font-weight: bold;
 `;
 
-export const Star = styled(Rate)`
-  padding-left: 20px;
-  color: #edceba ;
-`;
 
 export const Contents = styled.div`
    font-size: 16px;

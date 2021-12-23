@@ -4,19 +4,17 @@ import { useState } from "react";
 import {
   IMutation,
   IMutationDeleteBoardCommentArgs,
-} from "../../../../commons/types/generated/types";
-import MarketCommentWrite from "../write/MarketCommentWrite.Container";
-import { DELETE_USED_ITEM_QUESTION, FETCH_USED_ITEM_QUESTIONS } from "./MarketCommentList.queries";
-import * as S from "./MarketCommentList.styles";
-import { IMarketCommentListUIItemProps } from "./MarketCommentList.types";
+} from "../../../../../commons/types/generated/types";
+import MarketCommentWrite from "../write/QuestionsWrite.Container";
+import { DELETE_USED_ITEM_QUESTION, FETCH_USED_ITEM_QUESTIONS } from "./QuestionsList.queries";
+import * as S from "./QuestionsList.styles";
+import { IQuestionsListUIItemProps } from "./QuestionsList.types";
 
-const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
+const QuestionsListUIItem = (props: IQuestionsListUIItemProps) => {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [deleteUseditemQuestion] = useMutation<
-    Pick<IMutation, "deleteUseditemQuestion">,
-    IMutationDeleteBoardCommentArgs
-  >(DELETE_USED_ITEM_QUESTION);
+    Pick<IMutation, "deleteUseditemQuestion">,IMutationDeleteBoardCommentArgs>(DELETE_USED_ITEM_QUESTION);
 
   function onClickUpdate() {
     setIsEdit(true);
@@ -52,7 +50,7 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
                         <S.MainWrapper>
                             <S.UserWrapper>
                                 <S.Username>{props?.el?.user.name}</S.Username>
-                                <S.Star disabled value={props.el?.rating} />
+                                
                             </S.UserWrapper>
                             <S.Contents>{props.el?.contents}</S.Contents>
                         </S.MainWrapper>
@@ -70,9 +68,10 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
               isEdit={isEdit}
               setIsEdit={setIsEdit}
               el={props.el}
+              
               />
           )}
       </S.Wrapper>
   )
 };
-export default MarketCommentListUIItem;
+export default QuestionsListUIItem;

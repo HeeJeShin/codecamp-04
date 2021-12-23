@@ -1,27 +1,21 @@
 import { CommentOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { Rate } from "antd";
 
 export const Wrapper = styled.div``;
-
-export const Star = styled(Rate)` 
- box-sizing: border-box;
- padding-left: 26px;
- color: #edceba;
-`
-
-export const MyIcon = styled(CommentOutlined )`
-  box-sizing: border-box;
-  margin-right: 14px;
-  font-size: 18px;
-  color: #FFD600;
-`;
 
 export const Comment_Header = styled.div`
   box-sizing: border-box;
   padding-top: 40px;
   font-style: normal;
   font-size: 18px;
+`;
+
+
+export const MyIcon = styled(CommentOutlined )`
+  box-sizing: border-box;
+  margin-right: 14px;
+  font-size: 18px;
+  color: #edceba;
 `;
 
 export const Comment_InputWrapper_Contents = styled.div`

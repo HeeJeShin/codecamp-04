@@ -7,7 +7,7 @@ export const withAuth = (Component) => (props) => {
   const { accessToken } = useContext(GlobalContext);
 
   useEffect(() => {
-    if (!localStorage.getItem("accessToken")) {
+    if (!localStorage.getItem("refreshToken")) {
       alert("로그인한 사람만 입장가능합니다!! 로그인을 먼저해주세요!!");
       router.push("/23-04-login");
     }

@@ -1,17 +1,17 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router"
 import { ChangeEvent, useState } from "react";
-import { IMutation, IMutationCreateUseditemQuestionAnswerArgs, IMutationCreateUseditemQuestionArgs } from "../../../../commons/types/generated/types";
-import { FETCH_USED_ITEM_QUESTIONS } from "../list/MarketCommentList.queries";
-import MarketCommentWriteUI from "./MarketCommentWrite.Presenter"
-import { CREATE_USED_ITEM_QUESTION, UPDATE_USED_ITEM_QUESTION } from "./MarketCommentWrite.Queries";
-import { IMarketCommentWriteProps } from "./MarketCommentWrite.Types";
+import { IMutation, IMutationCreateUseditemQuestionArgs } from "../../../../../commons/types/generated/types";
+import { FETCH_USED_ITEM_QUESTIONS } from "../list/QuestionsList.queries";
+import QuestionsWriteUI from "./QuestionsWrite.Presenter";
+import { CREATE_USED_ITEM_QUESTION, UPDATE_USED_ITEM_QUESTION } from "./QuestionsWrite.Queries";
+import { IQuestionsWriteProps } from "./QuestionsWrite.Types";
 
 
-const MarketCommentWrite = (props: IMarketCommentWriteProps) =>{
+const QuestionsWrite = (props: IQuestionsWriteProps) =>{
     const router = useRouter();
     
-    const [value, setValue] = useState(3);
+    // const [value, setValue] = useState(3);
     const [createUseditemQuestion] = useMutation<Pick<IMutation,"createUseditemQuestion">,IMutationCreateUseditemQuestionArgs>(CREATE_USED_ITEM_QUESTION)
     const [updateUseditemQuestion] = useMutation<Pick<IMutation, "updateUseditemQuestion">>(UPDATE_USED_ITEM_QUESTION)
    
@@ -22,9 +22,9 @@ const MarketCommentWrite = (props: IMarketCommentWriteProps) =>{
         setContents(event.target.value);
     }
 
-    function handleChange(value: number){
-        setValue(value);
-    }
+    // function handleChange(value: number){
+    //     setValue(value);
+    // }
 
     async function onClickWrite(){
         try{
@@ -76,16 +76,16 @@ const MarketCommentWrite = (props: IMarketCommentWriteProps) =>{
     }
    }
 
-    return<MarketCommentWriteUI 
+    return<QuestionsWriteUI 
         el={props.el}
         isEdit={props.isEdit}
-        value={value}
+        // value={value}
         Contents={Contents}
         onChangeContents={onChangeContents}
-        handleChange={handleChange}
+        // handleChange={handleChange}
         onClickWrite={onClickWrite}
         onClickUpdate={onClickUpdate}
     
     /> 
 }
-export default MarketCommentWrite
+export default QuestionsWrite

@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/boards/[boardId]/index.js", "pages/boards/index.tsx", "pages/boards/new/index.js", "src/commons/map"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/boards/[boardId]/index.js", "pages/boards/index.tsx", "pages/boards/new/index.js", "src/commons/map", "src/components/units/marketcomment/answer/list/d"],
   "exclude": ["node_modules"]
 }

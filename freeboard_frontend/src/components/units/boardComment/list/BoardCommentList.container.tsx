@@ -13,7 +13,7 @@ export default function BoardCommentList() {
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, {
-    variables: { boardId: router.query.boardId, page: 1 },
+    variables: { boardId: String(router.query.boardId), page: 1 },
   });
   console.log("check")
 
