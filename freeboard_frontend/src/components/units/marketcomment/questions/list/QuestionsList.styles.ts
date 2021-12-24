@@ -2,14 +2,16 @@ import { CloseOutlined, EditOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  
+`;
 
 export const ItemWrapper = styled.div`
   width: 1200px;
   margin: 0px 100px;
   padding-top: 20px;
   height: 128px;
-  border-bottom: 1px solid #bdbdbd;
+  /* border-bottom: 1px solid #bdbdbd; */
   /* background-color:#b7c5c8; */
   color: gray;
 `;
@@ -21,7 +23,7 @@ export const FlexWrapper = styled.div`
 
 export const Avatar = styled(UserOutlined )`
   padding-top: 2px;
-  font-size: 50px;
+  font-size: 20px;
   color:  #b7c5c8;
 `;
 
@@ -37,7 +39,7 @@ export const UserWrapper = styled.div`
 `;
 
 export const Username = styled.div`
-  font-size: 20px;
+  font-size: 10px;
   font-weight: bold;
 `;
 
@@ -69,9 +71,38 @@ export const DeleteIcon = styled(CloseOutlined )`
   cursor: pointer;
   color: #bdbdbd;
 `;
-export const DateString = styled.div`
-  color: lightgray;
+
+
+
+// write부분.. css
+
+export const Comment_Contents = styled.input`
+  width: 100%;
+  height: 50px;
   box-sizing: border-box;
-  padding-top: 2px;
-  padding-left: 60px;
+  padding-left: 16px;
+  padding: 14px;
+  border: 1px solid white;
+`;
+
+export const Comment_Contents_Button = styled.div`
+  
+  color: white;
+  font-size: 15px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  /* line-height: 52px; */
+  background-color: #b7c5c8; 
+  
+    :hover {
+      background-color : #b8b8b0;
+   }
+`;
+
+export const Comment_InputWrapper_Contents = styled.div`
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  margin-top: 10px; // 이거바꿔야됨.
 `;

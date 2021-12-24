@@ -8,6 +8,7 @@ export interface IQuestionsListUIProps{
 }
 
 export interface IQuestionsListUIItemProps{
+    refetch: any;
     el: IUseditemQuestion;
     
 }

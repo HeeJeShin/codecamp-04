@@ -3,7 +3,7 @@ import { IBoardComment,  IUseditemQuestion } from "../../../../../commons/types/
 
 export interface IQuestionsWriteProps{
     isEdit?: boolean;
-    el?: IBoardComment;
+    el?: IUseditemQuestion;
     setIsEdit?: Dispatch<SetStateAction<boolean>>;
     
 
@@ -16,7 +16,7 @@ export interface IQuestionsWritePropsUIProps{
     isEdit: any;
     onClickWrite: any;
     onClickUpdate: any;
-    el: IUseditemQuestion;
+    el?: IUseditemQuestion;
     onChangeContents: any;
     
 }

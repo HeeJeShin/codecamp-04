@@ -37,3 +37,22 @@ export const FETCH_USED_ITEM_QUESTION_ANSWERS =gql`
         }
     }
 `
+
+export const CREATE_USED_ITEM_QUESTION_ANSWERS = gql`
+mutation createUseditemQuestionAnswer(
+  $useditemQuestionId: ID!
+  $createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!
+) {
+  createUseditemQuestionAnswer(
+    useditemQuestionId: $useditemQuestionId
+    createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
+  ) {
+    _id
+    contents
+    user {
+      _id
+      name
+    }
+  }
+}
+`;
