@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 
 
 export default function HofPage(){
-    function onClickChild = (index) => (event) =>{
+    const onClickChild = (index) => (event) =>{
         console.log(event.target.id);
     }
 
@@ -12,6 +12,7 @@ export default function HofPage(){
             <div>{["철수", "영희", "훈이"].map((el, index) => (
                 <div key={el} id={String(index)} onClick={onClickChild}>
                     {el}
+                  
                 </div>
             ))}
 
@@ -20,4 +21,3 @@ export default function HofPage(){
     )
 }
 
-onClickChild(index)(event)

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { red } from "@material-ui/core/colors";
 import { breakPoints } from "../../src/commons/styles/media";
 
 const Wrapper= styled.div`
@@ -29,3 +30,4 @@ export default function ResponsiveDesignPage(){
         </>
     )
 }
+
