@@ -1,23 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
-import { WebView} from 'react-native-webview'
+import { View } from 'react-native';
 
-
-
-
-const App: () => Node = () => {
+export default function App (){
   
-  return <WebView source={{uri: 'https://heeje.site'}} />;
-};
+  return(
+   <View style={Styles.container}>
+     <View styles={styles.redView}/>
+     <View styles={styles.yellowView}/>
+   </View>
+  )
+}
 
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    backgroundColor: '#fff'
+  },
+  redView:{
+    flex: 1,
+    backgroundColor: 'red'
+  },
+  yellowView:{
+    flex: 1,
+    backgroundColor: 'yellow'
+  }
 
-export default App;
-
+})
