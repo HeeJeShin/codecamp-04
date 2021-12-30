@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@emotion/native": "^11.0.0",
+    "@emotion/react": "^11.7.1",
     "@react-native-async-storage/async-storage": "^1.15.14"
   }
 }
