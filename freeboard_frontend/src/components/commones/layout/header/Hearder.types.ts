@@ -1,7 +1,4 @@
-
-
-
 export interface IHeaderProps {
-    onClickMove: any;
-
+  data: any;
+  onClickMove: any;
 }

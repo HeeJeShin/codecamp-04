@@ -33,33 +33,32 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               url={props.data?.fetchBoard.youtubeUrl}
               width="486px"
               height="240px"
-            />              
+            />
           )}
           <S.ImageWrapper>
             {props.data?.fetchBoard.images
               ?.filter((el: string) => el)
               .map((el: string) => (
-                <S.Img
-                  key={el}
-                  src={`https://storage.googleapis.com/${el}`}
-                />
+                <S.Img key={el} src={`https://storage.googleapis.com/${el}`} />
               ))}
           </S.ImageWrapper>
           <S.Contents_Icon>
-             <S.Wapper_Like>
+            <S.Wapper_Like>
               <S.Like_Icon id="Like_Icon" onClick={props.onClickLike} />
-                <div>{props.data?.fetchBoard.likeCount}</div>
-              </S.Wapper_Like>        
-              
-              <S.Wapper_Dislike>
-                <S.Dislike_Icon id="Dislike_Icon" onClick={props.onClickDislike} />
-                  <div>{props.data?.fetchBoard.dislikeCount}</div>
-              </S.Wapper_Dislike>
-            
+              <div>{props.data?.fetchBoard.likeCount}</div>
+            </S.Wapper_Like>
+
+            <S.Wapper_Dislike>
+              <S.Dislike_Icon
+                id="Dislike_Icon"
+                onClick={props.onClickDislike}
+              />
+              <div>{props.data?.fetchBoard.dislikeCount}</div>
+            </S.Wapper_Dislike>
           </S.Contents_Icon>
         </S.Body>
       </S.CardWrapper>
-      <S.BottomWrapper>        
+      <S.BottomWrapper>
         <S.Button onClick={props.onClickMoveToList}>목록으로</S.Button>
         <S.Button onClick={props.onClickMoveToUpdate}>수정하기</S.Button>
         <S.Button onClick={props.onClickDelete}>삭제하기</S.Button>
@@ -67,4 +66,3 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
     </S.Wrapper>
   );
 }
-

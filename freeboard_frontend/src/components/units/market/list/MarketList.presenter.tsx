@@ -48,8 +48,6 @@ const MarketListUI = (props: IMarketListUIProps) => {
                 >
                   상세
                 </button> */}
-
-              
               </S.Wrapper_Card>
             ))}
           </S.testing>
@@ -59,4 +57,3 @@ const MarketListUI = (props: IMarketListUIProps) => {
   );
 };
 export default MarketListUI;
-

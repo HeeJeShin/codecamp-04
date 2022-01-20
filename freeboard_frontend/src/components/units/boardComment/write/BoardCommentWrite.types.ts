@@ -18,5 +18,5 @@ export interface IBoardCommentWriteUIProps {
   el?: IBoardComment;
   myContents: string;
   handleChange?: any;
-  value?:any;
+  value?:IBoardComment;
 }
