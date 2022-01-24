@@ -9,18 +9,13 @@ import { useRouter } from "next/router";
 import Header from "./header/Header.container";
 
 const Wrapper = styled.div`
-  padding-right: 50px;
-  padding-left: 50px;
   background-color: #edeae3;
+  width: 100%;
 `;
 
-const Body = styled.div`
-  padding: 100px;
-`;
+const Body = styled.div``;
 
 const BodyWrapper = styled.div`
-  width: 100%;
-
   display: flex;
 `;
 

@@ -3,7 +3,12 @@ import { Card } from "antd";
 import { IQuery } from "../../../../commons/types/generated/types";
 import { useQuery } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
-import { Best_Wrapper, Wrapper, Best_Title, BestCard } from "../Bestboard/BoardBest.styles";
+import {
+  Best_Wrapper,
+  Wrapper,
+  Best_Title,
+  BestCard,
+} from "../Bestboard/BoardBest.styles";
 
 const FETCH_BOARDS_OF_THEBEST = gql`
   query {
@@ -32,39 +37,41 @@ export default function BoardBest() {
 
   return (
     <>
-    <Best_Wrapper>
-      <Best_Title>
-        {" "}
-        <h1>BEST BOARD</h1>
-      </Best_Title>
-      <Wrapper>
-        
-
-        {data?.fetchBoardsOfTheBest.map((el, index) => (
-          <BestCard
-            hoverable
-            cover={
-              <img
-                alt="example"
-                src={BestImg[index]}
-                // src="./images/펭수카톡.jpg"
-              />
-            }
-          >
-            <Meta
-              title={el.title}
-              description={
-                <div>
-                 
-                  <span>{getDate(el.createdAt)}<br /><br /></span>
-                  <span>{el.contents}</span>
-                </div>
+      <Best_Wrapper>
+        <Best_Title>
+          {" "}
+          <h1>방문자들의 즐거운 수다</h1>
+          <h2>놓치지 마세요</h2>
+        </Best_Title>
+        <Wrapper>
+          {data?.fetchBoardsOfTheBest.map((el, index) => (
+            <BestCard
+              hoverable
+              cover={
+                <img
+                  alt="example"
+                  src={BestImg[index]}
+                  // src="./images/펭수카톡.jpg"
+                />
               }
-            />
-          </BestCard>
-        ))}
-      </Wrapper>
-    </Best_Wrapper>
+            >
+              <Meta
+                title={el.title}
+                description={
+                  <div>
+                    <span>
+                      {getDate(el.createdAt)}
+                      <br />
+                      <br />
+                    </span>
+                    <span>{el.contents}</span>
+                  </div>
+                }
+              />
+            </BestCard>
+          ))}
+        </Wrapper>
+      </Best_Wrapper>
     </>
   );
 }

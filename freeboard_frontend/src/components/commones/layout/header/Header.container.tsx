@@ -17,6 +17,7 @@ export default function Header() {
     await logoutUser();
     localStorage.removeItem("refreshToken");
     router.reload();
+    alert("LOGOUT");
   };
 
   const onClickMove = (event: MouseEvent<HTMLDivElement>) => {

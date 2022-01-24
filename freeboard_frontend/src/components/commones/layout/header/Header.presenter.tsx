@@ -1,3 +1,4 @@
+import { split } from "lodash";
 import * as S from "./Header.styles";
 import { IHeaderProps } from "./Hearder.types";
 
@@ -25,15 +26,21 @@ export default function HeaderUI(props: IHeaderProps) {
         </S.MenuItem>
       </S.MyNavigation>
       <S.Log_Wapper>
-        <S.User_Button id="/mypage" onClick={props.onClickMove}>
-          {props.data?.fetchUserLoggedIn.name}
-        </S.User_Button>
-        <S.Login_Button id="/login" onClick={props.onClickMove}>
-          log-in
-        </S.Login_Button>
-        <S.Sign_Button id="/signup" onClick={props.onClickMove}>
-          signup
-        </S.Sign_Button>
+        {props.data?.fetchUserLoggedIn ? (
+          <S.User_Button id="/mypage" onClick={props.onClickMove}>
+            {props.data?.fetchUserLoggedIn.name}
+          </S.User_Button>
+        ) : (
+          <>
+            <S.Login_Button id="/login" onClick={props.onClickMove}>
+              로그인
+            </S.Login_Button>
+            <S.Sign_Button id="/signup" onClick={props.onClickMove}>
+              회원가입
+            </S.Sign_Button>
+          </>
+        )}
+
         <S.Basket_Button
           id="/market/basket"
           onClick={props.onClickMove}

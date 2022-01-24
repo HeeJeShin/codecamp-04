@@ -6,6 +6,7 @@ import {
   IMutation,
   IMutationLoginUserArgs,
 } from "../../../commons/types/generated/types";
+import { LOGOUT_USER } from "../layout/header/Header.queries";
 import LoginFormUI from "./Loginform.presenter";
 import { LOGIN_USER } from "./Loginform.queries";
 
@@ -18,6 +19,7 @@ export default function LoginForm() {
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
   >(LOGIN_USER);
+
   function onChangeMyEmail(event: ChangeEvent<HTMLElement>) {
     setMyEmail(event.target.value);
   }
@@ -34,7 +36,7 @@ export default function LoginForm() {
     });
     localStorage.setItem("refreshToken", "true");
     setAccessToken?.(result.data?.loginUser.accessToken || "");
-    router.push("/loginsucces")
+    router.push("/loginsucces");
   };
 
   function onClickSignup() {
