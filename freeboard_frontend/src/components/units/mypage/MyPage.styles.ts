@@ -1,19 +1,15 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 import { ITextTokenProps } from "../board/list/BoardList.types";
 
 export const Wrapper = styled.div`
-  width: 1000px;
+  width: 70%;
   /* margin: 100px; */
-  padding-top : 100px;
 `;
 
-
 export const BoardSearchbar = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
 `;
-
 
 export const Search_Input = styled.input`
   width: 776px;
@@ -50,7 +46,7 @@ export const Row = styled.div`
   font-size: 13px;
 
   :hover {
-    color: #f3bac0 ;
+    color: #f3bac0;
   }
 `;
 
@@ -62,7 +58,6 @@ export const ColumnHeaderBasic = styled.div`
   width: 10%;
   text-align: center;
 `;
-
 
 export const ColumnHeaderTitle = styled.div`
   width: 70%;

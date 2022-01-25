@@ -1,1 +1,4 @@
-export interface IMyStoreProps {}
+export interface IMyStoreProps {
+  keyword: string | RegExp;
+  buyData: any;
+}

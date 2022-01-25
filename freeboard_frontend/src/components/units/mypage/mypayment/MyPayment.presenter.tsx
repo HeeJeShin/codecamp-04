@@ -4,7 +4,7 @@ import { IMyPaymentProps } from "./MyPayment.types";
 const MyPaymentUI = (props: IMyPaymentProps) => {
   return (
     <>
-      <S.Wrapper></S.Wrapper>
+      <S.Wrapper> 여기는 충전내역입니다.</S.Wrapper>
     </>
   );
 };
