@@ -12,11 +12,8 @@ export default function MediaCard(props: IBoardListUIProps) {
       "http://localhost:3000/images/%EC%B1%85%EC%9C%84%EC%A1%B0%EB%AA%85.jpg";
   };
 
-
-  
-
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, maxHeight: 300 }}>
       <CardMedia
         component="img"
         height="140"
@@ -36,7 +33,9 @@ export default function MediaCard(props: IBoardListUIProps) {
         <Button size="small" onClick={props.onBasket}>
           Basket
         </Button>
-        <Button size="small" onClick={props.onDetail} id={props.id}>Learn More</Button>
+        <Button size="small" onClick={props.onDetail} id={props.id}>
+          Learn More
+        </Button>
         <Button size="small">♡</Button>
         {props.el.price}\
       </CardActions>

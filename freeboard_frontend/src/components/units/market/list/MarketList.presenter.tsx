@@ -5,6 +5,7 @@ import { IMarketListUIProps } from "./MarketList.types";
 import InfinitieScroll from "react-infinite-scroller";
 import MediaCard from "../../../../commons/card/Card02";
 import Dompurify from "dompurify";
+import BestItem from "../Bestitem/BestItem.container";
 // interface ExpandMoreProps {
 //   //onClickMoveToMarkDetail: MouseEventHandler<HTMLDivElement> | undefined;
 //   data: any;
@@ -24,6 +25,7 @@ import Dompurify from "dompurify";
 const MarketListUI = (props: IMarketListUIProps) => {
   return (
     <S.Wrapper>
+      <BestItem />
       <S.Wrapper_Mybutton>
         <S.Mybutton id="/market/new" onClick={props.onClickMove}>
           상품등록

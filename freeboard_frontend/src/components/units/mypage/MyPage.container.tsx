@@ -21,8 +21,8 @@ const MyPage = () => {
   const { data: buyData } = useQuery<
     Pick<IQuery, "fetchUseditemsIBought">,
     IQueryFetchUseditemsIBoughtArgs
-  >(FETCH_USED_ITEMS_BOUGHT,{variables: {page: startPage}});
-  
+  >(FETCH_USED_ITEMS_BOUGHT, { variables: { page: startPage } });
+
   const [createPointTrancationOfLoading] = useMutation<
     Pick<IMutation, "createPointTransactionOfLoading">,
     IMutationCreatePointTransactionOfLoadingArgs
@@ -60,7 +60,7 @@ const MyPage = () => {
               refetchQueries: [{ query: CREATE_POINT_TRANSACTION_OF_LOADING }],
             });
           } catch (error: unknown) {
-            if(error instanceof Error) console.log(error.message);
+            if (error instanceof Error) console.log(error.message);
           }
 
           //    createPointTransactionsOfLoading 뮤테이션 실행하기!!(impUid 인자로 넘기기!!!)
@@ -78,7 +78,7 @@ const MyPage = () => {
     <MyPageUI
       onClickPayment={onClickPayment}
       data={loginData}
-      buyData={buyData}      
+      buyData={buyData}
       startPage={startPage}
       setStartPage={setStartPage}
       onChangeKeyword={onChangeKeyword}

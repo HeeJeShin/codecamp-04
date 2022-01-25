@@ -4,6 +4,7 @@ import { Card } from "antd";
 export const Wrapper = styled.div`
   margin-bottom: 50px;
   flex-direction: center;
+  padding: 100px;
 `;
 
 export const Title = styled.h1`

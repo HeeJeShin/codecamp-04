@@ -27,9 +27,14 @@ export default function HeaderUI(props: IHeaderProps) {
       </S.MyNavigation>
       <S.Log_Wapper>
         {props.data?.fetchUserLoggedIn ? (
-          <S.User_Button id="/mypage" onClick={props.onClickMove}>
-            {props.data?.fetchUserLoggedIn.name}
-          </S.User_Button>
+          <>
+            <S.User_Button id="/mypage" onClick={props.onClickMove}>
+              {props.data?.fetchUserLoggedIn.name}
+            </S.User_Button>
+            <S.User_Button onClick={props.onClickLogout}>
+              로그아웃
+            </S.User_Button>
+          </>
         ) : (
           <>
             <S.Login_Button id="/login" onClick={props.onClickMove}>
