@@ -1,15 +1,18 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
 } from "../../../../commons/types/generated/types";
+import { FETCH_USER_LOGGED_IN } from "../MyPage.queries";
 import MyPaymentUI from "./MyPayment.presenter";
 import { CREATE_POINT_TRANSACTION_OF_LOADING } from "./MyPayment.queries";
-const [createPointTrancationOfLoading] = useMutation<
-  Pick<IMutation, "createPointTransactionOfLoading">,
-  IMutationCreatePointTransactionOfLoadingArgs
->(CREATE_POINT_TRANSACTION_OF_LOADING);
+
 const MyPaymentContainer = () => {
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const [createPointTrancationOfLoading] = useMutation<
+    Pick<IMutation, "createPointTransactionOfLoading">,
+    IMutationCreatePointTransactionOfLoadingArgs
+  >(CREATE_POINT_TRANSACTION_OF_LOADING);
   function onClickPayment() {
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp49910675"); // Example: imp00000000
@@ -50,7 +53,7 @@ const MyPaymentContainer = () => {
       }
     );
   }
-  return <MyPaymentUI />;
+  return <MyPaymentUI data={data} onClickPayment={onClickPayment} />;
 };
 
 export default MyPaymentContainer;

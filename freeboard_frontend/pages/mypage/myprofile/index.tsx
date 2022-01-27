@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding: 100px;
   width: 1000px;
+  //test test
 `;
 
 const MyProfilePage = () => {

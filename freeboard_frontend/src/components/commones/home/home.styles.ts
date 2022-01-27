@@ -7,10 +7,10 @@ export const BestWrapper = styled.div`
   height: 900px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 100px;
-  background-color: #edceba;
+  background-color: #edeae3;
 `;
 
 export const BestItemWrapper = styled.div`

@@ -29,7 +29,7 @@ export default function HeaderUI(props: IHeaderProps) {
         {props.data?.fetchUserLoggedIn ? (
           <>
             <S.User_Button id="/mypage" onClick={props.onClickMove}>
-              {props.data?.fetchUserLoggedIn.name}
+              {props.data?.fetchUserLoggedIn.name}님
             </S.User_Button>
             <S.User_Button onClick={props.onClickLogout}>
               로그아웃

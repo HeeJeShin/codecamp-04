@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Header from "./header/Header.container";
 
 const Wrapper = styled.div`
-  background-color: #edeae3;
+  /* background-color: #edeae3; */
   width: 100%;
 `;
 

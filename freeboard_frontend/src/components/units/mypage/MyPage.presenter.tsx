@@ -38,11 +38,10 @@ const MyPageUI = (props: IMypageUIProps) => {
       <div>구입한것</div>
       <S.TableTop />
       {props.buyData?.fetchUseditemsIBought?.map((el: any) => (
-         <S.Row_TiTle>
+        <S.Row_TiTle>
           <div>{el.name}</div>
           <div>{el.price}</div>
-          </S.Row_TiTle>
-
+        </S.Row_TiTle>
       ))}
       <S.TableTop />
       <S.Row_TiTle>
@@ -55,16 +54,7 @@ const MyPageUI = (props: IMypageUIProps) => {
       {props.buyData?.fetchUseditemsIBought?.map((el: any, index: number) => (
         <S.Row key={el._id}>
           <S.ColumnBasic>{index + 1}</S.ColumnBasic>
-          <S.ColumnTitle id={el._id}>
-            {el.name
-              .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
-              .split("@#$%")
-              .map((el: String) => (
-                <S.TextToken key={uuidv4()} isMatched={props.keyword === el}>
-                  {el}
-                </S.TextToken>
-              ))}
-          </S.ColumnTitle>
+          <S.ColumnTitle id={el._id}>{el.name}</S.ColumnTitle>
           <S.ColumnBasic>{el.price}</S.ColumnBasic>
           <S.ColumnBasic>{getDate(el.createdAt)}</S.ColumnBasic>
         </S.Row>

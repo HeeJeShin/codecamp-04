@@ -5,12 +5,11 @@ export const Header = styled.div`
   height: 170px;
   /* background-color:#edceba; */
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   padding-top: 13px;
-  
+
   font-size: 20px;
-  font:  src: url('/fonts/NanumGothicCoding-Regular.ttf');
- 
+  /* font:  src: url('/fonts/NanumGothicCoding-Regular.ttf'); */
 `;
 
 export const LogoWrapper = styled.div`
@@ -53,10 +52,8 @@ export const Log_Wapper = styled.div`
   align-items: flex-end;
 `;
 
-
-
 export const User_Button = styled.div`
-  width: 72px;
+  width: 90px;
   height: 33px;
   font-size: 18px;
   margin-right: 5px;
@@ -64,7 +61,7 @@ export const User_Button = styled.div`
   border: none;
   /* color: white; */
   text-align: center;
-  background-color: #edceba;
+  /* background-color: #edceba; */
   :hover {
     /* background-color: #b7c5c8; */
     cursor: pointer;
@@ -75,7 +72,7 @@ export const Login_Button = styled.button`
   /* width: 92px;
   height: 44px; */
   margin-right: 5px;
-  background-color: #edeae3;
+  /* background-color: #edeae3; */
 
   border: none;
   color: gray;
@@ -92,7 +89,7 @@ export const Sign_Button = styled.button`
   color: gray;
   text-decoration: underline;
 
-  background-color: #edeae3;
+  /* background-color: #edeae3; */
   /* background-color: #edceba; */
 
   border: none;
@@ -107,7 +104,7 @@ export const Basket_Button = styled(ShoppingCartOutlined)`
   padding-top: 11px;
   color: gray;
 
-  background-color: #edeae3;
+  /* background-color: #edeae3; */
 
   border: none;
   :hover {

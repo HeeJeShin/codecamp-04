@@ -13,6 +13,10 @@ import {
   FETCH_USED_ITEMS_BOUGHT,
   FETCH_USER_LOGGED_IN,
 } from "./MyPage.queries";
+declare const window: Window &
+  typeof globalThis & {
+    IMP: any;
+  };
 
 const MyPage = () => {
   const router = useRouter();
@@ -47,7 +51,7 @@ const MyPage = () => {
         buyer_postcode: "01181",
         m_redirect_url: "", //모바일 결제후 리다이렉트될 주소!!
       },
-      async (rsp) => {
+      async (rsp: any) => {
         // callback
         if (rsp.success) {
           //    결제 성공시
@@ -70,9 +74,9 @@ const MyPage = () => {
       }
     );
   }
-  function onChangeKeyword(value: string) {
-    setKeyword(value);
-  }
+  // function onChangeKeyword(value: string) {
+  //   setKeyword(value);
+  // }
 
   return (
     <MyPageUI
@@ -81,7 +85,8 @@ const MyPage = () => {
       buyData={buyData}
       startPage={startPage}
       setStartPage={setStartPage}
-      onChangeKeyword={onChangeKeyword}
+      // onChangeKeyword={onChangeKeyword}
+      // setKeyword={setKeyword}
     />
   );
 };

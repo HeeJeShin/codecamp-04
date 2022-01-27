@@ -5,29 +5,25 @@ import { IMyStoreProps } from "./MyStore.types";
 
 import { v4 as uuidv4 } from "uuid";
 import { getDate } from "../../../../commons/libraries/utils";
+import MypageSearch from "../../../commones/searchbars/mypagesearchbar/MypageSearch.container";
 const MyStoreUI = (props: IMyStoreProps) => {
   return (
     <>
       <S.Wrapper>
         <S.Title>내가 구입한 내역입니다.</S.Title>
+
         <S.TableTop />
+        <S.Row_TiTle>
+          <S.ColumnHeaderBasic>번호</S.ColumnHeaderBasic>
+          <S.ColumnHeaderTitle>제목</S.ColumnHeaderTitle>
+          <S.ColumnHeaderBasic>작성자</S.ColumnHeaderBasic>
+          <S.ColumnHeaderBasic>날짜</S.ColumnHeaderBasic>
+        </S.Row_TiTle>
         {props.buyData?.fetchUseditemsIBought?.map(
           (el: IUseditem, index: number) => (
             <S.Row key={el._id}>
               <S.ColumnBasic>{index + 1}</S.ColumnBasic>
-              <S.ColumnTitle id={el._id}>
-                {el.name
-                  .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
-                  .split("@#$%")
-                  .map((el: String) => (
-                    <S.TextToken
-                      key={uuidv4()}
-                      isMatched={props.keyword === el}
-                    >
-                      {el}
-                    </S.TextToken>
-                  ))}
-              </S.ColumnTitle>
+              <S.ColumnTitle id={el._id}>{el.name}</S.ColumnTitle>
               <S.ColumnBasic>{el.price}</S.ColumnBasic>
               <S.ColumnBasic>{getDate(el.createdAt)}</S.ColumnBasic>
             </S.Row>
