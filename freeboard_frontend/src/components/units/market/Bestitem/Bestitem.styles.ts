@@ -8,11 +8,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 28px;
+  font-size: 30px;
   text-align: center;
   display: flex;
   flex-direction: center;
-  text-indent: 120px;
+  /* text-indent: 120px; */
+  text-align: center;
 `;
 
 export const Wrapper_Card = styled.div`

@@ -5,9 +5,9 @@ import * as S from "./home.styles";
 const HomeUI = () => {
   return (
     <S.Wrapper>
-      <S.BestWrapper>
+      <S.BestBoardWrapper>
         <BoardBest />
-      </S.BestWrapper>
+      </S.BestBoardWrapper>
 
       <S.BestItemWrapper>
         <BestItem />

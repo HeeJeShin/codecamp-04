@@ -9,11 +9,11 @@ export const BannerSection = styled.section`
 
   @media (min-width: 768px) and (max-width: 1199px) {
     width: 70%;
-    margin-left: 150px;
+    margin: 70px;
   }
 
   @media (max-width: 767px) {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
   }
 `;

@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import { Card } from "antd";
-import { IQuery } from "../../../../commons/types/generated/types";
+import { IBoard, IQuery } from "../../../../commons/types/generated/types";
 import { useQuery } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
 import {
@@ -41,10 +41,10 @@ export default function BoardBest() {
         <Best_Title>
           {" "}
           <h1>방문자들의 즐거운 수다</h1>
-          <h2>놓치지 마세요</h2>
+          {/* <h2>놓치지 마세요</h2> */}
         </Best_Title>
         <Wrapper>
-          {data?.fetchBoardsOfTheBest.map((el, index) => (
+          {data?.fetchBoardsOfTheBest.map((el: IBoard, index: any) => (
             <BestCard
               hoverable
               cover={

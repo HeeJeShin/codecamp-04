@@ -2,9 +2,12 @@ import styled from "@emotion/styled";
 import { ITextTokenProps } from "./BoardList.types";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  /* margin: 100px; */
-  padding-top : 100px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
 `;
 
 export const BoardSearchbar = styled.div`
@@ -35,6 +38,10 @@ export const TableTop = styled.div`
   margin-top: 20px;
 `;
 
+export const TableWrapper = styled.div`
+  width: 900px;
+`;
+
 export const TableBottom = styled.div`
   border-bottom: 2px solid gray;
 `;
@@ -57,7 +64,7 @@ export const Row = styled.div`
   font-size: 13px;
 
   :hover {
-    color: #f3bac0 ;
+    color: #f3bac0;
   }
 `;
 
@@ -70,9 +77,20 @@ export const ColumnHeaderBasic = styled.div`
   text-align: center;
 `;
 
+export const ColumnHeaderNumber = styled.div`
+  width: 10%;
+  text-align: center;
+`;
+
 export const ColumnHeaderTitle = styled.div`
   width: 70%;
   text-align: center;
+  /* text-indent: 270px; */
+`;
+
+export const ColumnHeaderData = styled.div`
+  width: 5%;
+  text-align: right;
 `;
 
 export const ColumnBasic = styled.div`
@@ -113,7 +131,6 @@ export const MyButton = styled.button`
   font-size: 16px;
 
   :hover {
-    background-color: #edeae3 ;
+    background-color: #edeae3;
   }
 `;
-

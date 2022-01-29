@@ -17,6 +17,9 @@ import {
   MyButton,
   // MyPrev,
   TextToken,
+  ColumnHeaderNumber,
+  TableWrapper,
+  ColumnHeaderData,
   // MyNext,
 } from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
@@ -33,35 +36,36 @@ export default function BoardListUI(props: IBoardListUIProps) {
         onChangeKeyword={props.onChangeKeyword}
       />
 
-      <TableTop />
-      <Row_TiTle>
-        <>번호</>
-        <ColumnHeaderTitle>제목</ColumnHeaderTitle>
-        <ColumnHeaderBasic>가격</ColumnHeaderBasic>
-        <ColumnHeaderTitle>날짜</ColumnHeaderTitle>
-      </Row_TiTle>
+      <TableWrapper>
+        <TableTop />
+        <Row_TiTle>
+          <ColumnHeaderBasic>번호</ColumnHeaderBasic>
+          <ColumnHeaderTitle>제목</ColumnHeaderTitle>
+          <ColumnHeaderBasic>글쓴이</ColumnHeaderBasic>
+          <ColumnHeaderBasic>날짜</ColumnHeaderBasic>
+        </Row_TiTle>
 
-      {props.data?.fetchBoards.map((el: any, index: number) => (
-        <Row key={el._id}>
-          <ColumnBasic>{index + 1}</ColumnBasic>
-          <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
-            {el.title
-              .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
-              .split("@#$%")
-              .map((el: any) => (
-                <TextToken key={uuidv4()} isMatched={props.keyword === el}>
-                  {el}
-                </TextToken>
-              ))}
-          </ColumnTitle>
-          <ColumnBasic>{el.writer}</ColumnBasic>
-          <ColumnBasic>{getDate(el.createdAt)}</ColumnBasic>
-        </Row>
-      ))}
-      <TableBottom />
+        {props.data?.fetchBoards.map((el: any, index: number) => (
+          <Row key={el._id}>
+            <ColumnBasic>{index + 1}</ColumnBasic>
+            <ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
+              {el.title
+                .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                .split("@#$%")
+                .map((el: any) => (
+                  <TextToken key={uuidv4()} isMatched={props.keyword === el}>
+                    {el}
+                  </TextToken>
+                ))}
+            </ColumnTitle>
+            <ColumnBasic>{el.writer}</ColumnBasic>
+            <ColumnBasic>{getDate(el.createdAt)}</ColumnBasic>
+          </Row>
+        ))}
+        <TableBottom />
+      </TableWrapper>
       <Footer>
-       
-      <Paginations01
+        <Paginations01
           refetch={props.refetch}
           count={props.count}
           startPage={props.startPage}

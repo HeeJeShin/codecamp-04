@@ -1,16 +1,20 @@
 import styled from "@emotion/styled";
-import { display } from "@mui/system";
 
 export const Wrapper = styled.div``;
 
-export const BestWrapper = styled.div`
-  height: 900px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+export const BestBoardWrapper = styled.div`
   align-items: center;
-  margin-top: 100px;
+  padding-top: 100px;
+  margin: 0 auto;
   background-color: #edeae3;
+
+  @media (min-width: 768px) and (max-width: 11990x) {
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const BestItemWrapper = styled.div`
@@ -19,6 +23,15 @@ export const BestItemWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 100px;
+  @media (min-width: 768px) and (max-width: 11990x) {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767px) {
+    width: 70%;
+    margin: 0 auto;
+  }
 `;
 
 export const Myself = styled.div`
