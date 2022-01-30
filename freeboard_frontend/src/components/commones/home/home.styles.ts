@@ -4,6 +4,7 @@ export const Wrapper = styled.div``;
 
 export const BestBoardWrapper = styled.div`
   align-items: center;
+  margin-top: 50px;
   padding-top: 100px;
   margin: 0 auto;
   background-color: #edeae3;
