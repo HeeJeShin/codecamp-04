@@ -15,21 +15,21 @@ const MyPaymentUI = (props: IMyPaymentProps) => {
             src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
           ></script>
         </Head>
-        <div>
+        <S.UserID>
           이메일:
           {props.data?.fetchUserLoggedIn?.email}
-        </div>
-        <label>충전금액:</label>
-        <div>
-          {props.data?.fetchUserLoggedIn?.userPoint?.amount}원<br />
+        </S.UserID>
+
+        <S.Changing>
+          충전금액: {props.data?.fetchUserLoggedIn?.userPoint?.amount}원<br />
           {"   "}
-        </div>
+        </S.Changing>
         {/* <MypageSearch
         refetch={props.refetch}
         // refetchBoardsCount={props.refetchBoardsCount}
         onChangeKeyword={props.onChangeKeyword}
       /> */}
-        <button onClick={props.onClickPayment}>1000원 충전하기</button>
+        <S.MyBtn onClick={props.onClickPayment}>1000원 충전하기</S.MyBtn>
       </S.Wrapper>
     </>
   );

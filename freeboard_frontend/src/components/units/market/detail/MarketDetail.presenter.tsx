@@ -1,56 +1,74 @@
 import KakaoMapPage from "../../../../commons/map/KakaoMap";
 import * as S from "./MarketDetail.styles";
-import { Button } from 'antd';
-import Dompurify from "dompurify";
 
-const MarketDetailUI = (props) => {
+import Dompurify from "dompurify";
+import { IMarketdetailProps } from "./MarketDetail.types";
+import BestItem from "../Bestitem/BestItem.container";
+
+const MarketDetailUI = (props: IMarketdetailProps) => {
   return (
     <S.Wrapper>
-      <div>상품명: {props.data?.fetchUseditem.name}</div>
-      <div>한줄: {props.data?.fetchUseditem.remarks}</div>
-      {/* <div>내용: {props.contents}</div> */}
-     내용: {process.browser && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: Dompurify.sanitize(String(props.data?.fetchUseditem?.contents)),
-        }}
-      />
-    )}
-      <div>가격: {props.data?.fetchUseditem.price}</div>
-      <S.Image>이미지: 
-      {props.data?.fetchUseditem.images
-          ?.filter((el: string) => el)
-          .map((el: string) => (
-            <img key={el} src={`https://storage.googleapis.com/${el}`} />
-          ))}
-      </S.Image>
+      <S.CardWrapper>
+        <S.Body>
+          <S.Title>{props.data?.fetchUseditem.name}</S.Title>
+          <S.Remark>{props.data?.fetchUseditem.remarks}</S.Remark>
+          <S.Linebar />
 
-      {/* 주소옮기기 */}
-      <div id="map" style={{ width: "500px", height: "400px" }}></div>
+          <S.ContentsWrapper>
+            <S.ImageWrapper>
+              {props.data?.fetchUseditem.images
+                ?.filter((el: string) => el)
+                .map((el: string) => (
+                  <S.Img
+                    key={el}
+                    src={`https://storage.googleapis.com/${el}`}
+                  />
+                ))}
+            </S.ImageWrapper>
 
-        <div>
-          {props.data?.fetchUseditem.useditemAddress?.zipcode} <br />
-          {props.data?.fetchUseditem.useditemAddress?.address}
-          {props.data?.fetchUseditem.useditemAddress?.addressDetail}
-        </div>
-  
-      
-    
-    <Button type="primary" block onClick={props.onClickMoveBuy}>
-    구매
-    </Button>   
-    <Button type="link" block onClick={props.onClickWishList}>
-      찜하기
-    </Button>
+            <S.Contents>{props.data?.fetchUseditem.contents}</S.Contents>
+          </S.ContentsWrapper>
+        </S.Body>
 
-    <Button block onClick={props.list}>목록으로</Button>
-
-    <Button type="dashed" block onClick={props.update}>
-      수정
-    </Button>
-    <Button type="dashed" block onClick={props.onClickDelete}>
-      삭제하기
-    </Button>
+        <S.MapWrapper>
+          {/* 주소옮기기 */}
+          <div id="map" style={{ width: "500px", height: "400px" }}></div>
+          <div>
+            {props.data?.fetchUseditem.useditemAddress?.zipcode} <br />
+            {props.data?.fetchUseditem.useditemAddress?.address}
+            {props.data?.fetchUseditem.useditemAddress?.addressDetail}
+          </div>
+        </S.MapWrapper>
+        <S.PriceWrapper>
+          <S.Price>{props.data?.fetchUseditem.price}원</S.Price>
+          <S.AvatarWrapper>
+            {/* <S.Avatar /> */}
+            <S.Info>
+              <S.Writer>
+                판매자 :{props.data?.fetchUseditem.seller.name}
+              </S.Writer>
+              <S.CreatedAt>{props.data?.fetchUseditem.createdAt}</S.CreatedAt>
+            </S.Info>
+          </S.AvatarWrapper>
+        </S.PriceWrapper>
+      </S.CardWrapper>
+      <S.BottomWrapper>
+        <S.MyBtn type="primary" block onClick={props.onClickMoveBuy}>
+          구매
+        </S.MyBtn>
+        <S.MyBtn type="link" block onClick={props.onClickWishList}>
+          찜하기
+        </S.MyBtn>
+        <S.MyBtn block onClick={props.list}>
+          목록으로
+        </S.MyBtn>
+        <S.MyBtn type="dashed" block onClick={props.update}>
+          수정
+        </S.MyBtn>
+        <S.MyBtn type="dashed" block onClick={props.onClickDelete}>
+          삭제하기
+        </S.MyBtn>
+      </S.BottomWrapper>
     </S.Wrapper>
   );
 };

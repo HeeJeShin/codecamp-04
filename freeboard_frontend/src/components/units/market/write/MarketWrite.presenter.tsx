@@ -3,26 +3,18 @@ import { IMarketWriteUIProps } from "./MarketWrite.types";
 //import Button01 from "../../../../commons/button/Button01"
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commones/uploads/01/Uploads01.container";
-import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
 
+import dynamic from "next/dynamic";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 import KakaoMapZipcodePage from "../../../../commons/map/KakaoMapZipcode";
+import { useForm } from "react-hook-form";
+import { schema } from "./MarketWrite.validation";
+import { IUseditem } from "../../../../commons/types/generated/types";
+import { IUploads01UIProps } from "../../../commones/uploads/01/Uploads01.types";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-
-export default function MarketWriteUI(props) {
-  // const { handelSubmit, register, setValue, trigger } = useForm({
-  //   mode: "onChange",
-  // });
-
-  // function handleChange(value: string) {
-  //   console.log(value);
-  //   setValue("contents", value === "<p><br></p>" ? "" : value);
-
-  //   trigger("contents");
-  // }
+export default function MarketWriteUI(props: any) {
   return (
     <>
       {props.isModalVisible && (
@@ -44,7 +36,6 @@ export default function MarketWriteUI(props) {
             onChange={props.onChangeMyName}
             defaultValue={props.dataFetchItem?.fetchUseditem.name}
           />
-          {/* <Error>{props.myWriterError}</Error> */}
         </S.Wrapper_MyUseditem>
         <S.Wrapper_MyRemarks>
           <S.MyLabel>한줄요약</S.MyLabel>
@@ -58,15 +49,12 @@ export default function MarketWriteUI(props) {
 
         <S.Wrapper_MyContents>
           <S.MyLabel>상품설명</S.MyLabel>
-       
-          {process.browser && <ReactQuill onChange={props.handleChange}/>}
-          {/* {process.browser && <S.MyContents  onChange={handleChange} />}  */}
 
-          {/* <textarea
-          placeholder="상품을 설명해주세요"
-          onChange={props.onChangeMyContents}
-          defaultValue={props.data?.fetchUseditem?.contents}
-        ></textarea> */}
+          <S.MyContents
+            placeholder="거래할 상품과 원하는 위치를 잘 설명해주세요."
+            onChange={props.onChangeMyContents}
+            defaultValue={props.data?.fetchUseditem?.contents}
+          ></S.MyContents>
         </S.Wrapper_MyContents>
 
         <S.Wrapper_MyPrice>
@@ -91,12 +79,7 @@ export default function MarketWriteUI(props) {
         </S.Wrapper_MyTags> */}
 
         <S.Wrapper_MyLocation>
-          <S.Wrapper_MyMap>
-            {/* <S.MyMap id="map">
-
-            </S.MyMap> */}
-            {/* <KakaoMapZipcodePage /> */}
-          </S.Wrapper_MyMap>
+          <S.Wrapper_MyMap></S.Wrapper_MyMap>
 
           <S.Wrapper_MyPlace>
             <S.MyLabel>주소</S.MyLabel>
@@ -121,15 +104,16 @@ export default function MarketWriteUI(props) {
                 readOnly
                 value={
                   props.address ||
-                  props.dataFetchItem?.fetchUseditem?.useditemAddress?.address ||
+                  props.dataFetchItem?.fetchUseditem?.useditemAddress
+                    ?.address ||
                   ""
                 }
               />
               <S.MyAddress
                 onChange={props.onChangeAddressDetail}
                 defaultValue={
-                  props.dataFetchItem?.fetchUseditem?.useditemAddress?.addressDetail ||
-                  ""
+                  props.dataFetchItem?.fetchUseditem?.useditemAddress
+                    ?.addressDetail || ""
                 }
               />
             </S.Wrapper_MyZipcode>
@@ -138,7 +122,7 @@ export default function MarketWriteUI(props) {
 
         <S.Wrapper_MyImage>
           <S.MyLabel>사진</S.MyLabel>
-          {props.fileUrls.map((el, index) => (
+          {props.fileUrls.map((el: any, index: number) => (
             <Uploads01
               key={uuidv4()}
               index={index}
@@ -148,14 +132,6 @@ export default function MarketWriteUI(props) {
             />
           ))}
         </S.Wrapper_MyImage>
-
-        <S.Wrapper_MyOption>
-          <S.MyLabel>나타낼 사진</S.MyLabel>
-          <S.MyRadio_Buttoon type="radio" id="youtube" name="radio-button" />
-          <S.MyYoutube htmlFor="youtube">유튜브</S.MyYoutube>
-          <S.MyImage type="radio" id="image" name="radio-button" />
-          <S.MyLabel htmlFor="image">사진</S.MyLabel>
-        </S.Wrapper_MyOption>
 
         <S.Wrapper_Mybutton>
           {props.isEdit && (

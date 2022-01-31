@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
 
 export const Best_Title = styled.h1`
   font-size: 30px;
-  /* margin-bottom: 100px; */
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   text-align: center;

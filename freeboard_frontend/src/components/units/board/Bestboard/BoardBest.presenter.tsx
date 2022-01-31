@@ -38,11 +38,7 @@ export default function BoardBest() {
   return (
     <>
       <Best_Wrapper>
-        <Best_Title>
-          {" "}
-          <h1>방문자들의 즐거운 수다</h1>
-          {/* <h2>놓치지 마세요</h2> */}
-        </Best_Title>
+        <Best_Title>방문자들의 즐거운 수다</Best_Title>
         <Wrapper>
           {data?.fetchBoardsOfTheBest.map((el: IBoard, index: any) => (
             <BestCard

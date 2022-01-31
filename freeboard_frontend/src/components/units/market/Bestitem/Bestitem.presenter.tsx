@@ -16,7 +16,7 @@ import { IUseditem } from "../../../../commons/types/generated/types";
 const BestItemUI = (props: IBestItemUIProps) => {
   return (
     <S.Wrapper>
-      <S.Title>이달의 상품입니다</S.Title>
+      <S.Title>이 달의 상품입니다</S.Title>
       <S.Wrapper_Card>
         {props.data?.fetchUseditemsOfTheBest.map((el: IUseditem) => (
           <S.BestCard

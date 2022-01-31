@@ -6,6 +6,7 @@ export const BannerSection = styled.section`
   /* background-color: #edceba; */
   overflow: hidden;
   margin-left: 300px;
+  margin-bottom: 50px;
 
   @media (min-width: 768px) and (max-width: 1199px) {
     width: 70%;
@@ -35,6 +36,6 @@ export const Wrapper = styled.div`
 `;
 
 export const BannerText = styled.div`
-  font-size: 48px;
+  font-size: 38px;
   text-align: center;
 `;

@@ -11,10 +11,12 @@ const BestItem = () => {
     FETCH_USED_ITEMS_OF_THEBEST
   );
 
-  const onError = (event:SyntheticEvent<HTMLImageElement>) => {
+  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
     event.target instanceof HTMLImageElement &&
-   
-    event.target.setAttribute("src", "http://localhost:3000/images/%EC%B1%85%EC%9C%84%EC%A1%B0%EB%AA%85.jpg")
+      event.target.setAttribute(
+        "src",
+        "http://localhost:3000/images/%EC%B1%85%EC%9C%84%EC%A1%B0%EB%AA%85.jpg"
+      );
   };
   const onClickMoveToMarketDetail = (event: MouseEvent<HTMLImageElement>) => {
     if (event.target instanceof Element) {
