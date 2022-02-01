@@ -36,7 +36,7 @@ export const MyNavigation = styled.div`
 
 export const MenuItem = styled.div`
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 9 5px;
   cursor: pointer;
 
   :hover {
@@ -53,17 +53,18 @@ export const Log_Wapper = styled.div`
 `;
 
 export const User_Button = styled.div`
-  width: 90px;
+  display: flex;
+  justify-content: space-between;
   height: 33px;
   font-size: 18px;
   margin-right: 5px;
-  border-radius: 50%;
+  margin-bottom: 3px;
+
   border: none;
-  /* color: white; */
+
   text-align: center;
-  /* background-color: #edceba; */
+
   :hover {
-    /* background-color: #b7c5c8; */
     cursor: pointer;
   }
 `;
@@ -72,7 +73,7 @@ export const Login_Button = styled.button`
   /* width: 92px;
   height: 44px; */
   margin-right: 5px;
-  /* background-color: #edeae3; */
+  background-color: white;
 
   border: none;
   color: gray;

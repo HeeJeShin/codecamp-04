@@ -1,3 +1,5 @@
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
 import { split } from "lodash";
 import * as S from "./Header.styles";
 import { IHeaderProps } from "./Hearder.types";
@@ -24,12 +26,18 @@ export default function HeaderUI(props: IHeaderProps) {
         <S.MenuItem id="/mydog" onClick={props.onClickMove}>
           JOKEPAGE
         </S.MenuItem>
+
+        <S.MenuItem id="/mypage" onClick={props.onClickMove}>
+          MYPAGE
+        </S.MenuItem>
       </S.MyNavigation>
       <S.Log_Wapper>
         {props.data?.fetchUserLoggedIn ? (
           <>
             <S.User_Button id="/mypage" onClick={props.onClickMove}>
-              {props.data?.fetchUserLoggedIn.name}님
+              <Avatar sx={{ bgcolor: deepOrange[500] }}>
+                {props.data?.fetchUserLoggedIn.name}
+              </Avatar>
             </S.User_Button>
             <S.User_Button onClick={props.onClickLogout}>
               로그아웃

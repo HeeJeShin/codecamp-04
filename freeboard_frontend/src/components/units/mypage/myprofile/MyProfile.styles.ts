@@ -2,31 +2,44 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  /* width: 1200px; */
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 200px;
+`;
+
+export const MyTitleWrapper = styled.div`
+  /* margin-right: 200px; */
 `;
 
 export const MyTitle = styled.div`
   font-size: 20px;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  padding-bottom: 7px;
+`;
+
+export const MyChangeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
 `;
 
 export const MyPasswordTitle = styled.div`
-  padding-top: 20px;
   font-size: 30px;
   font-weight: 600;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 `;
 
 export const PasswordWrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 `;
 
 export const MyPassword = styled.label`
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 `;
 
 export const PasswordInput = styled.input``;

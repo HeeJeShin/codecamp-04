@@ -4,8 +4,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 800px;
-  /* margin: 0 -30px; */
-  margin-left: 350px;
+
+  margin: 0 auto;
   height: 700px;
 `;
 

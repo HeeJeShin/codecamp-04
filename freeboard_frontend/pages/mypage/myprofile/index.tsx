@@ -5,9 +5,9 @@ import styled from "@emotion/styled";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 100px;
-  width: 1000px;
+  /* justify-content: space-between; */
+
+  margin: 0 auto;
   //test test
 `;
 

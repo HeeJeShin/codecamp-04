@@ -1,3 +1,5 @@
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
 import { IUser } from "../../../../commons/types/generated/types";
 import * as S from "./Sidebar.styles";
 import { ISidebarProps } from "./Sidebar.types";
@@ -9,15 +11,11 @@ const MypageSidebarUI = (props: ISidebarProps) => {
         <S.MyTitle>My Page</S.MyTitle>
         <S.SidebarHeader>
           <S.ImgWrapper>
-            {props.data?.fetchUserLoggedIn.picture ? (
-              <S.MyImg
-                src={{ uri: `${props.data?.fetchUserLoggedIn.picture}` }}
-              ></S.MyImg>
-            ) : (
-              <S.MyEmo />
-            )}
+            <Avatar sx={{ bgcolor: deepOrange[500] }}>
+              {props.data?.fetchUserLoggedIn.name}
+            </Avatar>
           </S.ImgWrapper>
-          <S.MyName>{props.data?.fetchUserLoggedIn.name}</S.MyName>
+
           <S.MyPoint>
             {props.data?.fetchUserLoggedIn.userPoint.amount}
           </S.MyPoint>
