@@ -36,7 +36,7 @@ export const MyNavigation = styled.div`
 
 export const MenuItem = styled.div`
   margin-top: 10px;
-  margin-left: 9 5px;
+  margin-left: 95px;
   cursor: pointer;
 
   :hover {

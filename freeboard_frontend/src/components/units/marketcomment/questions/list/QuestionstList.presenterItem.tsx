@@ -1,13 +1,17 @@
-
-import * as S from "./QuestionsList.styles"
-import {  useMutation } from "@apollo/client";
+import * as S from "./QuestionsList.styles";
+import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { ChangeEvent, useState } from "react";
-import { IMutation, IMutationDeleteUseditemQuestionArgs, IMutationUpdateUseditemQuestionArgs } from "../../../../../commons/types/generated/types";
-import { DELETE_USED_ITEM_QUESTION, UPDATE_USED_ITEM_QUESTION } from "./QuestionsList.queries";
-
-
-
+import {
+  IMutation,
+  IMutationDeleteUseditemQuestionArgs,
+  IMutationUpdateUseditemQuestionArgs,
+} from "../../../../../commons/types/generated/types";
+import {
+  DELETE_USED_ITEM_QUESTION,
+  UPDATE_USED_ITEM_QUESTION,
+} from "./QuestionsList.queries";
+import { deepOrange } from "@mui/material/colors";
 
 const QuestionListPresenterItem = (props: any) => {
   const [updateContents, setUpdateContents] = useState("");
@@ -57,36 +61,42 @@ const QuestionListPresenterItem = (props: any) => {
 
   return (
     <S.Wrapper>
-      
       {isEdit ? (
-       <S.ItemWrapper>
-         <S.FlexWrapper>
-
-
-       <S.Avatar id="Abatar_Icon" /> 
-       <S.UserWrapper>
-
-          <S.Username>{props.el.user.name}</S.Username> <br />
-       </S.UserWrapper>
-         </S.FlexWrapper>
+        <S.ItemWrapper>
+          <S.FlexWrapper>
+            <S.MyAvatar id="Abatar_Icon" />
+            <S.UserWrapper>
+              <S.Username>{props.el.user.name}</S.Username> <br />
+            </S.UserWrapper>
+          </S.FlexWrapper>
           <S.Comment_Contents
             type="text"
             defaultValue={props.el.contents}
             onChange={onChangeContents}
           />
-          <S.Comment_Contents_Button onClick={onClickUpdateQuestion}>수정하기</S.Comment_Contents_Button>
+          <S.Comment_Contents_Button onClick={onClickUpdateQuestion}>
+            수정하기
+          </S.Comment_Contents_Button>
         </S.ItemWrapper>
       ) : (
         <S.Comment_InputWrapper_Contents>
           {/* <h2>{props.el._id}</h2> */}
           <S.FlexWrapper>
-            <S.Avatar id="Abatar_Icon" />           
-            <S.Username>{props.el.user.name}</S.Username>
-            <S.UpdateIcon onClick={onClickUpdate}>수정하기</S.UpdateIcon>
-            <S.DeleteIcon onClick={onClickDeleteQuestion(props.el._id)}>삭제</S.DeleteIcon>
-          </S.FlexWrapper>  
+            <S.WriterWrapper>
+              <S.Username sx={{ bgcolor: deepOrange[500] }}>
+                {props.el.user.name}
+              </S.Username>
+              {/* <h2>{props.el.user.name}</h2> */}
+            </S.WriterWrapper>
+          </S.FlexWrapper>
           <S.Contents>{props.el.contents}</S.Contents>
-        
+
+          <S.BtnWrapper>
+            <S.UpdateIcon onClick={onClickUpdate}>수정하기</S.UpdateIcon>
+            <S.DeleteIcon onClick={onClickDeleteQuestion(props.el._id)}>
+              삭제
+            </S.DeleteIcon>
+          </S.BtnWrapper>
         </S.Comment_InputWrapper_Contents>
       )}
     </S.Wrapper>

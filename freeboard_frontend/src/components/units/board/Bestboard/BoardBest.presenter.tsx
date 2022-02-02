@@ -9,6 +9,7 @@ import {
   Best_Title,
   BestCard,
 } from "../Bestboard/BoardBest.styles";
+import { IBoardBestProps } from "./BoardBest.types";
 
 const FETCH_BOARDS_OF_THEBEST = gql`
   query {
@@ -21,6 +22,11 @@ const FETCH_BOARDS_OF_THEBEST = gql`
     }
   }
 `;
+
+interface BestImg {
+  index: number;
+  BestImg: any;
+}
 
 const BestImg = {
   0: "./images/벽조명.jpg",

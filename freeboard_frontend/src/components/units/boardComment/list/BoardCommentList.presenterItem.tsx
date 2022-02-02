@@ -58,7 +58,7 @@ export default function BoardCommentListUIItem(
         ],
       });
     } catch (error) {
-      if(error instanceof Error) alert(error.message);
+      if (error instanceof Error) alert(error.message);
     }
   }
 

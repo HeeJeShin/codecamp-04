@@ -10,10 +10,10 @@ const LoginSuccess = () => {
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
   function onClickWriter() {
-    alert("onClick");
+    alert("글쓰기로 이동합니다");
     router.push("/market/new");
   }
-  console.log(data)
+  console.log(data);
 
   return <LoginSuccessUI data={data} onClickWriter={onClickWriter} />;
 };

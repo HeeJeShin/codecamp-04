@@ -3,16 +3,13 @@ import { LikeOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
-  width: 1100px;
-  /* margin: 100px; */
+  margin: 0 auto;
+  width: 1200px;
 `;
 
 export const CardWrapper = styled.div`
-  border: 1px solid black;
-  padding-top: 80px;
-  padding-bottom: 100px;
-  padding-left: 102px;
-  padding-right: 102px;
+  border: solid 1px;
+  padding: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,9 +45,7 @@ export const Info = styled.div`
 
 export const Writer = styled.div``;
 
-export const CreatedAt = styled.div`
-
-`;
+export const CreatedAt = styled.div``;
 
 export const Body = styled.div`
   width: 100%;
@@ -62,23 +57,20 @@ export const Title = styled.h1`
 `;
 
 export const Contents = styled.div`
-  box-sizing:border-box;
-  padding-left : 20px;
+  box-sizing: border-box;
+  padding-left: 20px;
   padding-top: 40px;
   padding-bottom: 120px;
 `;
 export const ImageWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  
-  
-
 `;
 
 export const Img = styled.img`
-  box-sizing:border-box;
+  box-sizing: border-box;
   display: flex;
-  
+
   width: 300px;
 `;
 
@@ -89,7 +81,7 @@ export const Contents_Icon = styled.div`
   box-sizing: border-box;
   // padding-bottom: 80px; // 수정해야되고
   padding-top: 162px; //이미지간격만큼만
-  margin: 0 auto; //이거하니까 가운데정렬 
+  margin: 0 auto; //이거하니까 가운데정렬
 `;
 
 export const Wapper_Like = styled.div`
@@ -97,11 +89,10 @@ export const Wapper_Like = styled.div`
   flex-direction: column;
   align-items: center;
   color: #ffd600;
-
-`
+`;
 
 export const Like_Icon = styled(LikeOutlined)`
-  color:#ffd600;
+  color: #ffd600;
   font-size: 50px;
 `;
 
@@ -110,7 +101,7 @@ export const Wapper_Dislike = styled.div`
   flex-direction: column;
   align-items: center;
   color: #bdbdbd;
-`
+`;
 
 export const Dislike_Icon = styled(LikeOutlined)`
   color: #bdbdbd;
@@ -136,7 +127,7 @@ export const Button = styled.button`
   color: gray;
 
   :hover {
-    background-color:#b7c5c8;
+    background-color: #b7c5c8;
     border-color: #b7c5c8;
   }
 `;

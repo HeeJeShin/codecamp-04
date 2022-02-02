@@ -1,4 +1,4 @@
-import * as S from "./QuestionsList.styles"
+import * as S from "./QuestionsList.styles";
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
 
@@ -16,7 +16,7 @@ import {
 } from "../../../../../commons/types/generated/types";
 import QuestionListPresenterItem from "./QuestionstList.presenterItem";
 import AnswerList from "../../answer/list/AnswerList.container";
-import InfinitieScroll from "react-infinite-scroller"
+import InfinitieScroll from "react-infinite-scroller";
 export default function QuestionList() {
   const router = useRouter();
 
@@ -85,20 +85,24 @@ export default function QuestionList() {
 
   return (
     <S.Wrapper>
-      <h3>문의하기</h3>
-      <div>
-        <input type="text" placeholder="문의내용" onChange={onChangeContents} />
-        <button onClick={onClickAddQuestion}>문의 등록하기</button>
-      </div>
+      <S.QnATitle>문의하기</S.QnATitle>
+      <S.QnAWrapper>
+        <S.QnAContentsInput
+          type="text"
+          placeholder="문의내용"
+          onChange={onChangeContents}
+        />
+        <S.QnABtn onClick={onClickAddQuestion}>문의 등록하기</S.QnABtn>
+      </S.QnAWrapper>
       <InfinitieScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
-      {useditemQuestions?.fetchUseditemQuestions.map((el) => (
-        <div key={el._id} >
-          <QuestionListPresenterItem el={el} refetch={refetch} />
+        {useditemQuestions?.fetchUseditemQuestions.map((el) => (
+          <S.QnAListWrapper key={el._id}>
+            <QuestionListPresenterItem el={el} refetch={refetch} />
 
-          <AnswerList questionId={el._id} />
-        </div>
-      ))}
-      {/* <button onClick={onLoadMore}>더보기</button> */}
+            <AnswerList questionId={el._id} />
+          </S.QnAListWrapper>
+        ))}
+        {/* <button onClick={onLoadMore}>더보기</button> */}
       </InfinitieScroll>
     </S.Wrapper>
   );

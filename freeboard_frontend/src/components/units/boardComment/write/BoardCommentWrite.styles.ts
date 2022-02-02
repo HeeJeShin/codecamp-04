@@ -1,19 +1,18 @@
 import styled from "@emotion/styled";
-import { CommentOutlined  } from "@ant-design/icons";
-import { Rate } from 'antd';
+import { CommentOutlined } from "@ant-design/icons";
+import { Rate } from "antd";
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
   width: 1200px;
   /* height: 1847px; */
 
-  margin: 100px;
+  margin: 0 auto;
   padding: 1px 102px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
-  
 `;
 
 export const FooterWarpper = styled.div`
@@ -26,19 +25,18 @@ export const FooterWarpper = styled.div`
   margin: 100px;
 `;
 
-export const Star = styled(Rate)` 
- box-sizing: border-box;
- padding-left: 26px;
- color: #edceba;
-`
+export const Star = styled(Rate)`
+  box-sizing: border-box;
+  padding-left: 26px;
+  color: #edceba;
+`;
 
-export const MyIcon = styled(CommentOutlined )`
+export const MyIcon = styled(CommentOutlined)`
   box-sizing: border-box;
   margin-right: 14px;
   font-size: 18px;
-  color: #FFD600;
+  color: #ffd600;
 `;
-
 
 export const Comment_Header = styled.div`
   box-sizing: border-box;
@@ -116,17 +114,15 @@ export const Comment_Contents_Typing_Count = styled.div`
 `;
 
 export const Comment_Contents_Button = styled.div`
-  
   color: white;
   font-size: 16px;
   width: 91px;
   height: 52px;
   text-align: center;
   line-height: 52px;
-  background-color: #b7c5c8; 
-  
-    :hover {
-      background-color : #b8b8b0;
-   }
-`;
+  background-color: #b7c5c8;
 
+  :hover {
+    background-color: #b8b8b0;
+  }
+`;

@@ -1,13 +1,18 @@
-import * as S from "./AnswerList.styles"
-import {  useMutation, useQuery } from "@apollo/client";
+import * as S from "./AnswerList.styles";
+import { useMutation, useQuery } from "@apollo/client";
 import { ChangeEvent, useState } from "react";
-import { IMutation, IMutationCreateUseditemQuestionAnswerArgs, IQuery, IQueryFetchUseditemQuestionAnswersArgs } from "../../../../../commons/types/generated/types";
+import {
+  IMutation,
+  IMutationCreateUseditemQuestionAnswerArgs,
+  IQuery,
+  IQueryFetchUseditemQuestionAnswersArgs,
+} from "../../../../../commons/types/generated/types";
 
 import AnswerListPresenterItem from "./AnswerList.container";
-import { CREATE_USED_ITEM_QUESTION_ANSWERS, FETCH_USED_ITEM_QUESTION_ANSWERS } from "./AnswerList.queries";
-
-
-
+import {
+  CREATE_USED_ITEM_QUESTION_ANSWERS,
+  FETCH_USED_ITEM_QUESTION_ANSWERS,
+} from "./AnswerList.queries";
 
 export default function AnswerList(props: any) {
   const [contents, setContents] = useState("");
@@ -39,13 +44,20 @@ export default function AnswerList(props: any) {
   };
 
   return (
-    <S.Wrapper>
-      <h3>판매자 답변</h3>
-      <input type="text" placeholder="답변을 입력하세요." onChange={onChangeContents} />
-      <button onClick={onClickAddAnswer}>답변 등록하기</button>
-      {data?.fetchUseditemQuestionAnswers.map((el) => (
-        <AnswerListPresenterItem key={el._id} el={el} refetch={refetch} />
-      ))}
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <S.QnATitle>ㄴ판매자 답변</S.QnATitle>
+        <S.QnAContentsInput
+          type="text"
+          placeholder="답변을 입력하세요."
+          onChange={onChangeContents}
+        />
+        <S.QnABtn onClick={onClickAddAnswer}>답변 등록하기</S.QnABtn>
+        {data?.fetchUseditemQuestionAnswers.map((el) => (
+          <AnswerListPresenterItem key={el._id} el={el} refetch={refetch} />
+        ))}
+      </S.Wrapper>
+      <AnswerListPresenterItem />
+    </>
   );
 }

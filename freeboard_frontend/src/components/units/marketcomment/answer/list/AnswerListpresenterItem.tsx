@@ -1,10 +1,16 @@
-import {  useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { ChangeEvent, useState } from "react";
-import { IMutation, IMutationDeleteUseditemQuestionAnswerArgs, IMutationUpdateUseditemQuestionAnswerArgs } from "../../../../../commons/types/generated/types";
-import { DELETE_USED_ITEM_QUESTION_ANSWER, UPADTE_USED_ITEM_QUESTION_ANSWER } from "./AnswerList.queries";
-
-
+import {
+  IMutation,
+  IMutationDeleteUseditemQuestionAnswerArgs,
+  IMutationUpdateUseditemQuestionAnswerArgs,
+} from "../../../../../commons/types/generated/types";
+import {
+  DELETE_USED_ITEM_QUESTION_ANSWER,
+  UPADTE_USED_ITEM_QUESTION_ANSWER,
+} from "./AnswerList.queries";
+import * as S from "./AnswerList.styles";
 
 const AnswerListPresenterItem = (props: any) => {
   const [updateContents, setUpdateContents] = useState("");
@@ -57,24 +63,31 @@ const AnswerListPresenterItem = (props: any) => {
   };
 
   return (
-    <>
+    <S.Wrapper>
       {isEdit ? (
-        <div key={props.el._id}>
-          <input onChange={onChangeContents} defaultValue={props.el.contents} />
+        <S.AnswerWrapper key={props.el._id}>
+          <S.ContentsInput
+            onChange={onChangeContents}
+            defaultValue={props.el.contents}
+          />
           /
           <br />
-          <span>{props.el.user.name}</span>
-          <button onClick={onClickUpdateAnswer(props.el._id)}>수정하기</button>
-        </div>
+          <S.MyName>{props.el.user.name}</S.MyName>
+          <S.AnswerBtn onClick={onClickUpdateAnswer(props.el._id)}>
+            수정하기
+          </S.AnswerBtn>
+        </S.AnswerWrapper>
       ) : (
-        <div key={props.el._id}>
-          <span>{props.el.contents} / </span>
-          <span>{props.el.user.name}</span>
-          <button onClick={onClickUpdate}>수정하기</button>
-          <button onClick={onClickDeleteAnswer(props.el._id)}>삭제하기</button>
-        </div>
+        <S.AnswerWrapper key={props.el._id}>
+          <S.MyContents>{props.el.contents} / </S.MyContents>
+          <S.MyName>{props.el.user.name}</S.MyName>
+          <S.AnswerBtn onClick={onClickUpdate}>수정하기</S.AnswerBtn>
+          <S.DeleteBtn onClick={onClickDeleteAnswer(props.el._id)}>
+            삭제하기
+          </S.DeleteBtn>
+        </S.AnswerWrapper>
       )}
-    </>
+    </S.Wrapper>
   );
 };
 
