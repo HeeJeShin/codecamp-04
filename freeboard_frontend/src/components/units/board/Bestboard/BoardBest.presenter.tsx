@@ -1,6 +1,11 @@
 import { gql } from "@apollo/client";
 import { Card } from "antd";
-import { IBoard, IQuery } from "../../../../commons/types/generated/types";
+import {
+  IBoard,
+  IQuery,
+  Maybe,
+  Scalars,
+} from "../../../../commons/types/generated/types";
 import { useQuery } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
 import {
@@ -9,7 +14,7 @@ import {
   Best_Title,
   BestCard,
 } from "../Bestboard/BoardBest.styles";
-import { IBoardBestProps } from "./BoardBest.types";
+import { DataIndex } from "rc-table/lib/interface";
 
 const FETCH_BOARDS_OF_THEBEST = gql`
   query {
@@ -23,12 +28,12 @@ const FETCH_BOARDS_OF_THEBEST = gql`
   }
 `;
 
-interface BestImg {
-  index: number;
-  BestImg: any;
-}
+type IBestImg = {
+  // BestImg: Maybe<Array<Scalars['String']>>
+  [index: string]: string;
+};
 
-const BestImg = {
+const BestImg: { 0: any; 1: string; 2: string; 3: string } = {
   0: "./images/벽조명.jpg",
   1: "./images/카페인테리어.jpg",
   2: "/images/원목조리기구.png",
@@ -36,6 +41,7 @@ const BestImg = {
 };
 
 export default function BoardBest() {
+  S;
   const { Meta } = Card;
   const isActive = true;
 
@@ -46,7 +52,7 @@ export default function BoardBest() {
       <Best_Wrapper>
         <Best_Title>방문자들의 즐거운 수다</Best_Title>
         <Wrapper>
-          {data?.fetchBoardsOfTheBest.map((el: IBoard, index: any) => (
+          {data?.fetchBoardsOfTheBest.map((el: IBoard, index: string) => (
             <BestCard
               hoverable
               cover={
