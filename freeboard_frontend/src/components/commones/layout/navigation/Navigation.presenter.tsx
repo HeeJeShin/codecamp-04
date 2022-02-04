@@ -1,7 +1,7 @@
 import * as S from "./Navigation.styles";
 
 interface INavigationPageUIProps {
-  onClickMenu: () => void;
+  onClickMenu: any;
 }
 
 export default function NavigationPageUI(props: INavigationPageUIProps) {

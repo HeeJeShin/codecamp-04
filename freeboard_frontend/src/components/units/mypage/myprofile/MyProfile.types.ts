@@ -1,4 +1,5 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IMyProfileProps {
   onClickUpdateName: MouseEventHandler<HTMLButtonElement> | undefined;
@@ -6,5 +7,5 @@ export interface IMyProfileProps {
   onClickResetPassword: MouseEventHandler<HTMLButtonElement> | undefined;
   onChangeCheckPassword: ChangeEventHandler<HTMLInputElement> | undefined;
   onChangePassword: ChangeEventHandler<HTMLInputElement> | undefined;
-  data: any;
+  data?: Pick<IQuery, "fetchUserLoggedIn">;
 }

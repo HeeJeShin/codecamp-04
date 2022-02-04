@@ -4,23 +4,9 @@ import { IMarketListUIProps } from "./MarketList.types";
 
 import InfinitieScroll from "react-infinite-scroller";
 import MediaCard from "../../../../commons/card/Card02";
-import Dompurify from "dompurify";
+
 import BestItem from "../Bestitem/BestItem.container";
-// interface ExpandMoreProps {
-//   //onClickMoveToMarkDetail: MouseEventHandler<HTMLDivElement> | undefined;
-//   data: any;
-//   onClickMove: any;
-//   loadMore: () => void;
-//   el: any;
-//   expand: boolean;
-//   title: string;
-//   subheader: Date;
-//   seller: any;
-//   name: string;
-//   Contents: string;
-//   createdAt: any;
-//   onClickMoveToMarketDetail: any;
-// }
+import { IUseditem } from "../../../../commons/types/generated/types";
 
 const MarketListUI = (props: IMarketListUIProps) => {
   return (
@@ -35,7 +21,7 @@ const MarketListUI = (props: IMarketListUIProps) => {
       <S.Wrapper_Infini>
         <InfinitieScroll pageStart={0} loadMore={props.loadMore} hasMore={true}>
           <S.testing>
-            {props.data?.fetchUseditems.map((el: any, index: any) => (
+            {props.data?.fetchUseditems.map((el: IUseditem, index: number) => (
               <S.Wrapper_Card>
                 <MediaCard
                   el={el}

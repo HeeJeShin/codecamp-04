@@ -15,6 +15,17 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/boards/[boardId]/index.js", "pages/boards/index.tsx", "pages/boards/new/index.js", "src/commons/map", "src/components/units/marketcomment/answer/list/d"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/_app.js",
+    "pages/boards/[boardId]/index.js",
+    "pages/boards/index.tsx",
+    "pages/boards/new/index.js",
+    "src/commons/map",
+    "src/components/units/marketcomment/answer/list/d",
+    "../class/src/commons/map_freeboard/KakaoMapZipcode.tsx"
+  ],
   "exclude": ["node_modules"]
 }

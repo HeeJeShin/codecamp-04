@@ -17,7 +17,7 @@ const MypageSidebarUI = (props: ISidebarProps) => {
           </S.ImgWrapper>
 
           <S.MyPoint>
-            {props.data?.fetchUserLoggedIn.userPoint.amount}
+            {props.data?.fetchUserLoggedIn.userPoint?.amount}
           </S.MyPoint>
         </S.SidebarHeader>
         <S.SidebarBody>

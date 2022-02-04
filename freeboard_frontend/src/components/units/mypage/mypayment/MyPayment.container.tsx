@@ -7,6 +7,11 @@ import { FETCH_USER_LOGGED_IN } from "../MyPage.queries";
 import MyPaymentUI from "./MyPayment.presenter";
 import { CREATE_POINT_TRANSACTION_OF_LOADING } from "./MyPayment.queries";
 
+declare const window: Window &
+  typeof globalThis & {
+    IMP: any;
+  };
+
 const MyPaymentContainer = () => {
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const [createPointTrancationOfLoading] = useMutation<
@@ -30,7 +35,7 @@ const MyPaymentContainer = () => {
         buyer_postcode: "01181",
         m_redirect_url: "", //모바일 결제후 리다이렉트될 주소!!
       },
-      async (rsp) => {
+      async (rsp: any) => {
         // callback
         if (rsp.success) {
           //    결제 성공시

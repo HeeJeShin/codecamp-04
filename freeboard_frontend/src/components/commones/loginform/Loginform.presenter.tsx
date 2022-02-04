@@ -1,7 +1,8 @@
 import * as S from "./Loginform.styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-export default function LoginFormUI(props) {
+import { ILogProp } from "./Loginform.types";
+export default function LoginFormUI(props: ILogProp) {
   const settings = {
     dots: false,
     infinite: true,

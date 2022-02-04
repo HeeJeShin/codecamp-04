@@ -1,22 +1,15 @@
 import * as S from "./BoardCommentWrite.styles";
 import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
 
-
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
-   
-  
-
   return (
     <S.Wrapper>
       <S.FooterWarpper>
         {!props.isEdit && (
-          
-            
-            <S.Comment_Header>
+          <S.Comment_Header>
             <S.MyIcon id="Comment_Icon" />
-              <span>댓글</span> 
-            </S.Comment_Header>
-          
+            <span>댓글</span>
+          </S.Comment_Header>
         )}
         <S.Comment_WriterWrapper>
           <S.Comment_InputWrapper_Writer>
@@ -26,7 +19,6 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
               defaultValue={props.el?.writer || ""}
               onChange={props.onChangeMyWriter}
             />
-            
           </S.Comment_InputWrapper_Writer>
 
           <S.Comment_InputWrapper_Password>

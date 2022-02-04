@@ -15,13 +15,13 @@ import { createUploadLink } from "apollo-upload-client";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { 
-    createContext, 
-    Dispatch,
-    SetStateAction, 
-    useEffect, 
-    useState 
-  } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,9 +40,8 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 
 Sentry.init({
-  dsn:"https://30f078cb8b754aec93ce3995e50a5b5b@o1091869.ingest.sentry.io/6109522",
-})
-
+  dsn: "https://30f078cb8b754aec93ce3995e50a5b5b@o1091869.ingest.sentry.io/6109522",
+});
 
 interface IGlobalContext {
   accessToken?: string;
@@ -67,9 +66,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   useEffect(() => {
-
     // const accessToken = localStorage.getItem("accessToken")
-    if(localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
+    if (localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
@@ -93,7 +91,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://backend04.codebootcamp.co.kr/graphql",
+    uri: "https://backend04.codebootcamp.co.kr/ graphql12",
     headers: { authorization: `Bearer ${myAcessToken}` },
     credentials: "include",
   });

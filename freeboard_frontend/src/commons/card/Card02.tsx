@@ -6,8 +6,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function MediaCard(props: IBoardListUIProps) {
-  const onError = (event) => {
+import { IMarketListUIProps } from "../../components/units/market/list/MarketList.types";
+
+export default function MediaCard(props: any) {
+  const onError = (event: any) => {
     event.target.src =
       "http://localhost:3000/images/%EC%B1%85%EC%9C%84%EC%A1%B0%EB%AA%85.jpg";
   };
@@ -25,8 +27,12 @@ export default function MediaCard(props: IBoardListUIProps) {
         <Typography gutterBottom variant="h5" component="div">
           {props.el.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {/* {props.el.seller.name} */}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          // sx={{ textAlign: "right" }}
+        >
+          {props.el.price} 원
         </Typography>
       </CardContent>
       <CardActions>
@@ -36,8 +42,7 @@ export default function MediaCard(props: IBoardListUIProps) {
         <Button size="small" onClick={props.onDetail} id={props.id}>
           Learn More
         </Button>
-        <Button size="small">♡</Button>
-        {props.el.price}\
+        <Button size="large">♡</Button>
       </CardActions>
     </Card>
   );

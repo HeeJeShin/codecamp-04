@@ -1,10 +1,11 @@
+import { IUseditem } from "../../../../commons/types/generated/types";
 import * as S from "./MarketBasket.styles";
 
 export default function BasketUI(props: any) {
   return (
     <S.Wrapper>
       <S.Title>장바구니</S.Title>
-      {props.basketItems.map((el, index) => (
+      {props.basketItems.map((el: IUseditem, index: number) => (
         <S.Wrapper_Inner>
           <S.Index>{index + 1}</S.Index>
           <S.Image src={`https://storage.googleapis.com/${el.images[0]}`} />

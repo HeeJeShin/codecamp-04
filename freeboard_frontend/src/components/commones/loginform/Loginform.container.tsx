@@ -20,10 +20,10 @@ export default function LoginForm() {
     IMutationLoginUserArgs
   >(LOGIN_USER);
 
-  function onChangeMyEmail(event: ChangeEvent<HTMLElement>) {
+  function onChangeMyEmail(event: ChangeEvent<HTMLInputElement>) {
     setMyEmail(event.target.value);
   }
-  function onChangeMyPassword(event: ChangeEvent<HTMLElement>) {
+  function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
     setMyPassword(event.target.value);
   }
 

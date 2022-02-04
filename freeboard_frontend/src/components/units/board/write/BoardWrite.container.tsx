@@ -123,10 +123,6 @@ export default function BoardWrite(props: IboardWriteProps) {
     setIsOpen(false);
   }
 
-
-
-
-
   async function onClickSubmit() {
     if (myWriter) {
       setMyWriterError("작성자를 입력해주세요.");
@@ -218,7 +214,6 @@ export default function BoardWrite(props: IboardWriteProps) {
       onChangeMyContents={onChangeMyContents}
       onChangeMyYoutubeUrl={onChangeMyYoutubeUrl}
       onChangeAddressDetail={onChangeAddressDetail}
-      
       // onChangeFile={onChangeFile}
       onClickSubmit={onClickSubmit}
       handleEdit={handleEdit}
@@ -228,7 +223,7 @@ export default function BoardWrite(props: IboardWriteProps) {
       isEdit={props.isEdit}
       isOpen={isOpen}
       data={props.data}
-      fileRef={fileRef}
+      // fileRef={fileRef}
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}

@@ -39,7 +39,7 @@ export default function QuestionList() {
     },
   });
 
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
   };
 
@@ -53,7 +53,6 @@ export default function QuestionList() {
       });
       refetch();
     } catch (error) {
-      // error instanceof Error && Modal.error({ content: error.message });
       if (error instanceof Error) alert(error.message);
     }
   };
@@ -88,7 +87,6 @@ export default function QuestionList() {
       <S.QnATitle>문의하기</S.QnATitle>
       <S.QnAWrapper>
         <S.QnAContentsInput
-          type="text"
           placeholder="문의내용"
           onChange={onChangeContents}
         />

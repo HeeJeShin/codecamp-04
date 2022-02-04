@@ -2,9 +2,6 @@ import Head from "next/head";
 import { getDate } from "../../../commons/libraries/utils";
 import * as S from "./MyPage.styles";
 
-import Paginations01 from "../../commones/paginations/01/Paginations01.container";
-import { v4 as uuidv4 } from "uuid";
-import MypageSearch from "../../commones/searchbars/mypagesearchbar/MypageSearch.container";
 import { IMypageUIProps } from "./MyPage.types";
 
 const MyPageUI = (props: IMypageUIProps) => {

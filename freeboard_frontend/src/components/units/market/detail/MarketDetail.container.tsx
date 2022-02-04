@@ -46,7 +46,7 @@ const MarketDetail = () => {
       });
       alert("삭제완료");
       router.push("/market");
-    } catch (error : unknown) {
+    } catch (error: unknown) {
       if (error instanceof Error) alert(error.message);
     }
   }
@@ -63,8 +63,8 @@ const MarketDetail = () => {
       });
       alert("찜♡");
       console.log(result);
-    } catch (error : unknown) {
-      if(error instanceof Error) alert(error.message)
+    } catch (error: unknown) {
+      if (error instanceof Error) alert(error.message);
     }
   }
 
@@ -77,8 +77,8 @@ const MarketDetail = () => {
       });
       alert("구매완료");
       console.log(result);
-    } catch (error : unknown) {
-      if(error instanceof Error) alert(error.message)
+    } catch (error: unknown) {
+      if (error instanceof Error) alert(error.message);
     }
   }
   //주소옮기기
@@ -108,7 +108,7 @@ const MarketDetail = () => {
         // // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
           `${data?.fetchUseditem?.useditemAddress?.address}`,
-          function (result: { x: any, y:any}[], status: any) {
+          function (result: { x: any; y: any }[], status: any) {
             console.log("aa", result);
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
@@ -135,7 +135,7 @@ const MarketDetail = () => {
             }
           }
         );
-      })
+      });
     };
   }, [data?.fetchUseditem?.useditemAddress?.address]);
   console.log(data);
@@ -143,13 +143,8 @@ const MarketDetail = () => {
   return (
     <>
       <MarketDetailUI
-        name={data?.fetchUseditem?.name}
-        remarks={data?.fetchUseditem?.remarks}
-        contents={data?.fetchUseditem?.contents}
-        price={data?.fetchUseditem?.price}
         update={onClickUpdate}
         list={onClickList}
-        // onClickBasket={onClickBasket}
         onClickMoveBuy={onClickMoveBuy}
         data={data}
         onClickDelete={onClickDelete}

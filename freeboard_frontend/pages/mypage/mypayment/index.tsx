@@ -1,6 +1,7 @@
 import MyPageSidebarContainer from "../../../src/components/units/mypage/mypagesidebar/Sidebar.container";
 import MyPaymentContainer from "../../../src/components/units/mypage/mypayment/MyPayment.container";
 import styled from "@emotion/styled";
+import { withAuth } from "../../../src/commons/hocs/withAuth";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,4 +19,4 @@ const MyPaymentPage = () => {
   );
 };
 
-export default MyPaymentPage;
+export default withAuth(MyPaymentPage);

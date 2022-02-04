@@ -40,9 +40,9 @@ export default function MarketList() {
     });
   }
 
-  const onClickMoveToMarketDetail = (event) => {
-    console.log(event.target.id);
-    router.push(`/market/${event.target.id}`);
+  const onClickMoveToMarketDetail = (event: MouseEvent<HTMLButtonElement>) => {
+    // console.log(event.target.id);
+    router.push(`/market/${(event.target as Element).id}`);
   };
 
   const onClickBasket = (el: IUseditem) => () => {
@@ -67,6 +67,7 @@ export default function MarketList() {
       loadMore={onLoadMore}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       onClickBasket={onClickBasket}
+
       // fetchMore={fetchMore}
     />
   );

@@ -4,15 +4,8 @@ import { IMarketWriteUIProps } from "./MarketWrite.types";
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commones/uploads/01/Uploads01.container";
 
-import dynamic from "next/dynamic";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
-import KakaoMapZipcodePage from "../../../../commons/map/KakaoMapZipcode";
-import { useForm } from "react-hook-form";
-import { schema } from "./MarketWrite.validation";
-import { IUseditem } from "../../../../commons/types/generated/types";
-import { IUploads01UIProps } from "../../../commones/uploads/01/Uploads01.types";
 
 export default function MarketWriteUI(props: any) {
   return (
@@ -82,7 +75,7 @@ export default function MarketWriteUI(props: any) {
           <S.Wrapper_MyMap></S.Wrapper_MyMap>
 
           <S.Wrapper_MyPlace>
-            <S.MyLabel>주소</S.MyLabel>
+            <S.MyLabel>거래할 주소를 정확히 입력해주세요</S.MyLabel>
             <S.Wrapper_MyZipcode>
               <S.MyZipcode
                 placeholder="07250"

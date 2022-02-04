@@ -16,15 +16,15 @@ const MyProfileContainer = () => {
 
   console.log(data);
 
-  const onChangePassword = (e: ChangeEvent<HTMLElement>) => {
+  const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const onChangeCheckPassword = (e: ChangeEvent<HTMLElement>) => {
+  const onChangeCheckPassword = (e: ChangeEvent<HTMLInputElement>) => {
     setCheckPassword(e.target.value);
   };
 
-  const onChangeName = (e: ChangeEvent<HTMLElement>) => {
+  const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 

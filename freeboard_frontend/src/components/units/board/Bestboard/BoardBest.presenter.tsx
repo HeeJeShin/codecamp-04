@@ -1,11 +1,6 @@
 import { gql } from "@apollo/client";
 import { Card } from "antd";
-import {
-  IBoard,
-  IQuery,
-  Maybe,
-  Scalars,
-} from "../../../../commons/types/generated/types";
+import { IBoard, IQuery } from "../../../../commons/types/generated/types";
 import { useQuery } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
 import {
@@ -28,12 +23,7 @@ const FETCH_BOARDS_OF_THEBEST = gql`
   }
 `;
 
-type IBestImg = {
-  // BestImg: Maybe<Array<Scalars['String']>>
-  [index: string]: string;
-};
-
-const BestImg: { 0: any; 1: string; 2: string; 3: string } = {
+const BestImg: { [prop: string]: any } = {
   0: "./images/벽조명.jpg",
   1: "./images/카페인테리어.jpg",
   2: "/images/원목조리기구.png",
@@ -41,7 +31,6 @@ const BestImg: { 0: any; 1: string; 2: string; 3: string } = {
 };
 
 export default function BoardBest() {
-  S;
   const { Meta } = Card;
   const isActive = true;
 

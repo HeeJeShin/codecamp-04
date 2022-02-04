@@ -1,3 +1,4 @@
+export {};
 // import { useMutation, useQuery } from "@apollo/client";
 // import { useRouter } from "next/router";
 // import { ChangeEvent, useState } from "react";
@@ -48,7 +49,6 @@
 //     });
 //     refetch();
 //   };
-  
 
 //   return (
 //     <AnswerWriteUI

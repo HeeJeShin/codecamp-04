@@ -39,13 +39,17 @@ export const FETCH_USED_ITEM = gql`
       remarks
       contents
       price
+      seller {
+        email
+        name
+      }
     }
   }
 `;
 
 export const FETCH_USED_ITEMS = gql`
-  query fetchUseditems ($isSoldout: Boolean, $search: String, $page: Int){
-    fetchUseditems (isSoldout: $isSoldout, search: $search, page: $page){
+  query fetchUseditems($isSoldout: Boolean, $search: String, $page: Int) {
+    fetchUseditems(isSoldout: $isSoldout, search: $search, page: $page) {
       _id
       name
       remarks
@@ -53,6 +57,10 @@ export const FETCH_USED_ITEMS = gql`
       price
       images
       pickedCount
+      seller {
+        email
+        name
+      }
     }
   }
 `;

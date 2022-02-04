@@ -1,6 +1,7 @@
 import MyPageSidebarContainer from "../../../src/components/units/mypage/mypagesidebar/Sidebar.container";
 import MyProfileContainer from "../../../src/components/units/mypage/myprofile/MyProfile.container";
 import styled from "@emotion/styled";
+import { withAuth } from "../../../src/commons/hocs/withAuth";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,4 +21,4 @@ const MyProfilePage = () => {
   );
 };
 
-export default MyProfilePage;
+export default withAuth(MyProfilePage);

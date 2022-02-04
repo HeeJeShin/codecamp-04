@@ -1,5 +1,5 @@
 import { ApolloQueryResult } from "@apollo/client";
-import { ChangeEvent } from "react";
+import { ChangeEvent, ChangeEventHandler } from "react";
 import {
   IQuery,
   IQueryFetchBoardsCountArgs,
@@ -7,12 +7,5 @@ import {
 } from "../../../../commons/types/generated/types";
 
 export interface IMypageSearchUIProps {
-  refetch: (
-    variables: Partial<IQueryFetchUseditemsIBoughtArgs>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchUseditemsIBought">>>;
-  refetchBoardsCount: (
-    variables: Partial<IQueryFetchBoardsCountArgs>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
-  onChangeKeyword: (value: string) => void;
-  onChangeSearchbar: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeSearchbar: ChangeEventHandler<HTMLInputElement> | undefined;
 }

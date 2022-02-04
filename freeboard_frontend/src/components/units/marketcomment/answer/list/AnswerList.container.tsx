@@ -29,7 +29,7 @@ export default function AnswerList(props: any) {
     IMutationCreateUseditemQuestionAnswerArgs
   >(CREATE_USED_ITEM_QUESTION_ANSWERS);
 
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
   };
 
@@ -48,7 +48,6 @@ export default function AnswerList(props: any) {
       <S.Wrapper>
         <S.QnATitle>ㄴ판매자 답변</S.QnATitle>
         <S.QnAContentsInput
-          type="text"
           placeholder="답변을 입력하세요."
           onChange={onChangeContents}
         />

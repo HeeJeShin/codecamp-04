@@ -22,12 +22,9 @@ export async function getAccessToken(
     const result = await graphQlClient.request(RESTORE_ACCESS_TOKEN);
     const newAccessToken = result.restoreAccessToken.accessToken;
     setMyAccessToken(newAccessToken);
-    
+
     return newAccessToken;
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof Error) console.log(error.message);
   }
 }
-
-
-

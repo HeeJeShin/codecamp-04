@@ -87,7 +87,7 @@ export const Comment_InputWrapper_Contents = styled.div`
   margin-top: 10px; // 이거바꿔야됨.
 `;
 
-export const Comment_Contents = styled.input`
+export const Comment_Contents = styled.textarea`
   width: 100%;
   height: 108px;
   box-sizing: border-box;
@@ -113,7 +113,7 @@ export const Comment_Contents_Typing_Count = styled.div`
   font-size: 16px;
 `;
 
-export const Comment_Contents_Button = styled.div`
+export const Comment_Contents_Button = styled.button`
   color: white;
   font-size: 16px;
   width: 91px;
