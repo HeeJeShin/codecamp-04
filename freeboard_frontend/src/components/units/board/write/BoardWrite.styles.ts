@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 import { IEmotionProps } from "./BoardWrite.types";
 
 export const Wrapper = styled.div`
-  box-sizing: border-box;
-  width: 100%;
+  width: 1200px;
   /* height: 1847px; */
   border: 1px solid black;
-  /* margin: 100px; */
+  margin: 100px 200px 300px 400px;
   padding: 80px 90px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   border: none;
   box-shadow: 0px 0px 10px #b8b8b0;
@@ -81,7 +81,7 @@ export const Subject = styled.input`
 export const Contents = styled.textarea`
   width: 996px;
   height: 480px;
-  box-sizing: border-box;
+
   padding-left: 16px;
   padding: 14px;
   border: 1px solid #bdbdbd;
@@ -152,7 +152,7 @@ export const UploadButton = styled.button`
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
@@ -164,7 +164,6 @@ export const OptionWrapper = styled.div`
 
 export const RadioButton = styled.input`
   cursor: pointer;
-  
 `;
 
 export const RadioLabel = styled.label`

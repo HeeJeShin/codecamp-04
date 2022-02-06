@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  /* height: 100%; */
+`;
 
 export const BestBoardWrapper = styled.div`
   align-items: center;
@@ -9,7 +11,7 @@ export const BestBoardWrapper = styled.div`
   margin: 0 auto;
   background-color: #edeae3;
 
-  @media (min-width: 768px) and (max-width: 11990x) {
+  @media (min-width: 768px) and (max-width: 1199px) {
     width: 100%;
   }
 
@@ -24,7 +26,7 @@ export const BestItemWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-  @media (min-width: 768px) and (max-width: 11990x) {
+  @media (min-width: 768px) and (max-width: 1199px) {
     width: 70%;
     margin: 0 auto;
   }
@@ -40,11 +42,24 @@ export const Myself = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 2027px;
+  /* width: 2027px; */
+  width: 100%;
   background-color: #edceba;
   text-align: center;
   padding: 20px;
   margin-top: 100px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    width: 100%;
+    margin: 0 auto;
+    height: 600px;
+    font-size: 14px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 0 auto;
+    height: 600px;
+    font-size: 14px;
+  }
 `;
 
 export const HomeTitle = styled.div`
@@ -58,6 +73,10 @@ export const Remarks = styled.div`
 
 export const HomeContents = styled.div`
   padding: 3px;
+  /* @media (min-width: 768px) and (max-width: 1199px) {
+    width: 100%;
+    margin: 0 auto;
+  } */
 `;
 
 export const MyStack = styled.div`
@@ -67,11 +86,33 @@ export const MyStack = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 800px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 `;
 
 export const StackText = styled.div`
   text-align: center;
   font-size: 25px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 40px;
+    padding-top: 50px;
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 40px;
+    padding-top: 50px;
+  }
 `;
 
 export const StackImgWrapper = styled.div`
@@ -79,13 +120,38 @@ export const StackImgWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 25px;
+
+  margin: 0 auto;
   width: 50%;
-  margin-left: 450px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    margin: 0 auto;
+    /* width: 50%; */
+  }
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    height: 
+    margin-bottom: 150px;
+  }
 `;
 
 export const StackImg = styled.img`
   width: 150px;
   height: 150px;
   margin: 45px;
+  @media (min-width: 768px) and (max-width: 1199px) {
+    width: 70px;
+    height: 70px;
+  }
+  @media (max-width: 767px) {
+    width: 70px;
+    height: 70px;
+  }
 `;

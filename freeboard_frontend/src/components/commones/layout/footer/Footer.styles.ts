@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const MyFooter = styled.div`
-  margin-top: 50px;
+  margin-top: 150px;
   padding: 200px;
   height: 200px;
   background-color: #b8b8b0;

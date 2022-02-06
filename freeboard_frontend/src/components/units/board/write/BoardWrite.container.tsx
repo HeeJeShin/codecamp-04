@@ -124,7 +124,7 @@ export default function BoardWrite(props: IboardWriteProps) {
   }
 
   async function onClickSubmit() {
-    if (myWriter) {
+    if (myWriter === "") {
       setMyWriterError("작성자를 입력해주세요.");
     }
     if (myPassword === "") {

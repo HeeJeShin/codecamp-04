@@ -22,7 +22,7 @@
     "pages/_app.js",
     "pages/boards/[boardId]/index.js",
     "pages/boards/index.tsx",
-    "pages/boards/new/index.js",
+    "pages/boards/new/index.tsx",
     "src/commons/map",
     "src/components/units/marketcomment/answer/list/d",
     "../class/src/commons/map_freeboard/KakaoMapZipcode.tsx"

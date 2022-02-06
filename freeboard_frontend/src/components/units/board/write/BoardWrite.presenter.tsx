@@ -139,24 +139,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               onChangeFileUrls={props.onChangeFileUrls}
             />
           ))}
-          {/* <>
-              <div
-                style={{
-                  width: "50px",
-                  height: "50px",
-                }}
-                onClick={props.onClickMyImage}
-              >
-                이미지선택
-              </div>
-
-              <input
-                style={{ display: "none" }}
-                type="file"
-                ref={props.fileRef}
-                onChange={props.onChangeFile}
-              />
-            </> */}
         </ImageWrapper>
         <OptionWrapper>
           <Label>메인설정</Label>

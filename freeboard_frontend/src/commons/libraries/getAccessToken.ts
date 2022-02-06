@@ -14,7 +14,7 @@ export async function getAccessToken(
   setMyAccessToken: Dispatch<SetStateAction<string>>
 ) {
   const graphQlClient = new GraphQLClient(
-    "https://backend04.codebootcamp.co.kr/graphql",
+    "https://backend04.codebootcamp.co.kr/graphql12",
     { credentials: "include" }
   );
 
