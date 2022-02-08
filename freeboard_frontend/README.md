@@ -1,7 +1,7 @@
 
 
 ## HI HEEJE  
-heeje.site
+[사이트바로가기](heeje.site)
 
 ![image](https://user-images.githubusercontent.com/84891687/152995625-73da7750-f8d8-488d-b7ee-074a44f0d77c.png)
 
