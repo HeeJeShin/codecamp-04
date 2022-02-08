@@ -35,6 +35,8 @@ export default function LoginFormUI(props: ILogProp) {
           <S.Submit onClick={props.handleLogin}>로그인</S.Submit>
           <S.Submit onClick={props.onClickSignup}>회원가입</S.Submit>
         </S.Submit_Wrapper>
+        <div>ID: heeje@site.com</div>
+        <div>PW:hj1234</div>
       </S.Login_Wrapper>
       <S.MySlider {...settings}>
         <S.Slider_Image>

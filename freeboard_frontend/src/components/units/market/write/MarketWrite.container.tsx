@@ -6,7 +6,11 @@ import {
   IMutationCreateUseditemArgs,
 } from "../../../../commons/types/generated/types";
 import MarketWriteUI from "./MarketWrite.presenter";
-import { CREATE_USED_ITEM, FETCH_USED_ITEM, UPDATE_USED_ITEM } from "./MarketWrite.queries";
+import {
+  CREATE_USED_ITEM,
+  FETCH_USED_ITEM,
+  UPDATE_USED_ITEM,
+} from "./MarketWrite.queries";
 
 const MarketWrite = (props: any) => {
   const router = useRouter();
@@ -122,7 +126,7 @@ const MarketWrite = (props: any) => {
   }, [props.data]);
 
   async function onClickSubmit() {
-    alert("test");
+    alert("등록하였습니다");
     const result = await createUseditem({
       variables: {
         createUseditemInput: {
@@ -174,30 +178,27 @@ const MarketWrite = (props: any) => {
   //   }
   // }
 
-
   const onClickUpdate = async () => {
     const result = await updateUseditem({
       variables: {
         useditemId: router.query.useditemId,
-        updateUseditemInput:{
+        updateUseditemInput: {
           name: myName,
           remarks: myRemarks,
           contents: myContents,
           price: Number(myPrice),
           images: fileUrls,
-          useditemAddress:{
+          useditemAddress: {
             zipcode,
             address,
-            addressDetail
-          }
-        }
-      }
-    })
+            addressDetail,
+          },
+        },
+      },
+    });
     router.push(`/market/${router.query.useditemId}`);
     console.log(result);
-  }
-
-
+  };
 
   function onCompleteAddressSearch(data: any) {
     setAddress(data.address);

@@ -25,6 +25,7 @@ const BestItemUI = (props: IBestItemUIProps) => {
               <S.myimg
                 alt="example"
                 src={`https://storage.googleapis.com/${el.images}`}
+                // src={el.images}
                 onError={props.onError}
                 onClick={props.onClickMoveToMarketDetail}
               />
