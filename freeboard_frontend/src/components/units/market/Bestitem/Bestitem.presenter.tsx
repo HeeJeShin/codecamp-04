@@ -1,6 +1,6 @@
 import { getDate } from "../../../../commons/libraries/utils";
 import * as S from "./Bestitem.styles";
-import { Card } from "antd";
+
 import Meta from "antd/lib/card/Meta";
 import { IBestItemUIProps } from "./Bestitem.typers";
 import { IUseditem } from "../../../../commons/types/generated/types";
@@ -12,6 +12,7 @@ import { IUseditem } from "../../../../commons/types/generated/types";
 //     2: "/images/원목조리기구.png",
 //     3: "/images/책위조명.jpg",
 //   };
+// board
 
 const BestItemUI = (props: IBestItemUIProps) => {
   return (
@@ -24,7 +25,7 @@ const BestItemUI = (props: IBestItemUIProps) => {
             cover={
               <S.myimg
                 alt="example"
-                src={`https://storage.googleapis.com/${el.images}`}
+                src={`https://storage.googleapis.com/${el.images[0]}`}
                 // src={el.images}
                 onError={props.onError}
                 onClick={props.onClickMoveToMarketDetail}

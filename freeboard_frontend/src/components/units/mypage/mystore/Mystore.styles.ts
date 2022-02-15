@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { ITextTokenProps } from "../../board/list/BoardList.types";
 
 export const Wrapper = styled.div`
-  width: 70%;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 100px;
 `;
 
 export const Title = styled.div``;
@@ -31,7 +33,19 @@ export const ColumnHeaderTitle = styled.div`
   text-align: center;
 `;
 
-export const Row = styled.div``;
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 52px;
+  line-height: 52px;
+  border-bottom: 1px solid gray;
+  font-size: 15px;
+
+  :hover {
+    color: #f3bac0;
+    cursor: pointer;
+  }
+`;
 
 export const ColumnBasic = styled.div`
   width: 10%;

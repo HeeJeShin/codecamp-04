@@ -1,12 +1,10 @@
 import { ApolloQueryResult } from "@apollo/client";
-import {Dispatch, MouseEvent, SetStateAction} from "react"
-import { 
-  IQuery, 
-
-  IQueryFetchBoardsArgs, 
-  IQueryFetchBoardsCountArgs 
+import { Dispatch, MouseEvent, SetStateAction } from "react";
+import {
+  IQuery,
+  IQueryFetchBoardsArgs,
+  IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
-
 
 export interface IBoardListUIProps {
   data?: Pick<IQuery, "fetchBoards">;
@@ -14,7 +12,7 @@ export interface IBoardListUIProps {
   onClickMoveToBoardDetail: (event: MouseEvent<HTMLDivElement>) => void;
   refetch: (
     variables: Partial<IQueryFetchBoardsArgs>
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards" >>>;
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
   refetchBoardsCount: (
     variables: Partial<IQueryFetchBoardsCountArgs>
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
@@ -23,11 +21,8 @@ export interface IBoardListUIProps {
   setStartPage: Dispatch<SetStateAction<number>>;
   keyword: string;
   onChangeKeyword: (value: string) => void;
-
-
 }
 
 export interface ITextTokenProps {
   isMatched: boolean;
 }
-

@@ -16,7 +16,7 @@ const MyStoreUI = (props: IMyStoreProps) => {
         <S.Row_TiTle>
           <S.ColumnHeaderBasic>번호</S.ColumnHeaderBasic>
           <S.ColumnHeaderTitle>제목</S.ColumnHeaderTitle>
-          <S.ColumnHeaderBasic>작성자</S.ColumnHeaderBasic>
+          <S.ColumnHeaderBasic>가격</S.ColumnHeaderBasic>
           <S.ColumnHeaderBasic>날짜</S.ColumnHeaderBasic>
         </S.Row_TiTle>
         {props.buyData?.fetchUseditemsIBought?.map(

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 100px;
-  width: 1000px;
+  /* width: 1000px; */
 `;
 const MyPaymentPage = () => {
   return (

@@ -20,8 +20,16 @@ const BodyWrapper = styled.div`
 `;
 
 const HIDDEN_HEADERS = [
-  "/12-05-modal-address-state-prev",
+  "/mypage",
   //...
+];
+
+const HIDDEN_BANNER = [
+  "/mypage",
+  // "/mypage/mystore",
+  // "/mypage/myprofile",
+  // "/mypage/mypayment",
+  // "/mypage/mypagesidebar",
 ];
 
 interface ILayoutProps {
@@ -30,17 +38,17 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
-  console.log(router); //라우터에 뭐가있나?
 
   //router.asPath // 주소가 위의 히든에 있는지 체크하는기능.
 
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
+  const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
 
   return (
     <>
       <Wrapper>
         {!isHiddenHeader && <Header />}
-        <Banner />
+        {!isHiddenBanner && <Banner />}
         {/* <Navigation /> */}
         <BodyWrapper>
           {/* <SidebarPage/> */}

@@ -26,8 +26,6 @@ export default function BoardList() {
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARD_COUNT);
 
-
-
   function onClickMoveToBoardNew() {
     router.push("/boards/new");
   }
@@ -40,7 +38,6 @@ export default function BoardList() {
   function onChangeKeyword(value: string) {
     setKeyword(value);
   }
-  
 
   return (
     <BoardListUI
@@ -50,13 +47,10 @@ export default function BoardList() {
       refetch={refetch}
       refetchBoardsCount={refetchBoardsCount}
       count={dataBoardsCount?.fetchBoardsCount}
-
       startPage={startPage}
       setStartPage={setStartPage}
       keyword={keyword}
       onChangeKeyword={onChangeKeyword}
-      
-
     />
   );
 }

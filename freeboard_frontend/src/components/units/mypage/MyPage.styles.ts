@@ -43,10 +43,11 @@ export const Row = styled.div`
   height: 52px;
   line-height: 52px;
   border-bottom: 1px solid gray;
-  font-size: 13px;
+  font-size: 15px;
 
   :hover {
     color: #f3bac0;
+    cursor: pointer;
   }
 `;
 
@@ -73,8 +74,8 @@ export const ColumnTitle = styled.div`
   width: 70%;
   text-align: center;
   cursor: pointer;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  /* white-space: nowrap;
+  text-overflow: ellipsis; */
   overflow: hidden;
   :hover {
     color: blue;

@@ -25,7 +25,7 @@ export default function BannerUI() {
         <Slider {...settings}>
           <WidthWrapper>
             <Wrapper>
-              <MyImage src="/images/벽돌인테리어.PNG" />
+              <MyImage src="/images/벽돌인테리어.png" />
             </Wrapper>
           </WidthWrapper>
 

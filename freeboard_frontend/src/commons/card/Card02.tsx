@@ -42,7 +42,7 @@ export default function MediaCard(props: any) {
         <Button size="small" onClick={props.onDetail} id={props.id}>
           Learn More
         </Button>
-        <Button size="large">♡</Button>
+        {/* <Button size="large">♡</Button> */}
       </CardActions>
     </Card>
   );

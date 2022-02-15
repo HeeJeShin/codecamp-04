@@ -3,7 +3,7 @@ import * as S from "./MarketDetail.styles";
 
 import Dompurify from "dompurify";
 import { IMarketdetailProps } from "./MarketDetail.types";
-import BestItem from "../Bestitem/BestItem.container";
+import { getDate } from "../../../../commons/libraries/utils";
 
 const MarketDetailUI = (props: IMarketdetailProps) => {
   return (
@@ -29,7 +29,7 @@ const MarketDetailUI = (props: IMarketdetailProps) => {
             <S.Contents>{props.data?.fetchUseditem.contents}</S.Contents>
           </S.ContentsWrapper>
         </S.Body>
-        <h2>거래할장소</h2>
+        <h2>주소</h2>
         <S.MapWrapper>
           {/* 주소옮기기 */}
           <div id="map" style={{ width: "500px", height: "400px" }}></div>
@@ -47,7 +47,9 @@ const MarketDetailUI = (props: IMarketdetailProps) => {
               <S.Writer>
                 판매자 :{props.data?.fetchUseditem.seller?.name}
               </S.Writer>
-              <S.CreatedAt>{props.data?.fetchUseditem.createdAt}</S.CreatedAt>
+              <S.CreatedAt>
+                {getDate(props.data?.fetchUseditem.createdAt)}
+              </S.CreatedAt>
             </S.Info>
           </S.AvatarWrapper>
         </S.PriceWrapper>

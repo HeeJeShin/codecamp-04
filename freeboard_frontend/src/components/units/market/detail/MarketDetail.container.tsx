@@ -20,6 +20,7 @@ declare const window: typeof globalThis & {
 
 const MarketDetail = () => {
   const router = useRouter();
+
   const [toggleUseditemPick] = useMutation<
     Pick<IMutation, "toggleUseditemPick">,
     IMutationToggleUseditemPickArgs
@@ -39,7 +40,7 @@ const MarketDetail = () => {
   >(DELETE_USED_ITEM);
 
   async function onClickDelete() {
-    confirm("삭제합니다?");
+    confirm("게시글을 정말로 삭제하겠습니까?");
     try {
       await deleteUseditem({
         variables: { useditemId: String(router.query.useditemId) },
@@ -75,7 +76,7 @@ const MarketDetail = () => {
           useritemId: router.query.useditemId,
         },
       });
-      alert("구매완료");
+      alert("구매가 완료되었습니다");
       console.log(result);
     } catch (error: unknown) {
       if (error instanceof Error) alert(error.message);
@@ -85,8 +86,8 @@ const MarketDetail = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=c1573b07307af25f6bb7415ff47e92fc";
-
+      // "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=c1573b07307af25f6bb7415ff47e92fc";
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=932db78e814fb177f5ae855f570cb798";
     document.head.appendChild(script);
 
     script.onload = () => {

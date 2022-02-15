@@ -67,3 +67,7 @@ export const BestCard = styled(Card)`
     width: 90%;
   }
 `;
+
+export const MYIMG = styled.img`
+  height: 200px;
+`;
