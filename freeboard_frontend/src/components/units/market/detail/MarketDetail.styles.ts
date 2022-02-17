@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 1200px;
   margin: 0 auto;
+  text-indent: 17px;
 `;
 
 export const CardWrapper = styled.div`

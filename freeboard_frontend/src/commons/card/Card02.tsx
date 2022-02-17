@@ -32,15 +32,15 @@ export default function MediaCard(props: any) {
           color="text.secondary"
           // sx={{ textAlign: "right" }}
         >
-          {props.el.price} 원
+          {Number(props.el.price).toLocaleString("ko-KR")} 원
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" onClick={props.onBasket}>
-          Basket
+          장바구니
         </Button>
         <Button size="small" onClick={props.onDetail} id={props.id}>
-          Learn More
+          더보기
         </Button>
         {/* <Button size="large">♡</Button> */}
       </CardActions>

@@ -47,7 +47,7 @@ const BestItemUI = (props: IBestItemUIProps) => {
                     <br />
                     <br />
                   </span>
-                  <span>{el.price}원</span>
+                  <span> {Number(el.price).toLocaleString("ko-KR")} 원</span>
                 </div>
               }
             />

@@ -101,7 +101,8 @@ const MarketDetail = () => {
         };
 
         const map = new window.kakao.maps.Map(container, options);
-        console.log("asfsafasdfa");
+        34321;
+        console.log("marketDeatail-map");
 
         // // 주소-좌표 변환 객체를 생성합니다
         const geocoder = new window.kakao.maps.services.Geocoder();
@@ -139,7 +140,7 @@ const MarketDetail = () => {
       });
     };
   }, [data?.fetchUseditem?.useditemAddress?.address]);
-  console.log(data);
+  console.log(data, "주소정보를 위한데이터");
 
   return (
     <>

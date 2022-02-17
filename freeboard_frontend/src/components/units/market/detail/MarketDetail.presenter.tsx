@@ -29,7 +29,7 @@ const MarketDetailUI = (props: IMarketdetailProps) => {
             <S.Contents>{props.data?.fetchUseditem.contents}</S.Contents>
           </S.ContentsWrapper>
         </S.Body>
-        <h2>주소</h2>
+        {/* <h2>주소</h2> */}
         <S.MapWrapper>
           {/* 주소옮기기 */}
           <div id="map" style={{ width: "500px", height: "400px" }}></div>
@@ -40,7 +40,11 @@ const MarketDetailUI = (props: IMarketdetailProps) => {
           </div>
         </S.MapWrapper>
         <S.PriceWrapper>
-          <S.Price>{props.data?.fetchUseditem.price}원</S.Price>
+          {/* <S.Price>{props.data?.fetchUseditem.price}원</S.Price> */}
+          <S.Price>
+            {" "}
+            {Number(props.data?.fetchUseditem.price).toLocaleString("ko-KR")} 원
+          </S.Price>
           <S.AvatarWrapper>
             {/* <S.Avatar /> */}
             <S.Info>

@@ -26,7 +26,7 @@ const FETCH_BOARDS_OF_THEBEST = gql`
 
 const BestImg: { [prop: string]: any } = {
   0: "https://cdn.crowdpic.net/list-thumb/thumb_l_8489C98D7004F1F8E6F02B6087776A1C.jpeg",
-  1: "/images/카페인테리어.jpg",
+  1: "/images/04.jpg",
   2: "/images/원목조리기구.png",
   3: "/images/책위조명.jpg",
 };

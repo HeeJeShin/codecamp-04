@@ -146,38 +146,6 @@ const MarketWrite = (props: any) => {
     router.push(`/market/${result.data?.createUseditem._id}`);
   }
 
-  // const myUpdateUseditemInput = {
-  //   name: myName,
-  //   remarks: myRemarks,
-  //   contents: myContents,
-  //   price: Number(myPrice),
-  //   images: fileUrls,
-  // };
-
-  // async function onClickUpdate() {
-  //   try {
-  //     const result = await updateUseditem({
-  //       variables: {
-  //         updateUseditemInput: {
-  //           myUpdateUseditemInput,
-  //           useditemAddress: {
-  //             zipcode: zipcode,
-  //             address: address,
-  //             addressDetail: addressDetail,
-  //           },
-  //         },
-  //         useditemId: {
-  //           useditemId: router.query.useditemId,
-  //         },
-  //       },
-  //     });
-  //     router.push(`/market/${router.query.useditemId}`);
-  //     console.log(result);
-  //   } catch (error) {
-  //     alert("error!!!!!");
-  //   }
-  // }
-
   const onClickUpdate = async () => {
     const result = await updateUseditem({
       variables: {

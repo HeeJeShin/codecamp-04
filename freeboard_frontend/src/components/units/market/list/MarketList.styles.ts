@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 100px 300px 300px 300px;
+  padding: 100px 70px 200px 70px;
+  /* padding: 0; */
 `;
 
 export const Wrapper_Mybutton = styled.div`
@@ -31,10 +32,6 @@ export const Wrapper_Card = styled.div`
   width: 350px;
   height: 550px;
   /* background-color: whitesmoke; */
-`;
-
-export const DD = styled.div`
-  width: 100px;
 `;
 
 export const testing = styled.div`

@@ -75,7 +75,7 @@ export default function MarketWriteUI(props: any) {
           <S.Wrapper_MyMap></S.Wrapper_MyMap>
 
           <S.Wrapper_MyPlace>
-            <S.MyLabel>거래할 주소를 정확히 입력해주세요</S.MyLabel>
+            <S.MyLabel>거래를 원하는 주소를 입력해주세요</S.MyLabel>
             <S.Wrapper_MyZipcode>
               <S.MyZipcode
                 placeholder="07250"

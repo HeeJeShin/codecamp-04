@@ -25,11 +25,12 @@ const HIDDEN_HEADERS = [
 ];
 
 const HIDDEN_BANNER = [
-  "/mypage",
-  // "/mypage/mystore",
-  // "/mypage/myprofile",
-  // "/mypage/mypayment",
-  // "/mypage/mypagesidebar",
+  "/mypage/",
+  "/market/",
+  "/boards/",
+  "/mydog/",
+  "/login/",
+  "/signup/",
 ];
 
 interface ILayoutProps {
