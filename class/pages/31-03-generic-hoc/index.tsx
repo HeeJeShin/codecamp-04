@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { ComponentType, useContext, useEffect } from "react";
 import { GlobalContext } from "../../../pages/_app";
 
 export const withAuth =
